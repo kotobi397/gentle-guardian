@@ -117,14 +117,12 @@ const Navbar: React.FC = () => {
               <MenuButton label="المفضلة" icon={<FavoriteIcon />} onClick={() => handleNavigation('/favorites')} active={isActive('/favorites')} badge={favoritesCount} />
               <MenuButton label="اقتراحات 💡" icon={<MessageSquare className="h-5 w-5" />} onClick={() => handleNavigation('/suggestions')} active={isActive('/suggestions')} />
               <MenuButton label="نوادي القراءة 📚" icon={<BookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/reading-clubs')} active={isActive('/reading-clubs')} />
-              <MenuButton label="قصص المستخدمين" icon={<LibraryBig className="h-5 w-5" />} onClick={() => handleNavigation('/stories')} active={isActive('/stories')} />
               
 
               {user && (
                 <>
                   <div className="my-3 h-px bg-border" />
                   <MenuButton label="انشر كتابك" icon={<UploadBookIcon />} onClick={() => handleNavigation('/upload-book')} />
-                  <MenuButton label="اكتب كتابك" icon={<PenSquare className="h-5 w-5" />} onClick={() => handleNavigation('/write')} />
                   <MenuButton label="كتبي" icon={<MyBooksIcon />} onClick={() => handleNavigation('/my-books')} />
                   <MenuButton label="حسابي" icon={<ProfileIcon />} onClick={() => handleNavigation('/profile')} />
                   {!adminCheckLoading && isAdmin && (
