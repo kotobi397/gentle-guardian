@@ -436,57 +436,6 @@ export type Database = {
         }
         Relationships: []
       }
-      auto_story_config: {
-        Row: {
-          chapters_per_story: number
-          created_at: string
-          enabled: boolean
-          id: number
-          language: string
-          last_error: string | null
-          last_run_at: string | null
-          last_status: string | null
-          min_chapter_words: number
-          model: string
-          stories_per_run: number
-          topics: Json
-          total_generated: number
-          updated_at: string
-        }
-        Insert: {
-          chapters_per_story?: number
-          created_at?: string
-          enabled?: boolean
-          id?: number
-          language?: string
-          last_error?: string | null
-          last_run_at?: string | null
-          last_status?: string | null
-          min_chapter_words?: number
-          model?: string
-          stories_per_run?: number
-          topics?: Json
-          total_generated?: number
-          updated_at?: string
-        }
-        Update: {
-          chapters_per_story?: number
-          created_at?: string
-          enabled?: boolean
-          id?: number
-          language?: string
-          last_error?: string | null
-          last_run_at?: string | null
-          last_status?: string | null
-          min_chapter_words?: number
-          model?: string
-          stories_per_run?: number
-          topics?: Json
-          total_generated?: number
-          updated_at?: string
-        }
-        Relationships: []
-      }
       banned_users: {
         Row: {
           ban_type: string
@@ -1702,15 +1651,7 @@ export type Database = {
           updated_at?: string
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "chapter_comments_chapter_id_fkey"
-            columns: ["chapter_id"]
-            isOneToOne: false
-            referencedRelation: "story_chapters"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       chapter_likes: {
         Row: {
@@ -1731,15 +1672,7 @@ export type Database = {
           id?: string
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "chapter_likes_chapter_id_fkey"
-            columns: ["chapter_id"]
-            isOneToOne: false
-            referencedRelation: "story_chapters"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       chat_messages: {
         Row: {
@@ -3843,56 +3776,6 @@ export type Database = {
         }
         Relationships: []
       }
-      story_chapters: {
-        Row: {
-          chapter_number: number
-          content: string
-          created_at: string
-          id: string
-          is_published: boolean
-          published_at: string | null
-          story_id: string
-          title: string
-          updated_at: string
-          views_count: number
-          word_count: number
-        }
-        Insert: {
-          chapter_number?: number
-          content?: string
-          created_at?: string
-          id?: string
-          is_published?: boolean
-          published_at?: string | null
-          story_id: string
-          title?: string
-          updated_at?: string
-          views_count?: number
-          word_count?: number
-        }
-        Update: {
-          chapter_number?: number
-          content?: string
-          created_at?: string
-          id?: string
-          is_published?: boolean
-          published_at?: string | null
-          story_id?: string
-          title?: string
-          updated_at?: string
-          views_count?: number
-          word_count?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "story_chapters_story_id_fkey"
-            columns: ["story_id"]
-            isOneToOne: false
-            referencedRelation: "user_stories"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       story_highlight_items: {
         Row: {
           book_id: string | null
@@ -4721,54 +4604,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      user_stories: {
-        Row: {
-          author_id: string
-          category: string | null
-          cover_url: string | null
-          created_at: string
-          description: string | null
-          id: string
-          is_public: boolean
-          language: string | null
-          likes_count: number
-          status: string
-          title: string
-          updated_at: string
-          views_count: number
-        }
-        Insert: {
-          author_id: string
-          category?: string | null
-          cover_url?: string | null
-          created_at?: string
-          description?: string | null
-          id?: string
-          is_public?: boolean
-          language?: string | null
-          likes_count?: number
-          status?: string
-          title: string
-          updated_at?: string
-          views_count?: number
-        }
-        Update: {
-          author_id?: string
-          category?: string | null
-          cover_url?: string | null
-          created_at?: string
-          description?: string | null
-          id?: string
-          is_public?: boolean
-          language?: string | null
-          likes_count?: number
-          status?: string
-          title?: string
-          updated_at?: string
-          views_count?: number
-        }
-        Relationships: []
       }
       verification_purchases: {
         Row: {
