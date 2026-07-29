@@ -58,12 +58,6 @@ const ProfileCustomization = lazy(() => import('./pages/ProfileCustomization'));
 const Rewards = lazy(() => import('./pages/Rewards'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Leaderboard = lazy(() => import('./pages/Leaderboard'));
-const WriteDashboard = lazy(() => import('./pages/WriteDashboard'));
-const StoryEditorPage = lazy(() => import('./pages/StoryEditorPage'));
-const ChapterEditorPage = lazy(() => import('./pages/ChapterEditorPage'));
-const StoryPublicPage = lazy(() => import('./pages/StoryReaderPages').then(m => ({ default: m.StoryPublicPage })));
-const ChapterReaderPage = lazy(() => import('./pages/StoryReaderPages').then(m => ({ default: m.ChapterReaderPage })));
-const StoriesBrowse = lazy(() => import('./pages/StoriesBrowse'));
 import DailyLoginModal from './components/gamification/DailyLoginModal';
 import MysteryDropHunter from './components/gamification/MysteryDropHunter';
 
@@ -170,12 +164,6 @@ function AppContent() {
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/write" element={<WriteDashboard />} />
-            <Route path="/write/:storyId" element={<StoryEditorPage />} />
-            <Route path="/write/:storyId/chapter/:chapterId" element={<ChapterEditorPage />} />
-            <Route path="/story/:storyId" element={<StoryPublicPage />} />
-            <Route path="/story/:storyId/chapter/:chapterNumber" element={<ChapterReaderPage />} />
-            <Route path="/stories" element={<StoriesBrowse />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

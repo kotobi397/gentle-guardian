@@ -13,7 +13,6 @@ import { Upload, Download, Sparkles, FileText, Plus, Trash2, Play, Pause, X, Che
 import Papa from 'papaparse';
 import BackgroundQueuePanel from './BackgroundQueuePanel';
 import AutoDiscoverPanel from './AutoDiscoverPanel';
-import AutoStoryGeneratorPanel from './AutoStoryGeneratorPanel';
 
 interface SimpleBook {
   title: string;
@@ -481,8 +480,6 @@ const BulkBookUploaderAI: React.FC<BulkBookUploaderAIProps> = ({ onUploadComplet
 
   return (
     <div className="space-y-6" dir="rtl">
-      <AutoStoryGeneratorPanel />
-
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
