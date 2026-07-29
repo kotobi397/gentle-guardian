@@ -1626,54 +1626,6 @@ export type Database = {
         }
         Relationships: []
       }
-      chapter_comments: {
-        Row: {
-          chapter_id: string
-          content: string
-          created_at: string
-          id: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          chapter_id: string
-          content: string
-          created_at?: string
-          id?: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          chapter_id?: string
-          content?: string
-          created_at?: string
-          id?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
-      chapter_likes: {
-        Row: {
-          chapter_id: string
-          created_at: string
-          id: string
-          user_id: string
-        }
-        Insert: {
-          chapter_id: string
-          created_at?: string
-          id?: string
-          user_id: string
-        }
-        Update: {
-          chapter_id?: string
-          created_at?: string
-          id?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
       chat_messages: {
         Row: {
           content: string
