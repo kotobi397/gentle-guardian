@@ -4,6 +4,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { KOTOBI_REACTIONS } from '@/hooks/useUpdateReactions';
+import { ReactionIcon, KOTOBI_REACTION_ICONS } from './KotobiReactionIcons';
 
 interface UpdateReactionsProps {
   updateId: string;
@@ -31,7 +32,7 @@ const UpdateReactions: React.FC<UpdateReactionsProps> = ({ updateId, counts, min
 
   return (
     <div className="mt-2 flex flex-wrap items-center gap-1.5" dir="rtl">
-      {active.map(([emoji, count]) => {
+      {active.filter(([emoji]) => KOTOBI_REACTION_ICONS[emoji]).map(([emoji, count]) => {
         const isMine = mine?.has(emoji);
         return (
           <button
@@ -46,7 +47,7 @@ const UpdateReactions: React.FC<UpdateReactionsProps> = ({ updateId, counts, min
             aria-label={`تفاعل ${emoji}`}
           >
             <span>+{formatCount(count)}</span>
-            <span className="text-sm leading-none">{emoji}</span>
+            <span className="h-4 w-4"><ReactionIcon id={emoji} /></span>
           </button>
         );
       })}
@@ -81,7 +82,7 @@ const UpdateReactions: React.FC<UpdateReactionsProps> = ({ updateId, counts, min
                     : 'border-clash-gold-deep/60 bg-clash-deep'
                 )}
               >
-                {emoji}
+                <span className="h-6 w-6"><ReactionIcon id={emoji} /></span>
               </button>
             ))}
           </div>
