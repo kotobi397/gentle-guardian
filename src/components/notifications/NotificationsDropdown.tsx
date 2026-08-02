@@ -458,8 +458,6 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
           )}
         </ScrollArea>
       </PopoverContent>
-
-      </PopoverContent>
     </Popover>
   );
 };
