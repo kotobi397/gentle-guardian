@@ -10,6 +10,8 @@ import {
 import { useSiteUpdates } from '@/hooks/useSiteUpdates';
 import { cn } from '@/lib/utils';
 import kotobiTeamLogo from '@/assets/kotobi-team-logo.png';
+import UpdateReactions from './UpdateReactions';
+import { useUpdateReactions } from '@/hooks/useUpdateReactions';
 
 interface SiteUpdatesDropdownProps {
   children: React.ReactNode;
@@ -18,6 +20,7 @@ interface SiteUpdatesDropdownProps {
 const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { updates, loading, hasUnread, markAllAsRead, ensureFetched } = useSiteUpdates();
+  const { counts, mine, toggleReaction } = useUpdateReactions(updates.map(u => u.id));
 
   const trigger = React.isValidElement(children)
     ? React.cloneElement(children as React.ReactElement<{ className?: string; children?: React.ReactNode }>, {
@@ -137,6 +140,13 @@ const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) =
                       <span>{formatDate(update.created_at)}</span>
                     </div>
                   </div>
+
+                  <UpdateReactions
+                    updateId={update.id}
+                    counts={counts[update.id] || {}}
+                    mine={mine[update.id]}
+                    onToggle={toggleReaction}
+                  />
                 </div>
               ))}
             </div>
