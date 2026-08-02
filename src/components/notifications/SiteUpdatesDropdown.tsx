@@ -88,8 +88,8 @@ const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) =
                 <Megaphone className="h-4 w-4 text-clash-bubble-foreground" />
               </span>
               <div className="text-right leading-tight">
-                <p className="text-sm font-extrabold tracking-wide text-clash-gold drop-shadow">تحديثات الموقع</p>
-                <p className="text-[10px] text-clash-foreground/70">{updates.length} تحديث</p>
+                <p className="text-sm font-extrabold tracking-wide !text-clash-gold drop-shadow">تحديثات الموقع</p>
+                <p className="text-[10px] !text-clash-foreground/70">{updates.length} تحديث</p>
               </div>
             </div>
           </div>
@@ -115,13 +115,13 @@ const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) =
                       <AvatarFallback>ك</AvatarFallback>
                     </Avatar>
                     <div className="leading-tight">
-                      <p className="text-xs font-extrabold text-clash-gold">فريق كتبي</p>
-                      <p className="text-[10px] text-clash-foreground/60">📢 {update.title}</p>
+                      <p className="text-xs font-extrabold !text-clash-gold">فريق كتبي</p>
+                      <p className="text-[10px] !text-clash-foreground/60">📢 {update.title}</p>
                     </div>
                   </div>
 
                   <div className="relative rounded-2xl border-2 border-clash-gold-deep/60 bg-clash-bubble px-3.5 py-3 text-clash-bubble-foreground shadow-[0_3px_0_hsl(var(--clash-panel-deep))]">
-                    <p className="whitespace-pre-wrap text-[13px] font-medium leading-relaxed" dir="rtl">
+                    <p className="whitespace-pre-wrap text-[13px] font-medium leading-relaxed !text-clash-bubble-foreground" dir="rtl">
                       {update.message}
                     </p>
                     {(update as any).image_url && (
