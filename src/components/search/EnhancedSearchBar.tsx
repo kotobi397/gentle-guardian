@@ -118,7 +118,7 @@ export function EnhancedSearchBar({
         e.preventDefault();
         if (highlightedIndex >= 0 && highlightedIndex < suggestions.length) {
           const selectedBook = suggestions[highlightedIndex];
-          navigate(`/book/${createBookSlug(selectedBook.title, selectedBook.author)}`);
+          navigate(`/book/${selectedBook.slug || createBookSlug(selectedBook.title, selectedBook.author)}`);
           setShowSuggestions(false);
         }
         break;
@@ -137,7 +137,7 @@ export function EnhancedSearchBar({
   };
 
   const handleSuggestionClick = (book: any) => {
-    window.location.href = `/book/${createBookSlug(book.title, book.author)}`;
+    window.location.href = `/book/${book.slug || createBookSlug(book.title, book.author)}`;
     setShowSuggestions(false);
   };
 
