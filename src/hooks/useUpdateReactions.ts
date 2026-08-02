@@ -3,24 +3,23 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 
 export interface KotobiReaction {
+  /** معرّف الأيقونة الخاصة بكتبي (وليس إيموجي نظام) */
   emoji: string;
   label: string;
 }
 
 /** ايموجيات كتبي الخاصة للتفاعل مع التحديثات */
 export const KOTOBI_REACTIONS: KotobiReaction[] = [
-  { emoji: '📚', label: 'كتاب رائع' },
-  { emoji: '❤️', label: 'أحببته' },
-  { emoji: '🔥', label: 'ناري' },
-  { emoji: '✨', label: 'مبهر' },
-  { emoji: '🎉', label: 'مبروك' },
-  { emoji: '🤯', label: 'مذهل' },
-  { emoji: '🙏', label: 'شكراً' },
-  { emoji: '☕', label: 'قراءة ممتعة' },
-  { emoji: '🧠', label: 'أفادني' },
-  { emoji: '🖋️', label: 'إبداع' },
-  { emoji: '😍', label: 'أعجبني' },
-  { emoji: '👏', label: 'أحسنتم' },
+  { emoji: 'kotobi_book', label: 'كتاب رائع' },
+  { emoji: 'kotobi_love', label: 'أحببته' },
+  { emoji: 'kotobi_fire', label: 'ملتهب' },
+  { emoji: 'kotobi_quill', label: 'إبداع' },
+  { emoji: 'kotobi_lantern', label: 'أنارني' },
+  { emoji: 'kotobi_tea', label: 'قراءة ممتعة' },
+  { emoji: 'kotobi_mind', label: 'أفادني' },
+  { emoji: 'kotobi_medal', label: 'أحسنتم' },
+  { emoji: 'kotobi_star', label: 'مميز' },
+  { emoji: 'kotobi_thanks', label: 'شكراً' },
 ];
 
 type CountsMap = Record<string, Record<string, number>>;
