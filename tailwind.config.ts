@@ -100,6 +100,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				clash: {
+					panel: 'hsl(var(--clash-panel))',
+					deep: 'hsl(var(--clash-panel-deep))',
+					foreground: 'hsl(var(--clash-panel-foreground))',
+					bubble: 'hsl(var(--clash-bubble))',
+					'bubble-foreground': 'hsl(var(--clash-bubble-foreground))',
+					'bubble-muted': 'hsl(var(--clash-bubble-muted))',
+					gold: 'hsl(var(--clash-gold))',
+					'gold-deep': 'hsl(var(--clash-gold-deep))'
+				},
+
 				book: {
 					primary: 'hsl(var(--primary))',
 					secondary: 'hsl(var(--secondary))',
