@@ -51,7 +51,7 @@ export function EnhancedSearchBar({
       try {
         const { data, error } = await supabase
           .from('book_submissions')
-          .select('id, title, author, category, cover_image_url, s3_cover_image_url')
+          .select('id, title, author, category, slug, cover_image_url, s3_cover_image_url')
           .eq('status', 'approved')
           .or(`title.ilike.%${localSearchTerm}%,author.ilike.%${localSearchTerm}%,category.ilike.%${localSearchTerm}%`)
           .order('title', { ascending: true })
@@ -67,6 +67,7 @@ export function EnhancedSearchBar({
           title: book.title || 'عنوان غير متوفر',
           author: book.author || 'مؤلف غير معروف',
           category: book.category || 'أخرى',
+          slug: (book as any).slug || '',
           cover_image_url: (book as any).s3_cover_image_url || book.cover_image_url || '/placeholder.svg'
         }));
 
@@ -117,7 +118,7 @@ export function EnhancedSearchBar({
         e.preventDefault();
         if (highlightedIndex >= 0 && highlightedIndex < suggestions.length) {
           const selectedBook = suggestions[highlightedIndex];
-          navigate(`/book/${createBookSlug(selectedBook.title, selectedBook.author)}`);
+          navigate(`/book/${selectedBook.slug || createBookSlug(selectedBook.title, selectedBook.author)}`);
           setShowSuggestions(false);
         }
         break;
@@ -136,7 +137,7 @@ export function EnhancedSearchBar({
   };
 
   const handleSuggestionClick = (book: any) => {
-    window.location.href = `/book/${createBookSlug(book.title, book.author)}`;
+    window.location.href = `/book/${book.slug || createBookSlug(book.title, book.author)}`;
     setShowSuggestions(false);
   };
 

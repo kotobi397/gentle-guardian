@@ -38,7 +38,7 @@ const RecentlyViewedBooks: React.FC<{ currentBookId?: string }> = ({ currentBook
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 pt-4">
           {recentBooks.map((book) => (
-            <Link to={`/book/${createBookSlug(book.title, book.author)}`} key={book.id} className="group block">
+            <Link to={`/book/${book.slug || createBookSlug(book.title, book.author)}`} key={book.id} className="group block">
               <Card className="bg-card/80 border-border/50 hover:border-book-primary transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden shadow-lg hover:shadow-red-500/20">
                 <CardContent className="p-0 relative">
                   <AspectRatio ratio={3 / 4}>

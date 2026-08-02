@@ -133,7 +133,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
 
   const BookResultItem = ({ book, onClickAction }: { book: any; onClickAction: () => void }) => (
     <Link
-      to={`/book/${createBookSlug(book.title, book.author)}`}
+      to={`/book/${book.slug || createBookSlug(book.title, book.author)}`}
       onClick={onClickAction}
       className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors"
     >
@@ -227,7 +227,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
               {aiResults.map((book) => (
                 <Link
                   key={book.id}
-                  to={`/book/${createBookSlug(book.title, book.author)}`}
+                  to={`/book/${book.slug || createBookSlug(book.title, book.author)}`}
                   onClick={handleClose}
                   className="block h-full"
                 >
@@ -311,7 +311,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
             {imageResults.map((book) => (
               <Link
                 key={book.id}
-                to={`/book/${createBookSlug(book.title, book.author)}`}
+                to={`/book/${book.slug || createBookSlug(book.title, book.author)}`}
                 onClick={handleClose}
                 className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors"
               >
@@ -419,7 +419,7 @@ export function ImageSearchButton() {
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">تم العثور على {results.length} نتيجة</p>
               {results.map((book) => (
-                <Link key={book.id} to={`/book/${createBookSlug(book.title, book.author)}`} onClick={handleClose}
+                <Link key={book.id} to={`/book/${book.slug || createBookSlug(book.title, book.author)}`} onClick={handleClose}
                   className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
                   <div className="w-12 h-16 flex-shrink-0 rounded overflow-hidden bg-muted shadow-sm">
                     <img src={optimizeImageUrl(book.cover_image_url || '/placeholder.svg', 'thumbnail')} alt={book.title} className="w-full h-full object-cover"

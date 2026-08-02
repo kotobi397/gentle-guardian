@@ -149,7 +149,7 @@ export default function SearchResults() {
             {filteredBooks.map((book) => (
               <Link
                 key={book.id}
-                to={`/book/${createBookSlug(book.title, book.author)}`}
+                to={`/book/${book.slug || createBookSlug(book.title, book.author)}`}
                 className="group block bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden"
               >
                 <div className="aspect-[3/4] relative overflow-hidden">
