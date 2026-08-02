@@ -3,7 +3,6 @@ import { Bell, CheckCircle, XCircle, Clock, Eye, Trash2, RefreshCw, BookOpen, He
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Popover,
@@ -352,108 +351,111 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
       </PopoverTrigger>
 
       <PopoverContent
-        className="w-[calc(100vw-1rem)] max-w-96 p-0 rounded-2xl bg-card/90 backdrop-blur-md border border-border shadow-lg"
+        className="w-[calc(100vw-1rem)] max-w-[26rem] p-0 rounded-2xl border-[3px] border-clash-gold-deep bg-clash-panel shadow-2xl overflow-hidden"
         align="end"
         sideOffset={8}
         collisionPadding={8}
       >
-        <Card className="border-0 shadow-none bg-transparent">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Bell className="h-4 w-4" />
-                الإشعارات
-                {notifications.length > 0 && <Badge variant="secondary" className="text-xs">{notifications.length}</Badge>}
-              </CardTitle>
-              <div className="flex items-center gap-1">
-                {notifications.length > 0 && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={deleteAllNotifications}
-                    className="h-8 px-2 text-red-500 hover:text-red-700 hover:bg-red-50 text-xs"
-                    title="حذف جميع الإشعارات"
-                  >
-                    <Trash2 className="h-3 w-3 ml-1" />
-                    حذف الكل
-                  </Button>
-                )}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={fetchNotifications}
-                  disabled={loading}
-                  className="h-8 w-8 p-0"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-                </Button>
+        {/* رأس اللوحة بأسلوب Clash */}
+        <div className="relative bg-clash-deep border-b-[3px] border-clash-gold-deep px-3 py-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-clash-gold-deep bg-clash-gold shadow-inner">
+                <Bell className="h-4 w-4 text-clash-bubble-foreground" />
+              </span>
+              <div className="text-right leading-tight">
+                <p className="text-sm font-extrabold tracking-wide text-clash-gold drop-shadow">الأخبار والإشعارات</p>
+                <p className="text-[10px] text-clash-foreground/70">
+                  {notifications.length} إشعار{unreadCount > 0 ? ` • ${unreadCount} جديد` : ''}
+                </p>
               </div>
             </div>
-          </CardHeader>
+            <div className="flex items-center gap-1">
+              {notifications.length > 0 && (
+                <button
+                  onClick={deleteAllNotifications}
+                  title="حذف جميع الإشعارات"
+                  className="rounded-lg border-2 border-clash-gold-deep bg-destructive/90 px-2 py-1 text-[10px] font-bold text-destructive-foreground shadow active:translate-y-[1px]"
+                >
+                  <Trash2 className="ml-1 inline h-3 w-3" />
+                  حذف الكل
+                </button>
+              )}
+              <button
+                onClick={fetchNotifications}
+                disabled={loading}
+                title="تحديث"
+                className="rounded-lg border-2 border-clash-gold-deep bg-clash-gold p-1.5 text-clash-bubble-foreground shadow active:translate-y-[1px] disabled:opacity-60"
+              >
+                <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
+              </button>
+            </div>
+          </div>
+        </div>
 
-          <CardContent className="p-0">
-            <ScrollArea className="h-80">
-              {loading ? (
-                <div className="text-center p-4 text-sm text-muted-foreground">جاري تحميل الإشعارات...</div>
-              ) : notifications.length === 0 ? (
-                <div className="text-center p-4 text-sm text-muted-foreground">لا توجد إشعارات</div>
-              ) : (
-                <div className="space-y-1">
-                  {notifications.map((notification) => (
-                    <div
-                      key={notification.id}
-                      onClick={() => handleNotificationClick(notification)}
-                      className={`p-3 border-b border-border hover:bg-muted/50 transition-colors text-right ${
-                        !notification.read ? 'bg-blue-50/50 dark:bg-blue-900/10' : ''
-                      } ${notification.target_url ? 'cursor-pointer' : ''}`}
-                    >
-                      <div className="flex items-start gap-2">
-                        {getNotificationIcon(notification.type)}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between mb-1">
-                            <h4 className="font-medium text-sm truncate">{notification.title}</h4>
-                            {getNotificationBadge(notification.type, notification.title)}
-                          </div>
-                          <p className="text-xs text-muted-foreground mb-1 whitespace-pre-wrap leading-relaxed max-h-32 overflow-y-auto">
-                            {notification.message}
-                          </p>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-muted-foreground">{formatDate(notification.created_at)}</span>
-                            <div className="flex items-center gap-1">
-                              {!notification.read && (
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={(e) => { e.stopPropagation(); markAsRead(notification.id); }}
-                                  className="h-6 w-6 p-0"
-                                  title="وضع علامة مقروء"
-                                >
-                                  <Eye className="h-3 w-3" />
-                                </Button>
-                              )}
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={(e) => { e.stopPropagation(); deleteNotification(notification.id); }}
-                                className="h-6 w-6 p-0 text-red-500 hover:text-red-700"
-                                title="حذف الإشعار"
-                              >
-                                <Trash2 className="h-3 w-3" />
-                              </Button>
-                            </div>
-                          </div>
-                          {notification.book_title && notification.book_title !== 'كتاب محذوف' && (
-                            <div className="text-xs text-muted-foreground mt-1 truncate">📚 {notification.book_title}</div>
-                          )}
-                        </div>
+        <ScrollArea className="h-[26rem] bg-clash-panel">
+          {loading ? (
+            <div className="p-6 text-center text-sm text-clash-foreground/80">جاري تحميل الإشعارات...</div>
+          ) : notifications.length === 0 ? (
+            <div className="p-6 text-center text-sm text-clash-foreground/80">لا توجد إشعارات</div>
+          ) : (
+            <div className="space-y-4 p-3">
+              {notifications.map((notification) => (
+                <div key={notification.id} className="text-right">
+                  {/* هوية المرسل */}
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-clash-gold-deep bg-clash-deep shadow">
+                      {getNotificationIcon(notification.type)}
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-xs font-extrabold text-clash-gold">{notification.title}</p>
+                      <p className="text-[10px] text-clash-foreground/60">
+                        {notification.book_title && notification.book_title !== 'كتاب محذوف'
+                          ? notification.book_title
+                          : 'فريق كتبي'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* فقاعة الرسالة */}
+                  <div
+                    onClick={() => handleNotificationClick(notification)}
+                    className={`relative rounded-2xl border-2 border-clash-gold-deep/60 bg-clash-bubble px-3.5 py-3 text-clash-bubble-foreground shadow-[0_3px_0_hsl(var(--clash-panel-deep))] transition-transform ${
+                      notification.target_url ? 'cursor-pointer active:translate-y-[1px]' : ''
+                    } ${!notification.read ? 'ring-2 ring-clash-gold' : ''}`}
+                  >
+                    <p className="whitespace-pre-wrap text-[13px] font-medium leading-relaxed">
+                      {notification.message}
+                    </p>
+
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-[10px] text-clash-bubble-muted">{formatDate(notification.created_at)}</span>
+                      <div className="flex items-center gap-1">
+                        {getNotificationBadge(notification.type, notification.title)}
+                        {!notification.read && (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); markAsRead(notification.id); }}
+                            title="وضع علامة مقروء"
+                            className="rounded-md p-1 text-clash-bubble-muted hover:text-clash-bubble-foreground"
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); deleteNotification(notification.id); }}
+                          title="حذف الإشعار"
+                          className="rounded-md p-1 text-destructive hover:opacity-80"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              )}
-            </ScrollArea>
-          </CardContent>
-        </Card>
+              ))}
+            </div>
+          )}
+        </ScrollArea>
       </PopoverContent>
     </Popover>
   );

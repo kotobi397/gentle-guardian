@@ -41,9 +41,20 @@
 
 @layer base {
   :root {
+    /* لوحة إشعارات بأسلوب ألعاب القبائل (Clash) - ثابتة في الوضعين */
+    --clash-panel: 30 12% 30%;
+    --clash-panel-deep: 28 14% 22%;
+    --clash-bubble: 38 38% 88%;
+    --clash-bubble-foreground: 30 25% 18%;
+    --clash-bubble-muted: 30 12% 45%;
+    --clash-gold: 42 85% 55%;
+    --clash-gold-deep: 34 70% 38%;
+    --clash-panel-foreground: 40 40% 94%;
+
     /* الوضع الفاتح - Light Mode - ألوان مريحة للعين */
     --background: 220 20% 97%; /* خلفية بلمسة زرقاء خفيفة - أقل إجهاداً من الأبيض الخالص */
     --foreground: 220 15% 20%; /* نص داكن دافئ بدل أسود خالص */
+
 
     /* خلفية بطاقات الكتب - Book Cards Background */
     --books-background: 0 1% 86%; /* #dcdbdb */
