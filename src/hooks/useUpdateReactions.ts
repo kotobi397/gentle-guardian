@@ -61,31 +61,36 @@ export const useUpdateReactions = (updateIds: string[]) => {
   const toggleReaction = useCallback(
     async (updateId: string, emoji: string) => {
       if (!user) return { needsAuth: true };
-      const already = mine[updateId]?.has(emoji);
+      const current = Array.from(mine[updateId] || []);
+      const already = current.includes(emoji);
 
-      // تحديث متفائل
+      // تحديث متفائل: تفاعل واحد فقط لكل مستخدم لكل تحديث
       setCounts(prev => {
         const forUpdate = { ...(prev[updateId] || {}) };
-        const next = (forUpdate[emoji] || 0) + (already ? -1 : 1);
-        if (next <= 0) delete forUpdate[emoji];
-        else forUpdate[emoji] = next;
+        // إزالة التفاعلات السابقة للمستخدم
+        for (const prevEmoji of current) {
+          const next = (forUpdate[prevEmoji] || 0) - 1;
+          if (next <= 0) delete forUpdate[prevEmoji];
+          else forUpdate[prevEmoji] = next;
+        }
+        if (!already) forUpdate[emoji] = (forUpdate[emoji] || 0) + 1;
         return { ...prev, [updateId]: forUpdate };
       });
-      setMine(prev => {
-        const set = new Set(prev[updateId] || []);
-        if (already) set.delete(emoji);
-        else set.add(emoji);
-        return { ...prev, [updateId]: set };
-      });
+      setMine(prev => ({
+        ...prev,
+        [updateId]: already ? new Set<string>() : new Set<string>([emoji]),
+      }));
 
-      if (already) {
+      // حذف أي تفاعل سابق للمستخدم على هذا التحديث
+      if (current.length > 0) {
         await supabase
           .from('site_update_reactions')
           .delete()
           .eq('update_id', updateId)
-          .eq('user_id', user.id)
-          .eq('emoji', emoji);
-      } else {
+          .eq('user_id', user.id);
+      }
+
+      if (!already) {
         await supabase
           .from('site_update_reactions')
           .insert({ update_id: updateId, user_id: user.id, emoji });
@@ -94,6 +99,7 @@ export const useUpdateReactions = (updateIds: string[]) => {
     },
     [user, mine]
   );
+
 
   return { counts, mine, toggleReaction, refetch: fetchReactions };
 };
