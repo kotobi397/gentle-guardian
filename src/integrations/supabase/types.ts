@@ -3564,6 +3564,38 @@ export type Database = {
         }
         Relationships: []
       }
+      site_update_reactions: {
+        Row: {
+          created_at: string
+          emoji: string
+          id: string
+          update_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          emoji: string
+          id?: string
+          update_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          emoji?: string
+          id?: string
+          update_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "site_update_reactions_update_id_fkey"
+            columns: ["update_id"]
+            isOneToOne: false
+            referencedRelation: "site_updates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       site_update_reads: {
         Row: {
           id: string
