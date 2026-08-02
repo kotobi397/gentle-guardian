@@ -68,7 +68,7 @@ const UpdateReactions: React.FC<UpdateReactionsProps> = ({ updateId, counts, min
           className="w-auto max-w-[17rem] rounded-2xl border-[3px] border-clash-gold-deep bg-clash-panel p-2"
         >
           <p className="mb-1.5 text-center text-[10px] font-extrabold !text-clash-gold">اختر تفاعلك</p>
-          <div className="grid grid-cols-6 gap-1.5" dir="rtl">
+          <div className="grid grid-cols-5 gap-1.5" dir="rtl">
             {KOTOBI_REACTIONS.map(({ emoji, label }) => (
               <button
                 key={emoji}
