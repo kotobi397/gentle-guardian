@@ -51,7 +51,7 @@ export function EnhancedSearchBar({
       try {
         const { data, error } = await supabase
           .from('book_submissions')
-          .select('id, title, author, category, cover_image_url, s3_cover_image_url')
+          .select('id, title, author, category, slug, cover_image_url, s3_cover_image_url')
           .eq('status', 'approved')
           .or(`title.ilike.%${localSearchTerm}%,author.ilike.%${localSearchTerm}%,category.ilike.%${localSearchTerm}%`)
           .order('title', { ascending: true })
@@ -67,6 +67,7 @@ export function EnhancedSearchBar({
           title: book.title || 'عنوان غير متوفر',
           author: book.author || 'مؤلف غير معروف',
           category: book.category || 'أخرى',
+          slug: (book as any).slug || '',
           cover_image_url: (book as any).s3_cover_image_url || book.cover_image_url || '/placeholder.svg'
         }));
 
