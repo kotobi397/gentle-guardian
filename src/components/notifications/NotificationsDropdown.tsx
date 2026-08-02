@@ -364,8 +364,8 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
                 <Bell className="h-4 w-4 text-clash-bubble-foreground" />
               </span>
               <div className="text-right leading-tight">
-                <p className="text-sm font-extrabold tracking-wide text-clash-gold drop-shadow">الأخبار والإشعارات</p>
-                <p className="text-[10px] text-clash-foreground/70">
+                <p className="text-sm font-extrabold tracking-wide !text-clash-gold drop-shadow">الأخبار والإشعارات</p>
+                <p className="text-[10px] !text-clash-foreground/70">
                   {notifications.length} إشعار{unreadCount > 0 ? ` • ${unreadCount} جديد` : ''}
                 </p>
               </div>
@@ -408,8 +408,8 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
                       {getNotificationIcon(notification.type)}
                     </span>
                     <div className="leading-tight">
-                      <p className="text-xs font-extrabold text-clash-gold">{notification.title}</p>
-                      <p className="text-[10px] text-clash-foreground/60">
+                      <p className="text-xs font-extrabold !text-clash-gold">{notification.title}</p>
+                      <p className="text-[10px] !text-clash-foreground/60">
                         {notification.book_title && notification.book_title !== 'كتاب محذوف'
                           ? notification.book_title
                           : 'فريق كتبي'}
@@ -424,7 +424,7 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
                       notification.target_url ? 'cursor-pointer active:translate-y-[1px]' : ''
                     } ${!notification.read ? 'ring-2 ring-clash-gold' : ''}`}
                   >
-                    <p className="whitespace-pre-wrap text-[13px] font-medium leading-relaxed">
+                    <p className="whitespace-pre-wrap text-[13px] font-medium leading-relaxed !text-clash-bubble-foreground">
                       {notification.message}
                     </p>
 
