@@ -19,7 +19,7 @@ interface SiteUpdatesDropdownProps {
 
 const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { updates, loading, hasUnread, markAllAsRead, ensureFetched } = useSiteUpdates();
+  const { updates, loading, hasUnread, markAllAsRead, ensureFetched, dismissUpdate } = useSiteUpdates();
   const { counts, mine, toggleReaction } = useUpdateReactions(updates.map(u => u.id));
 
   const trigger = React.isValidElement(children)
