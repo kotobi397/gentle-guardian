@@ -66,7 +66,7 @@ const InstallPrompt: React.FC<InstallPromptProps> = ({ onInstall, onDismiss }) =
 
   return (
     <div className="fixed bottom-24 right-2 z-50 animate-fade-in">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-lg px-2 py-1 flex items-center gap-1 max-w-[140px]">
+      <div className="bg-card/95 backdrop-blur-sm border border-border rounded-full shadow-lg px-2 py-1 flex items-center gap-1 max-w-[140px]">
         <button 
           onClick={handleInstallClick}
           aria-label="تثبيت التطبيق"

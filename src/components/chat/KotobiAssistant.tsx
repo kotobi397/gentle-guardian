@@ -164,7 +164,7 @@ export const KotobiAssistant = () => {
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
         }`}
       >
-        <div className="bg-white rounded-xl shadow-lg w-[350px] h-[500px] flex flex-col overflow-hidden" style={{ boxShadow: '0 6px 12px rgba(0,0,0,0.2)' }}>
+        <div className="bg-card text-card-foreground rounded-xl shadow-lg w-[350px] h-[500px] flex flex-col overflow-hidden" style={{ boxShadow: '0 6px 12px rgba(0,0,0,0.2)' }}>
           {/* رأس النافذة */}
           <div className="p-3 flex items-center justify-between" style={{ background: '#222', color: '#fff' }}>
             <div className="flex items-center gap-2">
