@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import UserSettings from '@/components/user/UserSettings';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { SEOHead } from '@/components/seo/SEOHead';

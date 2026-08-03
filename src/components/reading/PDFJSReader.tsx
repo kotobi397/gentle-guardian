@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Maximize } from 'lucide-react';
+import { Maximize } from '@/components/icons/kotobi-lucide';
 import { BookOpen, Home } from '@/components/icons/kotobi-lucide';
 import ReadingModeSelector, { ReadingMode, getReadingModeConfig } from './ReadingModeSelector';
 import { toast } from 'sonner';

@@ -5,7 +5,8 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
-import { UserPlus, UserMinus, LoaderCircle, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { UserPlus, UserMinus, LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { Heart, MessageCircle } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';

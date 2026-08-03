@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Puzzle } from 'lucide-react';
+import { Loader2, Puzzle } from '@/components/icons/kotobi-lucide';
 import { Award, AlertCircle } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';

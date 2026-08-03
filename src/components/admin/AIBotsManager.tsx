@@ -3,7 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { PlayCircle, Loader2, Power, PowerOff } from 'lucide-react';
+import { Power, PowerOff } from 'lucide-react';
+import { PlayCircle, Loader2 } from '@/components/icons/kotobi-lucide';
 import { Bot, Sparkles } from '@/components/icons/kotobi-lucide';
 import { AIBotBadge } from '@/components/icons/AIBotBadge';
 

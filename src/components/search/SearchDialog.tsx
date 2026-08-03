@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Camera, LoaderCircle } from 'lucide-react';
+import { Camera, LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { Search, Sparkles } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';

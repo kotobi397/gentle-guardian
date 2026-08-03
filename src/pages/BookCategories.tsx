@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, LoaderCircle } from 'lucide-react';
+import { Loader2, LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { getCategoryInArabic } from '@/utils/categoryTranslation';
 import { useForcePageRefresh } from '@/hooks/useForcePageRefresh';
 import { NavigationHistoryManager } from '@/utils/navigationHistory';

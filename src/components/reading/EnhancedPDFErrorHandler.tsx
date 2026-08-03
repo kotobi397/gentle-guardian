@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Bug } from 'lucide-react';
+import { Bug } from 'lucide-react';
+import { ArrowRight } from '@/components/icons/kotobi-lucide';
 import { AlertCircle, RefreshCw, Download, ExternalLink } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { useFileIntegrityChecker } from '@/hooks/useFileIntegrityChecker';

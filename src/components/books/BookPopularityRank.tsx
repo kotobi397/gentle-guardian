@@ -1,5 +1,5 @@
 import React from 'react';
-import { Medal } from 'lucide-react';
+import { Medal } from '@/components/icons/kotobi-lucide';
 import { Trophy, TrendingUp, Flame, Crown, Award } from '@/components/icons/kotobi-lucide';
 import { getCategoryInArabic } from '@/utils/categoryTranslation';
 

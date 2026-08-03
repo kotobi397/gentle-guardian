@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Mic, Square, Loader2 } from 'lucide-react';
+import { Mic, Square, Loader2 } from '@/components/icons/kotobi-lucide';
 import { X, Send } from '@/components/icons/kotobi-lucide';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';
 import { createBookSlug } from '@/utils/bookSlug';

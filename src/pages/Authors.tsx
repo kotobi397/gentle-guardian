@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { Loader2, LoaderCircle } from 'lucide-react';
+import { Loader2, LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

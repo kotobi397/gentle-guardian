@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, Loader2, Puzzle } from 'lucide-react';
+import { HelpCircle, Loader2, Puzzle } from '@/components/icons/kotobi-lucide';
 import { Sparkles, BookOpen, Quote, Coins, Clock, Users } from '@/components/icons/kotobi-lucide';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

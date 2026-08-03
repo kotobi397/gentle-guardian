@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX } from '@/components/icons/kotobi-lucide';
 import { X, ChevronLeft, ChevronRight, Trash2, Eye, Pause, Play, Heart, BookOpen, Star } from '@/components/icons/kotobi-lucide';
 import AddToHighlightDialog from './AddToHighlightDialog';
 import { motion, AnimatePresence } from 'framer-motion';

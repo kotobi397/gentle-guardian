@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { Loader2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Loader2, ChevronDown, ChevronUp } from '@/components/icons/kotobi-lucide';
 import { Search, X, Sparkles, BookOpen } from '@/components/icons/kotobi-lucide';
 import { Index as FlexSearchIndex } from 'flexsearch';
 import { Button } from '@/components/ui/button';

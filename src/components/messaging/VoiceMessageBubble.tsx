@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Play, Pause } from '@/components/icons/kotobi-lucide';
 import { cn } from '@/lib/utils';
 

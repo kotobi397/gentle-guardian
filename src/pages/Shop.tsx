@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Frame, ImageIcon } from 'lucide-react';
+import { Frame } from 'lucide-react';
+import { ImageIcon } from '@/components/icons/kotobi-lucide';
 import { Coins, Check, Palette, Award, MessageSquare, Lock, Search, Sparkles } from '@/components/icons/kotobi-lucide';
 import {
   useGamificationState,

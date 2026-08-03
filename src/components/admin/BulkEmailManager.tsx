@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Mail, Send, Users, CheckCircle, XCircle, AlertTriangle } from '@/components/icons/kotobi-lucide';
 import emailjs from '@emailjs/browser';
 

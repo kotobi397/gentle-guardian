@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { supabase } from '@/integrations/supabase/client';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { Loader2, LoaderCircle } from 'lucide-react';
+import { Loader2, LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { getCategoryInArabic, getEnglishCategoryKey } from '@/utils/categoryTranslation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { SimpleBookCard } from '@/components/books/SimpleBookCard';

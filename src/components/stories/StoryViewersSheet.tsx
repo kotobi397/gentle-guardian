@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { X, Eye, Heart } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StoryViewer } from '@/hooks/useStories';

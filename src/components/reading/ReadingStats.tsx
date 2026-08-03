@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Target } from 'lucide-react';
+import { Target } from '@/components/icons/kotobi-lucide';
 import { Clock, BookOpen, TrendingUp, Award, Calendar } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 
