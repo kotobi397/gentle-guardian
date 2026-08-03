@@ -58,13 +58,14 @@
     /* خلفية بطاقات الكتب */
     --books-background: 38 36% 89%;
 
-    --card: 38 42% 96%;
+    /* خلفية البطاقات العائمة — ورق كريمي مريح للعين (ليست بيضاء ساطعة) */
+    --card: 38 38% 94%;
     --card-foreground: 30 25% 18%;
 
     /* إطار رفع الكتاب */
-    --upload-form-bg: 38 42% 96%;
+    --upload-form-bg: 38 38% 94%;
 
-    --popover: 38 42% 96%;
+    --popover: 38 38% 95%;
     --popover-foreground: 30 25% 18%;
 
     --primary: 42 85% 50%; /* ذهبي Clash */
@@ -104,14 +105,15 @@
     /* خلفية بطاقات الكتب */
     --books-background: 28 14% 14%;
 
-    --card: 30 12% 22%;
-    --card-foreground: 40 40% 94%;
+    /* خلفية البطاقات العائمة في الوضع الداكن — دافئة وغير قاتمة */
+    --card: 30 13% 19%;
+    --card-foreground: 40 38% 92%;
 
     /* إطار رفع الكتاب في الوضع المظلم */
-    --upload-form-bg: 30 12% 22%;
+    --upload-form-bg: 30 13% 19%;
 
-    --popover: 30 12% 24%;
-    --popover-foreground: 40 40% 94%;
+    --popover: 30 13% 21%;
+    --popover-foreground: 40 38% 92%;
 
     --primary: 42 85% 55%;
     --primary-foreground: 30 30% 14%;
@@ -1161,14 +1163,15 @@ button, .clickable {
 }
 
 /* Messages page: force white backgrounds only in LIGHT mode on /messages */
+/* Messages page: خلفية فاتحة مريحة (بدون أبيض ساطع) في الوضع الفاتح */
 html:not(.dark) .messages-page-white {
-  --background: 0 0% 100%; /* #ffffff */
-  --card: 0 0% 100%;       /* #ffffff */
-  --popover: 0 0% 100%;    /* #ffffff */
-  --foreground: 0 0% 15%;  /* dark text on white */
-  --muted-foreground: 0 0% 45%;
-  --accent: 210 14% 92%;
-  --accent-foreground: 0 0% 15%;
+  --background: 38 30% 96%;
+  --card: 38 34% 94%;
+  --popover: 38 34% 95%;
+  --foreground: 30 25% 18%;
+  --muted-foreground: 30 15% 40%;
+  --accent: 34 40% 88%;
+  --accent-foreground: 30 25% 18%;
 }
 
 /* تحسينات الأداء المتقدمة للتطبيق */

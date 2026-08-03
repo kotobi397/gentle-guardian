@@ -43,7 +43,7 @@ const FloatingControls = ({
   
   return (
     <>
-      <div className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/60 dark:bg-gray-900/70 border-b border-white/20 dark:border-white/10 shadow-lg">
+      <div className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-card/70 border-b border-white/20 dark:border-white/10 shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ const FloatingControls = ({
               className={`rounded-full h-12 w-12 shadow-lg ${
                 isFavorite 
                   ? 'bg-gradient-to-br from-book-primary to-book-secondary text-white hover:shadow-book-primary/30' 
-                  : 'bg-white/90 dark:bg-gray-800/90 hover:bg-white border border-book-primary/20 text-book-primary'
+                  : 'bg-card/90 hover:bg-card border border-book-primary/20 text-book-primary'
               } transition-all duration-300`}
               onClick={() => {
                 handleAddToFavorites();
@@ -162,7 +162,7 @@ const FloatingControls = ({
           >
             <Button
               size="icon"
-              className="rounded-full h-12 w-12 shadow-lg bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 border border-book-primary/20 dark:border-book-primary/30 text-book-primary hover:text-book-secondary transition-all duration-300"
+              className="rounded-full h-12 w-12 shadow-lg bg-card/90 hover:bg-card border border-book-primary/20 dark:border-book-primary/30 text-book-primary hover:text-book-secondary transition-all duration-300"
               onClick={() => {
                 handleShare();
                 playSound();
@@ -185,7 +185,7 @@ const FloatingControls = ({
           >
             <Button
               size="icon"
-              className="rounded-full h-12 w-12 shadow-lg bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 border border-book-primary/20 dark:border-book-primary/30 text-book-primary hover:text-book-secondary transition-all duration-300"
+              className="rounded-full h-12 w-12 shadow-lg bg-card/90 hover:bg-card border border-book-primary/20 dark:border-book-primary/30 text-book-primary hover:text-book-secondary transition-all duration-300"
               onClick={() => {
                 onScrollToTop();
                 playSound();
