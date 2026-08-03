@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { ImagePlus } from 'lucide-react';
+import { ImagePlus } from '@/components/icons/kotobi-lucide';
 import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Send, Trash2, Edit2, X, Check, Megaphone, XCircle } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';

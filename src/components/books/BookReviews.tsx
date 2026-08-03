@@ -3,7 +3,7 @@ import { UnifiedProfileLink } from '@/components/profile/UnifiedProfileLink';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal } from '@/components/icons/kotobi-lucide';
 import { Star, MessageCircle, User, Edit, Trash2 } from '@/components/icons/kotobi-lucide';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { AIBotBadge } from '@/components/icons/AIBotBadge';

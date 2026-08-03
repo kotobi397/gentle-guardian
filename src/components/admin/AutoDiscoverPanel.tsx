@@ -7,7 +7,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { Infinity as InfinityIcon } from 'lucide-react';
+import { Infinity as InfinityIcon } from '@/components/icons/kotobi-lucide';
 import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Sparkles, Play, RefreshCw } from '@/components/icons/kotobi-lucide';
 

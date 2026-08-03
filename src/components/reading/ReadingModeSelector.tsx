@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Leaf, Coffee, Monitor } from 'lucide-react';
+import { Leaf, Coffee, Monitor } from '@/components/icons/kotobi-lucide';
 import { Sun, Moon } from '@/components/icons/kotobi-lucide';
 import { BookOpen, Eye, Palette } from '@/components/icons/kotobi-lucide';
 

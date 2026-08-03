@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Ban } from 'lucide-react';
+import { Ban } from '@/components/icons/kotobi-lucide';
 import { UserX } from '@/components/icons/kotobi-lucide';
 import { Eye, EyeOff, Trash2, Shield } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';

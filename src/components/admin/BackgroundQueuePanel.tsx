@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { CloudUpload } from 'lucide-react';
+import { CloudUpload } from '@/components/icons/kotobi-lucide';
 import { Zap, Layers } from '@/components/icons/kotobi-lucide';
 import { RefreshCw, Trash2 } from '@/components/icons/kotobi-lucide';
 

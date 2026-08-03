@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookMarked } from 'lucide-react';
+import { BookMarked } from '@/components/icons/kotobi-lucide';
 import { ArrowRight, LogOut, MoreVertical, UserPlus } from '@/components/icons/kotobi-lucide';
 import { Users, BookOpen, Send, Crown, MessageCircle, Trash2 } from '@/components/icons/kotobi-lucide';
 import InviteToClubDialog from '@/components/clubs/InviteToClubDialog';

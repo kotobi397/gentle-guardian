@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon, KeyRound } from 'lucide-react';
+import { CalendarIcon, KeyRound } from '@/components/icons/kotobi-lucide';
 import { Loader2, ArrowLeft, CheckSquare, ShieldCheck } from '@/components/icons/kotobi-lucide';
 import { Eye, EyeOff, Mail, CheckCircle, RefreshCw, AlertCircle, Clock, Sparkles } from '@/components/icons/kotobi-lucide';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";

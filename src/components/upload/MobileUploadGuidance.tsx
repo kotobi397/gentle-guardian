@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Smartphone, Wifi, Battery } from 'lucide-react';
+import { Smartphone, Wifi, Battery } from '@/components/icons/kotobi-lucide';
 import { Download, AlertTriangle, CheckCircle, Info, Clock } from '@/components/icons/kotobi-lucide';
 
 interface MobileUploadGuidanceProps {

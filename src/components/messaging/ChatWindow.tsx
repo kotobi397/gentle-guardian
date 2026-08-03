@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CheckCheck } from 'lucide-react';
+import { CheckCheck } from '@/components/icons/kotobi-lucide';
 import { ArrowRight, Loader2, Smile, Mic, Square } from '@/components/icons/kotobi-lucide';
 import { Send, Check, Bot } from '@/components/icons/kotobi-lucide';
 import { useMessages, Message } from '@/hooks/useMessages';

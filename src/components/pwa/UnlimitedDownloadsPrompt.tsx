@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { toast } from 'sonner';
-import { Infinity } from 'lucide-react';
+import { Infinity } from '@/components/icons/kotobi-lucide';
 
 const STORAGE_KEY = 'unlimited_downloads_prompt_seen_v1';
 

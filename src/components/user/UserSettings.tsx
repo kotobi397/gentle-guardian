@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { v4 as uuidv4 } from 'uuid';
-import { Flag, Archive } from 'lucide-react';
+import { Flag, Archive } from '@/components/icons/kotobi-lucide';
 import { Loader2, LogOut, Save, Camera, Library, BarChart3 } from '@/components/icons/kotobi-lucide';
 import { Upload, User, X, Check, Trash2, Lock, Eye, EyeOff, Shield } from '@/components/icons/kotobi-lucide';
 import { lazy, Suspense } from 'react';

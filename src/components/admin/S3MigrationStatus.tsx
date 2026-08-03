@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Cloud, HardDrive } from 'lucide-react';
+import { Cloud, HardDrive } from '@/components/icons/kotobi-lucide';
 import { Loader2, PlayCircle } from '@/components/icons/kotobi-lucide';
 import { RefreshCw } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/lib/supabaseClient';

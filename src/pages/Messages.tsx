@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Inbox } from 'lucide-react';
+import { Inbox } from '@/components/icons/kotobi-lucide';
 import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { MessageCircle, Check, X, Sparkles, Search } from '@/components/icons/kotobi-lucide';
 import { useAuth } from '@/context/AuthContext';

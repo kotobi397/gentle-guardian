@@ -9,7 +9,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { ClipboardPaste } from 'lucide-react';
+import { ClipboardPaste } from '@/components/icons/kotobi-lucide';
 import { Link2, Loader2 } from '@/components/icons/kotobi-lucide';
 import { Upload, Download, Sparkles, FileText, Plus, Trash2, Play, Pause, X, CheckCircle, AlertTriangle } from '@/components/icons/kotobi-lucide';
 import Papa from 'papaparse';

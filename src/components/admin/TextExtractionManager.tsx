@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
-import { Server } from 'lucide-react';
+import { Server } from '@/components/icons/kotobi-lucide';
 import { Loader2, Square, Zap } from '@/components/icons/kotobi-lucide';
 import { FileText, Search, CheckCircle, XCircle, RefreshCw, Eye, Play, Pause } from '@/components/icons/kotobi-lucide';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';

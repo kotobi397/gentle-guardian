@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigationHistory } from '@/hooks/useNavigationHistory';
-import { BookText, Brush, Microscope, History, Music, Scroll, Landmark, GraduationCap } from 'lucide-react';
+import { BookText, Brush, Microscope, History, Music, Scroll, Landmark, GraduationCap } from '@/components/icons/kotobi-lucide';
 import { Loader2, Lightbulb, Library, ChevronDown } from '@/components/icons/kotobi-lucide';
 import { BookOpen, User, Heart, Globe } from '@/components/icons/kotobi-lucide';
 

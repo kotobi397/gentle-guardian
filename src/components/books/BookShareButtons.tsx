@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { QrCode } from 'lucide-react';
+import { QrCode } from '@/components/icons/kotobi-lucide';
 import { Copy, Check, Sparkles, Download } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
