@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Megaphone, Sparkles, Bell } from '@/components/icons/kotobi-lucide';
+import { Megaphone, Sparkles, Bell, Palette, LayoutGrid, Moon, SkipForward } from '@/components/icons/kotobi-lucide';
 import { ReactionIcon, KOTOBI_REACTION_ICONS } from '@/components/notifications/KotobiReactionIcons';
 
-const STORAGE_KEY = 'kotobi_whats_new_seen_v1';
+const STORAGE_KEY = 'kotobi_whats_new_seen_v2';
 
 type Step = {
   id: string;
@@ -15,6 +15,41 @@ type Step = {
 };
 
 const STEPS: Step[] = [
+  {
+    id: 'colors',
+    title: 'ألوان جديدة مريحة للعين',
+    description:
+      'غيّرنا خلفية الموقع بالكامل إلى لون ورقي دافئ في الوضع الفاتح ولون هادئ غير قاتم في الوضع المظلم، بدون أبيض ناصع يزعج العين أثناء القراءة الطويلة.',
+    icon: <Palette className="h-6 w-6 !text-clash-gold" />,
+  },
+  {
+    id: 'cards',
+    title: 'خلفية موحّدة لكل البطاقات',
+    description:
+      'كل البطاقات والنوافذ العائمة في الموقع صارت بلون واحد منسجم: صفحة تفاصيل الكتاب، حسابي والمراجعات، القوائم الجانبية، التنبيهات وصفحة الدخول.',
+    icon: <LayoutGrid className="h-6 w-6 !text-clash-gold" />,
+  },
+  {
+    id: 'contrast',
+    title: 'وضوح أفضل في الوضع المظلم',
+    description:
+      'زدنا الفرق بين خلفية الصفحة وخلفية البطاقات، فأصبحت كل بطاقة واضحة الحدود ومقروءة في الوضع المظلم كما في الفاتح.',
+    icon: <Moon className="h-6 w-6 !text-clash-gold" />,
+  },
+  {
+    id: 'icons',
+    title: 'أيقونات كتبي الخاصة',
+    description:
+      'أنشأنا أيقونات خاصة بكتبي وأصلحنا أحجامها في قسم المكافآت وبقية الموقع، فلم تعد تظهر كبيرة أو غير متناسبة.',
+    icon: <Sparkles className="h-6 w-6 !text-clash-gold" />,
+  },
+  {
+    id: 'skip',
+    title: 'زر «تخطي» في مكانه الصحيح',
+    description:
+      'نقلنا زر «تخطي» من قائمة التحديثات في الشريط الأعلى إلى نافذة التحديثات الرئيسية، بحيث تتخطى أي تحديث من مكانه الطبيعي.',
+    icon: <SkipForward className="h-6 w-6 !text-clash-gold" />,
+  },
   {
     id: 'design',
     title: 'تصميم جديد للإشعارات',
@@ -49,6 +84,7 @@ const STEPS: Step[] = [
     ),
   },
 ];
+
 
 const WhatsNewModal: React.FC = () => {
   const [open, setOpen] = useState(false);
