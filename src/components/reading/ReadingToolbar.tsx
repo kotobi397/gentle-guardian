@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ZoomIn, ZoomOut, RotateCw, RotateCcw, Maximize, Minimize, Bookmark, Sun, Moon, Volume2, VolumeX, SkipBack, SkipForward } from 'lucide-react';
+import { RotateCw, Minimize, SkipBack, SkipForward } from '@/components/icons/kotobi-lucide';
+import { ZoomIn, ZoomOut, RotateCcw, Maximize, Bookmark, Sun, Moon, Volume2, VolumeX } from '@/components/icons/kotobi-lucide';
 import { Settings, Download, Share2, Eye, EyeOff, Play, Pause } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';

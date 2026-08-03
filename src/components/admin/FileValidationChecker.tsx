@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { supabase } from '@/integrations/supabase/client';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Shield, CheckCircle, XCircle, AlertTriangle, Image, FileText, RefreshCw, Download } from '@/components/icons/kotobi-lucide';
 
 interface FileValidationResult {

@@ -8,7 +8,7 @@ import {
   DialogTitle, 
   DialogTrigger 
 } from '@/components/ui/dialog';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/components/icons/kotobi-lucide';
 import { BookOpen } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 

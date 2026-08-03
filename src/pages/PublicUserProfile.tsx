@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { MapPin } from 'lucide-react';
+import { MapPin } from '@/components/icons/kotobi-lucide';
 import { BookOpen, Star, Quote as QuoteIcon, MessageCircle, Clock, Globe, Calendar, Users } from '@/components/icons/kotobi-lucide';
 import { SimpleBookCard } from '@/components/books/SimpleBookCard';
 import { useUserPublicProfile } from '@/hooks/useUserPublicProfile';

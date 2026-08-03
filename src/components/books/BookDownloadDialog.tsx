@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Loader2, LogIn } from 'lucide-react';
+import { Loader2, LogIn } from '@/components/icons/kotobi-lucide';
 import { Download, Check, BookOpen } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { useBookDownloads } from '@/hooks/useBookDownloads';

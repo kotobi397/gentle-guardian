@@ -3,7 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { useStoryHighlights } from '@/hooks/useStoryHighlights';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Loader2, Video } from 'lucide-react';
+import { Loader2, Video } from '@/components/icons/kotobi-lucide';
 import { Heart, Star, Trash2, Image as ImageIcon } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import {

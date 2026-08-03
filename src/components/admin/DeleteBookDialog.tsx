@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Trash2 } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';

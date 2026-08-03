@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Book } from 'lucide-react';
+import { Book } from '@/components/icons/kotobi-lucide';
 import { Mail } from '@/components/icons/kotobi-lucide';
 import VerifiedBadge from '@/components/icons/VerifiedBadge';
 import { optimizeImageUrl } from '@/utils/imageProxy';

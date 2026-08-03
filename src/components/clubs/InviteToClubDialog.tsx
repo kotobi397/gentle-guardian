@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { UserPlus } from 'lucide-react';
+import { UserPlus } from '@/components/icons/kotobi-lucide';
 import { Search, Check } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';
 import { useInviteToClub } from '@/hooks/useClubInvitations';

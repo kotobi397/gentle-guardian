@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Medal } from 'lucide-react';
+import { Medal } from '@/components/icons/kotobi-lucide';
 import { Trophy, Flame, Crown } from '@/components/icons/kotobi-lucide';
 import { useLeaderboard } from '@/hooks/useGamification';
 import { Card } from '@/components/ui/card';

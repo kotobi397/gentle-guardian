@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link, useSearchParams } from 'react-router-dom';
-import { LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { BookOpen } from '@/components/icons/kotobi-lucide';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import Navbar from '@/components/layout/Navbar';

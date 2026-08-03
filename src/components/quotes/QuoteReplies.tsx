@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Reply } from 'lucide-react';
+import { Reply } from '@/components/icons/kotobi-lucide';
 import { MessageCircle, Send, Trash2, Edit, X, Check } from '@/components/icons/kotobi-lucide';
 import { useQuoteReplies, QuoteReply } from '@/hooks/useQuoteReplies';
 import { useAuth } from '@/context/AuthContext';

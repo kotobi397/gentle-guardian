@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Video, Loader2 } from 'lucide-react';
+import { Video, Loader2 } from '@/components/icons/kotobi-lucide';
 import { X, Image, Upload } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';

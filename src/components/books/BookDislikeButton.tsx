@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ThumbsDown } from 'lucide-react';
+import { ThumbsDown } from '@/components/icons/kotobi-lucide';
 import { useBookDislikes } from '@/hooks/useBookDislikes';
 import { useAuth } from '@/context/AuthContext';
 import { toast } from 'sonner';

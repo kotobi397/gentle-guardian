@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { createBookSlug } from '@/utils/bookSlug';
 import { getCategoryInArabic } from '@/utils/categoryTranslation';
 import { Link } from 'react-router-dom';
-import { LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from '@/components/icons/kotobi-lucide';
 import { BookOpen, User, Star } from '@/components/icons/kotobi-lucide';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 import { supabase } from '@/integrations/supabase/client';

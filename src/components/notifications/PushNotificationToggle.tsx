@@ -1,5 +1,6 @@
 import React from 'react';
-import { BellOff, BellRing, Loader2, ShieldAlert } from 'lucide-react';
+import { BellOff, BellRing, ShieldAlert } from '@/components/icons/kotobi-lucide';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { useFirebasePush } from '@/hooks/useFirebasePush';
 import { useAuth } from '@/context/AuthContext';

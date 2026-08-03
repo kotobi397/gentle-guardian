@@ -1,4 +1,4 @@
-import { BadgeCheck } from 'lucide-react';
+import { BadgeCheck } from '@/components/icons/kotobi-lucide';
 import { useIsVerified } from '@/hooks/useSubscription';
 import { cn } from '@/lib/utils';
 

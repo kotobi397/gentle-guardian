@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Loader2, Building, BarChart3 } from 'lucide-react';
+import { Loader2, Building, BarChart3 } from '@/components/icons/kotobi-lucide';
 import { CheckCircle, XCircle, Eye, AlertTriangle, Settings, RefreshCw, Calendar, User, BookOpen, FileText, Globe, Search } from '@/components/icons/kotobi-lucide';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';

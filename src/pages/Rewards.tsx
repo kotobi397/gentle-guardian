@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag } from '@/components/icons/kotobi-lucide';
 import { Flame, Coins, Trophy, Sparkles, Gift } from '@/components/icons/kotobi-lucide';
 import { useGamificationState, useClaimDailyLogin, useCompleteDailyTask } from '@/hooks/useGamification';
 import { levelProgress, type DailyTaskCode } from '@/services/gamification';

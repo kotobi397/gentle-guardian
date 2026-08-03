@@ -6,7 +6,7 @@ import { optimizeImageUrl } from '@/utils/imageProxy';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { BookOpen, Download, Eye, Calendar, FileText, User } from '@/components/icons/kotobi-lucide';
 import { resolvePdfDownloadUrl } from '@/utils/imageProxy';
 import { useAuth } from '@/context/AuthContext';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { UserPlus, UserMinus, LoaderCircle } from 'lucide-react';
+import { UserPlus, UserMinus, LoaderCircle } from '@/components/icons/kotobi-lucide';
 
 interface FollowButtonProps {
   isFollowing: boolean;

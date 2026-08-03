@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw } from '@/components/icons/kotobi-lucide';
 import { Home, ExternalLink, Menu, Download } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';

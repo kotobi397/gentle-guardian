@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from '@/components/icons/kotobi-lucide';
 import { MessageCircle, Send, X, Users } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

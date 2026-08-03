@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, Building, ChevronDown, CheckSquare, Square } from 'lucide-react';
+import { Loader2, Building, ChevronDown, CheckSquare, Square } from '@/components/icons/kotobi-lucide';
 import { Search, Eye, AlertTriangle, RefreshCw, BookOpen, Globe, Calendar, FileText, User, ExternalLink } from '@/components/icons/kotobi-lucide';
 import DeleteBookDialog from '@/components/admin/DeleteBookDialog';
 import BulkDeleteBooksDialog from '@/components/admin/BulkDeleteBooksDialog';

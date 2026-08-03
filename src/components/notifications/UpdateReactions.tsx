@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SmilePlus } from 'lucide-react';
+import { SmilePlus } from '@/components/icons/kotobi-lucide';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
