@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 /**
  * مجموعة أيقونات "كتبي" الخاصة — مرسومة يدوياً بأسلوب Clash:
