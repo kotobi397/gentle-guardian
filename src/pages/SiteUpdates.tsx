@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer';
 import kotobiTeamLogo from '@/assets/kotobi-team-logo.png';
 
 const SiteUpdates: React.FC = () => {
-  const { updates, loading, error, ensureFetched } = useSiteUpdates();
+  const { updates, loading, error, ensureFetched, dismissUpdate } = useSiteUpdates();
   useEffect(() => { ensureFetched(); }, [ensureFetched]);
 
   const formatDate = (dateString: string) => {
