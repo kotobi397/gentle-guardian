@@ -27,7 +27,7 @@ const STEPS: Step[] = [
     title: 'خلفية موحّدة لكل البطاقات',
     description:
       'كل البطاقات والنوافذ العائمة في الموقع صارت بلون واحد منسجم: صفحة تفاصيل الكتاب، حسابي والمراجعات، القوائم الجانبية، التنبيهات وصفحة الدخول.',
-    icon: <LayoutGrid className="h-6 w-6 !text-clash-gold" />,
+    icon: <BookOpen className="h-6 w-6 !text-clash-gold" />,
   },
   {
     id: 'contrast',
