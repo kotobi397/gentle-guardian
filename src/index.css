@@ -51,50 +51,50 @@
     --clash-gold-deep: 34 70% 38%;
     --clash-panel-foreground: 40 40% 94%;
 
-    /* الوضع الفاتح - Light Mode - ألوان مريحة للعين */
-    --background: 220 20% 97%; /* خلفية بلمسة زرقاء خفيفة - أقل إجهاداً من الأبيض الخالص */
-    --foreground: 220 15% 20%; /* نص داكن دافئ بدل أسود خالص */
+    /* الوضع الفاتح - هوية Clash الذهبية (رقّ/ورق قديم) */
+    --background: 38 40% 92%; /* ورق قديم فاتح */
+    --foreground: 30 25% 18%;
 
+    /* خلفية بطاقات الكتب */
+    --books-background: 38 36% 89%;
 
-    /* خلفية بطاقات الكتب - Book Cards Background */
-    --books-background: 0 1% 86%; /* #dcdbdb */
+    --card: 38 42% 96%;
+    --card-foreground: 30 25% 18%;
 
-    --card: 220 25% 99%; /* بطاقات بلمسة زرقاء دافئة خفيفة */
-    --card-foreground: 220 15% 20%;
+    /* إطار رفع الكتاب */
+    --upload-form-bg: 38 42% 96%;
 
-    /* إطار رفع الكتاب - Upload form background */
-    --upload-form-bg: 220 25% 99%;
+    --popover: 38 42% 96%;
+    --popover-foreground: 30 25% 18%;
 
-    --popover: 220 25% 99%;
-    --popover-foreground: 220 15% 20%;
+    --primary: 42 85% 50%; /* ذهبي Clash */
+    --primary-foreground: 30 30% 15%;
 
-    --primary: 245 100% 63%; /* #5c42ff - أغمق قليلاً لنسبة تباين 4.5:1 */
-    --primary-foreground: 0 0% 100%;
+    --secondary: 34 40% 84%;
+    --secondary-foreground: 30 25% 18%;
 
-    --secondary: 220 18% 94%;
-    --secondary-foreground: 220 15% 20%;
+    --muted: 36 30% 88%;
+    --muted-foreground: 30 15% 38%;
 
-    --muted: 220 16% 95%;
-    --muted-foreground: 220 10% 46%;
+    --accent: 34 55% 78%;
+    --accent-foreground: 30 25% 18%;
 
-    --accent: 220 18% 93%;
-    --accent-foreground: 220 15% 20%;
+    --destructive: 6 68% 48%;
+    --destructive-foreground: 40 40% 96%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 18% 90%;
-    --input: 220 18% 90%;
-    --ring: 220 15% 20%;
+    --border: 34 45% 70%;
+    --input: 34 45% 70%;
+    --ring: 42 85% 50%;
 
     /* Chat bubbles (light mode) */
-    --chat-outgoing: 221 83% 53%;
-    --chat-outgoing-foreground: 0 0% 100%;
-    --chat-incoming: 220 20% 95%;
-    --chat-incoming-foreground: 220 15% 15%;
+    --chat-outgoing: 42 85% 55%;
+    --chat-outgoing-foreground: 30 30% 15%;
+    --chat-incoming: 38 38% 88%;
+    --chat-incoming-foreground: 30 25% 18%;
 
     --radius: 1rem;
   }
+
 
   .dark {
     /* الوضع الداكن - Dark Mode - ألوان مريحة للعين */
