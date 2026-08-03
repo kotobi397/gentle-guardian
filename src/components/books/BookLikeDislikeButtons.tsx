@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import { IconBookThumbUp, IconBookThumbDown } from '@/components/icons/KotobiVoteIcons';
 import { useBookLikes } from '@/hooks/useBookLikes';
 import { useBookDislikes } from '@/hooks/useBookDislikes';
 import { useAuth } from '@/context/AuthContext';
@@ -71,66 +71,54 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
 
 
 
-  const buttonSizeClasses = {
-    sm: 'h-8 px-3 text-sm',
-    lg: 'h-12 px-6 text-lg',
+  const iconBoxClasses = {
+    sm: 'h-5 w-5',
+    lg: 'h-7 w-7',
   };
-  const iconSizeClasses = {
-    sm: 'h-4 w-4',
-    lg: 'h-5 w-5',
+  const buttonSizeClasses = {
+    sm: 'h-9 px-3 text-sm',
+    lg: 'h-12 px-5 text-base',
   };
 
   const containerClass = layout === 'row' ? 'flex items-center gap-2' : 'flex flex-col gap-2';
 
+  const baseClash =
+    'inline-flex items-center gap-2 rounded-2xl border-2 font-extrabold transition-transform active:scale-95 disabled:opacity-60';
+
   return (
-    <div className={`${containerClass} ${className}`}>
-      <Button
+    <div className={`${containerClass} ${className}`} dir="rtl">
+      <button
         type="button"
-        variant="outline"
-        size={size}
         onClick={handleLike}
         disabled={likeLoading || dislikeLoading}
-        className={`${buttonSizeClasses[size]} ${likeClassName} active:scale-95 transition-transform ${
-          isLiked
-            ? 'text-green-500 border-green-300 bg-green-50 dark:bg-green-950/30 dark:border-green-700'
-            : ''
+        aria-pressed={isLiked}
+        aria-label="أعجبني"
+        className={`${baseClash} ${buttonSizeClasses[size]} ${likeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
+          isLiked ? '!text-clash-gold ring-2 ring-clash-gold/70' : '!text-clash-foreground/90'
         }`}
       >
-        <ThumbsUp
-          className={`${iconSizeClasses[size]} ${showCount ? 'ml-2' : ''} ${
-            isLiked ? 'fill-current text-green-500' : ''
-          }`}
-        />
-        {showCount && (
-          <span className={`font-medium ${isLiked ? 'text-green-500' : ''}`}>
-            {likesCount}
-          </span>
-        )}
-      </Button>
+        <span className={iconBoxClasses[size]}>
+          <IconBookThumbUp />
+        </span>
+        {showCount && <span className="tabular-nums">{likesCount}</span>}
+      </button>
 
-      <Button
+      <button
         type="button"
-        variant="outline"
-        size={size}
         onClick={handleDislike}
         disabled={likeLoading || dislikeLoading}
-        className={`${buttonSizeClasses[size]} ${dislikeClassName} active:scale-95 transition-transform ${
-          isDisliked
-            ? 'text-red-500 border-red-300 bg-red-50 dark:bg-red-950/30 dark:border-red-700'
-            : ''
+        aria-pressed={isDisliked}
+        aria-label="لم يعجبني"
+        className={`${baseClash} ${buttonSizeClasses[size]} ${dislikeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
+          isDisliked ? '!text-clash-gold ring-2 ring-clash-gold/70' : '!text-clash-foreground/90'
         }`}
       >
-        <ThumbsDown
-          className={`${iconSizeClasses[size]} ${showCount ? 'ml-2' : ''} ${
-            isDisliked ? 'fill-current text-red-500' : ''
-          }`}
-        />
-        {showCount && (
-          <span className={`font-medium ${isDisliked ? 'text-red-500' : ''}`}>
-            {dislikesCount}
-          </span>
-        )}
-      </Button>
+        <span className={iconBoxClasses[size]}>
+          <IconBookThumbDown />
+        </span>
+        {showCount && <span className="tabular-nums">{dislikesCount}</span>}
+      </button>
     </div>
   );
 };
+
