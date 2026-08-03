@@ -110,6 +110,16 @@ const SiteUpdates: React.FC = () => {
                       {(update as any).image_url && (
                         <img src={(update as any).image_url} alt={update.title} className="mt-3 w-full rounded-lg border" />
                       )}
+
+                      <div className="mt-4 flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => dismissUpdate(update.id)}
+                          className="rounded-xl border-2 border-border bg-muted px-4 py-1.5 text-xs font-bold text-foreground transition hover:bg-muted/70 active:translate-y-[1px]"
+                        >
+                          تخطي
+                        </button>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
