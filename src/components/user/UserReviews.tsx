@@ -224,7 +224,7 @@ const UserReviews: React.FC = () => {
 
   if (loading) {
     return (
-      <Card className="bg-white shadow-md border-0">
+      <Card className="bg-card shadow-md border-0">
         <CardHeader>
           <CardTitle className="text-center text-xl font-tajawal text-book-primary">مراجعاتك</CardTitle>
         </CardHeader>
@@ -237,7 +237,7 @@ const UserReviews: React.FC = () => {
 
   if (noAccess) {
     return (
-      <Card className="bg-white shadow-md border-0">
+      <Card className="bg-card shadow-md border-0">
         <CardHeader>
           <CardTitle className="text-center text-xl font-tajawal text-book-primary">مراجعاتك</CardTitle>
         </CardHeader>
@@ -250,7 +250,7 @@ const UserReviews: React.FC = () => {
 
   if (reviews.length === 0) {
     return (
-      <Card className="bg-white shadow-md border-0">
+      <Card className="bg-card shadow-md border-0">
         <CardHeader>
           <CardTitle className="text-center text-xl font-tajawal text-book-primary">مراجعاتك</CardTitle>
         </CardHeader>
@@ -265,14 +265,14 @@ const UserReviews: React.FC = () => {
   }
 
   return (
-    <Card className="bg-white shadow-md border-0">
+    <Card className="bg-card shadow-md border-0">
       <CardHeader>
         <CardTitle className="text-center text-xl font-tajawal text-book-primary">مراجعاتك</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {reviews.map((review) => (
-            <div key={review.id} className="p-4 bg-white border rounded-lg hover:shadow-md transition-shadow">
+            <div key={review.id} className="p-4 bg-card border rounded-lg hover:shadow-md transition-shadow">
               <div className="flex flex-col md:flex-row gap-4">
                  <div className="md:w-1/4 flex justify-center">
                     <Link to={`/book/${getBookIdForLink(review.bookId, review.bookTitle, review.bookAuthor)}`} className="block">

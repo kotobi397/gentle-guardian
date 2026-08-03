@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const AuthorSkeleton = () => {
   return (
-    <div className="flex items-start gap-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+    <div className="flex items-start gap-4 p-6 bg-muted rounded-lg">
       {/* Avatar skeleton */}
       <Skeleton className="w-16 h-16 rounded-full flex-shrink-0" />
       

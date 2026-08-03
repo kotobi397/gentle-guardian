@@ -42,7 +42,7 @@ const RecentBooksSection = () => {
             return (
               <div
                 key={progress.bookId}
-                className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-100 dark:border-blue-800/30"
+                className="bg-card text-card-foreground rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-100 dark:border-blue-800/30"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <div className="w-12 h-16 bg-gradient-to-b from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-lg flex items-center justify-center flex-shrink-0">

@@ -36,7 +36,7 @@ export const SocialIcons: React.FC<SocialIconProps> = ({
   const containerStyles = {
     default: 'flex gap-3 items-center',
     circle: 'flex gap-3 items-center',
-    pill: 'flex gap-3 items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-md',
+    pill: 'flex gap-3 items-center bg-card/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-md',
   };
 
   const iconStyles = {

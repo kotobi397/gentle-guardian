@@ -47,7 +47,7 @@ const BookNavigation = ({
         size={variant === 'horizontal' ? "default" : "pagination"}
         className={`${
           variant === 'horizontal' 
-            ? "flex items-center gap-2 px-4 py-2 font-cairo text-book-primary border-book-primary/30 bg-white/95 dark:bg-gray-800/95 hover:bg-book-primary/10 transition-all duration-200 focus:ring-2 focus:ring-book-primary/20 shadow-md backdrop-blur-sm" 
+            ? "flex items-center gap-2 px-4 py-2 font-cairo text-book-primary border-book-primary/30 bg-card/95 text-card-foreground hover:bg-book-primary/10 transition-all duration-200 focus:ring-2 focus:ring-book-primary/20 shadow-md backdrop-blur-sm" 
             : "rounded-full bg-white/80 dark:bg-gray-800/80 text-book-primary backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-gray-800 border border-book-primary/20 transition-all duration-300"
         } ${isPreviousDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handlePrevClick}
@@ -60,7 +60,7 @@ const BookNavigation = ({
       </Button>
 
       {variant === 'horizontal' && (
-        <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-book-primary/20 text-book-primary font-cairo text-sm font-semibold">
+        <div className="bg-card/95 text-card-foreground backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-book-primary/20 text-book-primary font-cairo text-sm font-semibold">
           {currentPage} / {totalPages}
         </div>
       )}
@@ -71,7 +71,7 @@ const BookNavigation = ({
         size={variant === 'horizontal' ? "default" : "pagination"}
         className={`${
           variant === 'horizontal' 
-            ? "flex items-center gap-2 px-4 py-2 font-cairo text-book-primary border-book-primary/30 bg-white/95 dark:bg-gray-800/95 hover:bg-book-primary/10 transition-all duration-200 focus:ring-2 focus:ring-book-primary/20 shadow-md backdrop-blur-sm" 
+            ? "flex items-center gap-2 px-4 py-2 font-cairo text-book-primary border-book-primary/30 bg-card/95 text-card-foreground hover:bg-book-primary/10 transition-all duration-200 focus:ring-2 focus:ring-book-primary/20 shadow-md backdrop-blur-sm" 
             : "rounded-full bg-white/80 dark:bg-gray-800/80 text-book-primary backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-gray-800 border border-book-primary/20 transition-all duration-300"
         } ${isNextDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleNextClick}

@@ -389,7 +389,7 @@ const ApprovedBooksManager: React.FC<ApprovedBooksManagerProps> = ({ onBookDelet
                     {book.description && (
                       <div className="mb-4">
                         <span className="font-semibold text-sm block mb-2">وصف الكتاب:</span>
-                        <div className="text-sm bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                        <div className="text-sm bg-muted p-3 rounded-lg">
                           {book.description}
                         </div>
                       </div>

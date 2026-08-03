@@ -126,7 +126,7 @@ const BulkDeleteBooksDialog: React.FC<BulkDeleteBooksDialogProps> = ({
         </DialogHeader>
 
         <div className="space-y-4">
-          <div className="max-h-32 overflow-y-auto bg-gray-50 dark:bg-gray-800 rounded p-2">
+          <div className="max-h-32 overflow-y-auto bg-muted rounded p-2">
             <Label className="text-sm font-semibold">الكتب المحددة:</Label>
             <ul className="text-sm mt-1 space-y-1">
               {selectedBooks.map((book, index) => (

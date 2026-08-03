@@ -40,7 +40,7 @@ const SinglePageNavigation = ({
         <ChevronRight className="h-5 w-5" />
       </Button>
       
-      <div className="bg-white/90 px-6 py-3 rounded-md shadow-sm border border-gray-200 text-book-primary font-cairo">
+      <div className="bg-card/90 backdrop-blur-sm px-6 py-3 rounded-md shadow-sm border border-border text-book-primary font-cairo">
         <span className="text-lg font-semibold">
           {currentPage} / {totalPages}
         </span>
