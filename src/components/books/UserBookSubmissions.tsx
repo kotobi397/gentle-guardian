@@ -2,7 +2,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, RefreshCw, Upload, Edit, Trash2, LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
+import { BookOpen, RefreshCw, Upload, Edit, Trash2 } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';

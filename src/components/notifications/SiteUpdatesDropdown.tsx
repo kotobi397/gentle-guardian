@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Megaphone, Calendar } from 'lucide-react';
+import { Megaphone, Calendar } from '@/components/icons/kotobi-lucide';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import {

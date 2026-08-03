@@ -7,7 +7,8 @@ import Navbar from '@/components/layout/Navbar';
 import { useQuotes } from '@/hooks/useQuotes';
 import { QuoteCard } from '@/components/quotes/QuoteCard';
 import { Skeleton } from '@/components/ui/skeleton';
-import { BookOpen, Quote, Users, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { BookOpen, Quote, Users } from '@/components/icons/kotobi-lucide';
 import { SEOHead } from '@/components/seo/SEOHead';
 
 const Quotes = () => {

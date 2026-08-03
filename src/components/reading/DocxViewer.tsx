@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Home, Download, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Home, Download } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import mammoth from 'mammoth';

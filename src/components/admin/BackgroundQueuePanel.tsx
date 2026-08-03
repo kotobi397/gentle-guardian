@@ -7,7 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { CloudUpload, RefreshCw, Trash2, Zap, Layers } from 'lucide-react';
+import { CloudUpload, Zap, Layers } from 'lucide-react';
+import { RefreshCw, Trash2 } from '@/components/icons/kotobi-lucide';
 
 interface SimpleBook {
   title: string;

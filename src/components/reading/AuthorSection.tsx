@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { BookOpen, ChevronLeft, Globe, ExternalLink } from 'lucide-react';
+import { BookOpen, ChevronLeft, Globe, ExternalLink } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { authorImageUrls } from '@/data/authorImageUrls';
 import { createBookSlug } from '@/utils/bookSlug';

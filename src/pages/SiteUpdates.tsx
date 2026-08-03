@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Megaphone, Calendar } from 'lucide-react';
+import { Megaphone, Calendar } from '@/components/icons/kotobi-lucide';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useSiteUpdates } from '@/hooks/useSiteUpdates';
 import Navbar from '@/components/layout/Navbar';

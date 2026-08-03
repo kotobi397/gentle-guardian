@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
-import { Loader2, Download, BookOpen, Trash2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Download, BookOpen, Trash2 } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Gift, X } from 'lucide-react';
+import { Gift, X } from '@/components/icons/kotobi-lucide';
 import { useGamificationState, useClaimDailyLogin } from '@/hooks/useGamification';
 import { Button } from '@/components/ui/button';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageSquare, RefreshCw, Calendar } from 'lucide-react';
+import { MessageSquare, RefreshCw, Calendar } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

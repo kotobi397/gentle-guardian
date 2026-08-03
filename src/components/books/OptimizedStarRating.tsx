@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react';
+import { Star } from '@/components/icons/kotobi-lucide';
 
 interface OptimizedStarRatingProps {
   rating: number;

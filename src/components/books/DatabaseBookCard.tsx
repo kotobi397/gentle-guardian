@@ -2,7 +2,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { BookOpen } from 'lucide-react';
+import { BookOpen } from '@/components/icons/kotobi-lucide';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import BookImageLoader from './BookImageLoader';
 import { createBookSlug } from '@/utils/bookSlug';

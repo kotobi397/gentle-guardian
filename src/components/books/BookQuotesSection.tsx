@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ChevronLeft, ChevronRight, Quote as QuoteIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote as QuoteIcon } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';
 import { QuoteLikeButton } from '@/components/quotes/QuoteLikeButton';
 import { UnifiedProfileLink } from '@/components/profile/UnifiedProfileLink';

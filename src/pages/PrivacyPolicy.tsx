@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Globe } from 'lucide-react';
+import { Shield, Globe } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { SEOHead } from '@/components/seo/SEOHead';
 

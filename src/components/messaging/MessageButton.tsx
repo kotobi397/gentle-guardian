@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Clock, Check, X, Loader2, Send } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { MessageCircle, Clock, Check, X, Send } from '@/components/icons/kotobi-lucide';
 import { useAuth } from '@/context/AuthContext';
 import { useMessageRequests } from '@/hooks/useMessageRequests';
 import { useConversations } from '@/hooks/useConversations';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Coins, Flame, Gift } from 'lucide-react';
+import { Coins, Flame, Gift } from '@/components/icons/kotobi-lucide';
 import { useGamificationState } from '@/hooks/useGamification';
 import { useAuth } from '@/context/AuthContext';
 

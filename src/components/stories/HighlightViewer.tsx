@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, BookOpen, Trash2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, BookOpen, Trash2 } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { useStoryHighlights, StoryHighlightItem } from '@/hooks/useStoryHighlights';
 import { useAuth } from '@/context/AuthContext';

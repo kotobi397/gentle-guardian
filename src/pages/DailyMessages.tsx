@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, BookOpen, Calendar } from 'lucide-react';
+import { RefreshCw, BookOpen, Calendar } from '@/components/icons/kotobi-lucide';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useDailyMessage } from '@/hooks/useDailyMessage';
 import { toast } from '@/components/ui/use-toast';

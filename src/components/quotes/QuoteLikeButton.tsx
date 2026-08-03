@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Heart } from 'lucide-react';
+import { Heart } from '@/components/icons/kotobi-lucide';
 import { useAuth } from '@/context/AuthContext';
 import { useQuoteLikes } from '@/hooks/useQuoteLikes';
 import { toast } from 'sonner';

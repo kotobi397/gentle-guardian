@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, User } from 'lucide-react';
+import { BookOpen, User } from '@/components/icons/kotobi-lucide';
 import { optimizeImageUrl } from '@/utils/imageProxy';
 import { createBookSlug } from '@/utils/bookSlug';
 import { cn } from '@/lib/utils';

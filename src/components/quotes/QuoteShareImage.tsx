@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Download, Share2, Palette } from 'lucide-react';
+import { Download, Share2, Palette } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { Quote } from '@/hooks/useQuotes';
 

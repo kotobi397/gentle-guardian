@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, AlertCircle, CheckCircle, FileText, Image, User } from 'lucide-react';
+import { Upload, AlertCircle, CheckCircle, FileText, Image, User } from '@/components/icons/kotobi-lucide';
 import { useToast } from '@/hooks/use-toast';
 import { storageCleanup } from '@/utils/storageCleanup';
 import { uploadFileToS3 } from '@/utils/s3Client';

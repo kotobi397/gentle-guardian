@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Mail, Check, X } from 'lucide-react';
+import { Mail, Check, X } from '@/components/icons/kotobi-lucide';
 import { useMyClubInvitations } from '@/hooks/useClubInvitations';
 import { optimizeImageUrl } from '@/utils/imageProxy';
 import { useNavigate } from 'react-router-dom';

@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { AlertTriangle, CheckCircle, Link2 } from 'lucide-react';
+import { Link2 } from 'lucide-react';
+import { AlertTriangle, CheckCircle } from '@/components/icons/kotobi-lucide';
 
 export interface BulkUploadStorageReportItem {
   success: boolean;

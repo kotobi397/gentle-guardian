@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BookOpen, Trash2, CheckCircle, Clock, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { BookOpen, Trash2, CheckCircle, Clock } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { formatDistanceToNow } from 'date-fns';

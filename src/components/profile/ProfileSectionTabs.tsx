@@ -1,4 +1,5 @@
-import { BookOpen, Quote as QuoteIcon, Star, Library } from 'lucide-react';
+import { Library } from 'lucide-react';
+import { BookOpen, Quote as QuoteIcon, Star } from '@/components/icons/kotobi-lucide';
 
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 

@@ -8,7 +8,8 @@ import {
   DialogTitle, 
   DialogTrigger 
 } from '@/components/ui/dialog';
-import { BookOpen, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { BookOpen } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 
 interface PageJumpDialogProps {

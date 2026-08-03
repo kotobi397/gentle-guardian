@@ -11,7 +11,7 @@ import { StarRating } from '@/components/ui/star-rating';
 import { useBookReviewStats } from '@/hooks/useBookReviewStats';
 import { useBookDownloads } from '@/hooks/useBookDownloads';
 import { useNavigationHistory } from '@/hooks/useNavigationHistory';
-import { Download } from 'lucide-react';
+import { Download } from '@/components/icons/kotobi-lucide';
 
 interface BookCardProps {
   id: number | string;

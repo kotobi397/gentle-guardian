@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Trash2 } from 'lucide-react';
+import { Star, Trash2 } from '@/components/icons/kotobi-lucide';
 import { useStoryHighlights } from '@/hooks/useStoryHighlights';
 import { useAuth } from '@/context/AuthContext';
 import HighlightViewer from './HighlightViewer';

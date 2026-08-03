@@ -5,7 +5,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Loader2, Download, Search, BookOpen, FileText, AlertCircle, CheckCircle, Brain, Sparkles, MessageCircle, Bot } from 'lucide-react';
+import { Loader2, Brain } from 'lucide-react';
+import { Download, Search, BookOpen, FileText, AlertCircle, CheckCircle, Sparkles, MessageCircle, Bot } from '@/components/icons/kotobi-lucide';
 import { useToast } from '@/hooks/use-toast';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';
 

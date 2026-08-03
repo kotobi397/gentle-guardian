@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, Users, Shield, AlertTriangle, BookOpen, Globe } from 'lucide-react';
+import { FileText, Users, Shield, AlertTriangle, BookOpen, Globe } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { SEOHead } from '@/components/seo/SEOHead';
 

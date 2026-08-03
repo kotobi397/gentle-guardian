@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Plus, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Plus } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { useStories, GroupedStories } from '@/hooks/useStories';
 import { useAuth } from '@/context/AuthContext';

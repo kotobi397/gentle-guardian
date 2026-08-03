@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircle, RefreshCw, AlertCircle, Mail, Clock, CheckSquare } from 'lucide-react';
+import { CheckSquare } from 'lucide-react';
+import { CheckCircle, RefreshCw, AlertCircle, Mail, Clock } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 
 interface EmailVerificationMessageProps {

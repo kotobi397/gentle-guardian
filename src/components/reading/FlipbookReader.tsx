@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Home, RotateCcw, ZoomIn, ZoomOut, Menu } from 'lucide-react';
+import { RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home, Menu } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { PageNavigationController } from '@/utils/scrollUtils';

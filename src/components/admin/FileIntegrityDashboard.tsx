@@ -2,16 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  AlertTriangle, 
-  CheckCircle, 
-  RefreshCw, 
-  FileText, 
-  Image, 
-  User,
-  Download,
-  ExternalLink 
-} from 'lucide-react';
+import { AlertTriangle, CheckCircle, RefreshCw, FileText, Image, User, Download, ExternalLink } from '@/components/icons/kotobi-lucide';
 import { useFileIntegrityChecker } from '@/hooks/useFileIntegrityChecker';
 import { toast } from 'sonner';
 

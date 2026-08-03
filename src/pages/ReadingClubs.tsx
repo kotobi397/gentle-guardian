@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Users, BookOpen, Plus, Crown, Calendar, Search } from 'lucide-react';
+import { Users, BookOpen, Plus, Crown, Calendar, Search } from '@/components/icons/kotobi-lucide';
 import Navbar from '@/components/layout/Navbar';
 import BottomNavigation from '@/components/layout/BottomNavigation';
 import { Button } from '@/components/ui/button';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Skeleton } from '@/components/ui/skeleton';
-import { MessageCircle, Bot } from 'lucide-react';
+import { MessageCircle, Bot } from '@/components/icons/kotobi-lucide';
 import { Conversation } from '@/hooks/useConversations';
 import { formatDistanceToNow } from 'date-fns';
 import { ar } from 'date-fns/locale';

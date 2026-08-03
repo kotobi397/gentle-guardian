@@ -16,10 +16,8 @@ import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import {
-  Search, Globe, Link2, FileText, Sparkles, RefreshCw, ArrowLeft,
-  TrendingUp, Gauge,
-} from 'lucide-react';
+import { Link2, ArrowLeft, Gauge } from 'lucide-react';
+import { Search, Globe, FileText, Sparkles, RefreshCw, TrendingUp } from '@/components/icons/kotobi-lucide';
 
 const DEFAULT_DOMAIN = 'kotobi.xyz';
 const DEFAULT_DATABASE = 'us';

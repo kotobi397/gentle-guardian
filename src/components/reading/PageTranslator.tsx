@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Languages, Loader2, X, Copy, Check, Eye } from 'lucide-react';
+import { Languages, Loader2 } from 'lucide-react';
+import { X, Copy, Check, Eye } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';
 import { toast } from 'sonner';
