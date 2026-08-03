@@ -141,20 +141,13 @@ const SiteUpdatesDropdown: React.FC<SiteUpdatesDropdownProps> = ({ children }) =
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
                     <UpdateReactions
                       updateId={update.id}
                       counts={counts[update.id] || {}}
                       mine={mine[update.id]}
                       onToggle={toggleReaction}
                     />
-                    <button
-                      type="button"
-                      onClick={() => dismissUpdate(update.id)}
-                      className="shrink-0 rounded-xl border-2 border-clash-gold-deep/70 bg-clash-deep px-3 py-1 text-[11px] font-extrabold !text-clash-gold shadow-[0_3px_0_hsl(var(--clash-panel-deep))] transition active:translate-y-[2px] active:shadow-none"
-                    >
-                      تخطي
-                    </button>
                   </div>
                 </div>
               ))}
