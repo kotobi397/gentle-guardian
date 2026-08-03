@@ -105,14 +105,15 @@
     /* خلفية بطاقات الكتب */
     --books-background: 28 14% 14%;
 
-    --card: 30 12% 22%;
-    --card-foreground: 40 40% 94%;
+    /* خلفية البطاقات العائمة في الوضع الداكن — دافئة وغير قاتمة */
+    --card: 30 13% 19%;
+    --card-foreground: 40 38% 92%;
 
     /* إطار رفع الكتاب في الوضع المظلم */
-    --upload-form-bg: 30 12% 22%;
+    --upload-form-bg: 30 13% 19%;
 
-    --popover: 30 12% 24%;
-    --popover-foreground: 40 40% 94%;
+    --popover: 30 13% 21%;
+    --popover-foreground: 40 38% 92%;
 
     --primary: 42 85% 55%;
     --primary-foreground: 30 30% 14%;
