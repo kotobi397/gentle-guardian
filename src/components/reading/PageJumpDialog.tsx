@@ -82,7 +82,7 @@ const PageJumpDialog = ({ currentPage, totalPages, onJumpToPage }: PageJumpDialo
         <Button
           variant="outline"
           size="sm"
-          className="gap-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg border-book-primary/30 hover:bg-book-primary/10 hover:border-book-primary/50 transition-all duration-300"
+          className="gap-2 bg-card/90 text-card-foreground backdrop-blur-sm shadow-lg border-book-primary/30 hover:bg-book-primary/10 hover:border-book-primary/50 transition-all duration-300"
         >
           <BookOpen className="h-4 w-4 text-book-primary" />
           <span className="font-cairo text-sm text-book-primary font-medium">

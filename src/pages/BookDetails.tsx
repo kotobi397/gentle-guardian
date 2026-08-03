@@ -1125,7 +1125,7 @@ const BookDetailsContent = () => {
 
                     {/* رسالة عدم الإتاحة */}
                     {book.display_type === "no_access" && (
-                      <div className="w-full p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
+                      <div className="w-full p-3 bg-muted rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
                         <div className="text-gray-600 dark:text-gray-400 mb-1 font-cairo text-sm">
                           🔒 غير متاح للقراءة أو التحميل
                         </div>

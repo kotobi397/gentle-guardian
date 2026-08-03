@@ -1001,7 +1001,7 @@ const AdminBooks: React.FC = () => {
                                                    <div className="grid grid-cols-1 gap-2 text-xs">
                                                      <div>
                                                        <span className="font-semibold text-gray-600 dark:text-gray-400">القديم:</span>
-                                                       <div className="text-gray-800 dark:text-gray-200 mr-2 mt-1 p-2 bg-gray-100 dark:bg-gray-800 rounded max-h-16 overflow-y-auto">
+                                                       <div className="text-gray-800 dark:text-gray-200 mr-2 mt-1 p-2 bg-muted rounded max-h-16 overflow-y-auto">
                                                          {submission.original_description}
                                                        </div>
                                                      </div>
@@ -1232,7 +1232,7 @@ const AdminBooks: React.FC = () => {
                               {submission.description && (
                                 <div className="mb-4">
                                   <span className="font-semibold text-sm block mb-2">وصف الكتاب:</span>
-                                  <div className="text-sm bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                  <div className="text-sm bg-muted p-3 rounded-lg">
                                     {submission.description}
                                   </div>
                                 </div>

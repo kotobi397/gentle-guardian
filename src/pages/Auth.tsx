@@ -1155,7 +1155,7 @@ const Auth: React.FC<AuthProps> = () => {
                   onClick={handleGoogleSignIn}
                   disabled={isLoading}
                   type="button"
-                  className="w-full h-12 px-6 bg-white dark:bg-[hsl(220,14%,16%)] hover:bg-gray-50 dark:hover:bg-[hsl(220,14%,20%)] text-gray-700 dark:text-gray-200 border-2 border-gray-200 dark:border-[hsl(220,12%,25%)] rounded-xl text-base font-semibold transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 mb-6 hover:border-primary/40 active:scale-[0.98]"
+                  className="w-full h-12 px-6 bg-card text-card-foreground hover:bg-muted border-2 border-border rounded-xl text-base font-semibold transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 mb-6 hover:border-primary/40 active:scale-[0.98]"
                 >
                   <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-sm">
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -1293,7 +1293,7 @@ const Auth: React.FC<AuthProps> = () => {
                   onClick={handleGoogleSignIn}
                   disabled={isLoading}
                   type="button"
-                  className="w-full h-12 px-6 bg-white dark:bg-[hsl(220,14%,16%)] hover:bg-gray-50 dark:hover:bg-[hsl(220,14%,20%)] text-gray-700 dark:text-gray-200 border-2 border-gray-200 dark:border-[hsl(220,12%,25%)] rounded-xl text-base font-semibold transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 mb-6 hover:border-primary/40 active:scale-[0.98]"
+                  className="w-full h-12 px-6 bg-card text-card-foreground hover:bg-muted border-2 border-border rounded-xl text-base font-semibold transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-3 mb-6 hover:border-primary/40 active:scale-[0.98]"
                 >
                   <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-sm">
                     <svg className="w-4 h-4" viewBox="0 0 24 24">

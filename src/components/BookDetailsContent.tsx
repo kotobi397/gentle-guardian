@@ -296,7 +296,7 @@ const BookDetailsContent: React.FC<BookDetailsContentProps> = ({ book }) => {
               {authorDataLoading ? (
                 <AuthorSkeleton />
               ) : (
-                <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div className="p-6 bg-muted rounded-lg">
                   <div className="flex items-start gap-4">
                     <Avatar className="w-16 h-16 flex-shrink-0">
                       <AvatarImage 
@@ -427,7 +427,7 @@ const BookDetailsContent: React.FC<BookDetailsContentProps> = ({ book }) => {
 
               {/* بدون تحميل ولا قراءة */}
               {book.display_type === 'no_access' && (
-                <div className="w-full p-4 bg-gray-100 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
+                <div className="w-full p-4 bg-muted rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
                   <div className="text-gray-600 dark:text-gray-400 mb-2">
                     🔒 غير متاح للقراءة أو التحميل
                   </div>
@@ -439,7 +439,7 @@ const BookDetailsContent: React.FC<BookDetailsContentProps> = ({ book }) => {
             </div>
 
             {/* معلومات إضافية */}
-            <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div className="mt-6 p-4 bg-muted rounded-lg">
               <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 font-amiri">
                 معلومات الملف
               </h4>

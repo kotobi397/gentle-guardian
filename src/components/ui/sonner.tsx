@@ -40,11 +40,11 @@ const Toaster = ({ ...props }: ToasterProps) => {
         className: "z-[2000] !max-w-[85vw] sm:!max-w-[340px]",
         classNames: {
           toast:
-            "group toast group-[.toaster]:z-[2000] group-[.toaster]:bg-white dark:group-[.toaster]:bg-gray-900 group-[.toaster]:text-gray-900 dark:group-[.toaster]:text-gray-100 group-[.toaster]:border-gray-200 dark:group-[.toaster]:border-gray-700 group-[.toaster]:shadow-xl group-[.toaster]:rounded-lg group-[.toaster]:p-3 group-[.toaster]:border group-[.toaster]:text-sm",
+            "group toast group-[.toaster]:z-[2000] group-[.toaster]:bg-card group-[.toaster]:text-card-foreground group-[.toaster]:border-border group-[.toaster]:shadow-xl group-[.toaster]:rounded-lg group-[.toaster]:p-3 group-[.toaster]:border group-[.toaster]:text-sm",
           title: 
-            "group-[.toast]:font-semibold group-[.toast]:text-sm group-[.toast]:mb-0.5 group-[.toast]:text-gray-900 dark:group-[.toast]:text-gray-100",
+            "group-[.toast]:font-semibold group-[.toast]:text-sm group-[.toast]:mb-0.5 group-[.toast]:text-card-foreground",
           description: 
-            "group-[.toast]:text-gray-600 dark:group-[.toast]:text-gray-400 group-[.toast]:text-xs",
+            "group-[.toast]:text-muted-foreground group-[.toast]:text-xs",
           success:
             "!bg-emerald-50 dark:!bg-emerald-950 !border-emerald-300 dark:!border-emerald-700 !text-emerald-800 dark:!text-emerald-200",
           error:
@@ -56,7 +56,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           actionButton:
             "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton:
-            "group-[.toast]:bg-gray-100 dark:group-[.toast]:bg-gray-800 group-[.toast]:text-gray-700 dark:group-[.toast]:text-gray-300",
+            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
         },
       }}
       {...props}

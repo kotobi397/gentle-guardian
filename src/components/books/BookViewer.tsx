@@ -428,7 +428,7 @@ const BookViewer: React.FC<BookViewerProps> = ({
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mb-10"
             >
-              <Card className="overflow-hidden border-0 shadow-xl bg-white/80 dark:bg-gray-800/60 backdrop-blur-xl">
+              <Card className="overflow-hidden border-0 shadow-xl bg-card/80 backdrop-blur-xl">
                 <CardContent className="p-8 relative">
                   {/* تأثيرات زخرفية خلفية */}
                   <div className="absolute -top-16 -left-16 w-56 h-56 bg-gradient-to-br from-blue-100/60 to-transparent rounded-full blur-3xl dark:from-blue-900/20"></div>
@@ -499,7 +499,7 @@ const BookViewer: React.FC<BookViewerProps> = ({
               transition={{ duration: 0.6, delay: 0.7 }}
               className="relative"
             >
-              <Card className="overflow-hidden border-0 shadow-xl bg-white/80 dark:bg-gray-800/60 backdrop-blur-xl">
+              <Card className="overflow-hidden border-0 shadow-xl bg-card/80 backdrop-blur-xl">
                 <CardContent className="p-8 relative">
                   {/* تأثيرات زخرفية خلفية */}
                   <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-purple-100/60 to-transparent rounded-full blur-2xl dark:from-purple-900/20"></div>

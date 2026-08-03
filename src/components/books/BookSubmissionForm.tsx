@@ -1966,7 +1966,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl mx-auto text-sm font-poppins" data-form-type="book-submission">
-      <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm font-poppins" data-form-type="book-submission">
+      <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm font-poppins" data-form-type="book-submission">
         <CardHeader className="text-center pb-5 font-poppins">
           <CardTitle className="text-xl font-bold text-gray-800 dark:text-white font-poppins">
             {isEditMode ? 'تعديل معلومات الكتاب' : 'معلومات الكتاب'}
@@ -2459,7 +2459,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
             {/* صورة الغلاف ثانياً */}
             <div className="space-y-2">
               <Label className="text-base font-semibold">صورة غلاف الكتاب *</Label>
-              <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center bg-gray-50 dark:bg-gray-800/50">
+              <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center bg-muted/50">
                 <Image className="mx-auto h-12 w-12 text-gray-400 mb-2" />
                 <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                   {coverFile ? (
