@@ -111,6 +111,10 @@ export default {
 					'gold-deep': 'hsl(var(--clash-gold-deep))'
 				},
 
+				books: {
+					background: 'hsl(var(--books-background))'
+				},
+
 				book: {
 					primary: 'hsl(var(--primary))',
 					secondary: 'hsl(var(--secondary))',
