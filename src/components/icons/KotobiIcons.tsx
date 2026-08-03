@@ -18,14 +18,14 @@ const make = (
   paths: React.ReactNode
 ): React.FC<KotobiIconProps> => {
   const Comp: React.FC<KotobiIconProps> = ({
-    className = 'h-5 w-5',
+    className,
     size,
     strokeWidth = 2.1,
     ...rest
   }) => (
     <svg
       viewBox="0 0 24 24"
-      className={className}
+      className={cn('h-5 w-5 shrink-0', className)}
       width={size}
       height={size}
       fill="none"
