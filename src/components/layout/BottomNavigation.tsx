@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Settings, Trophy } from 'lucide-react';
+import { IconGear, IconTrophy } from '@/components/icons/KotobiIcons';
 import HomeIcon from '@/components/icons/HomeIcon';
 import UploadBookIcon from '@/components/icons/UploadBookIcon';
 import QuoteIcon from '@/components/icons/QuoteIcon';
@@ -52,10 +52,10 @@ const BottomNavigation: React.FC = () => {
     { key: 'home', label: 'الرئيسية', icon: <HomeIcon className="h-[22px] w-[22px]" />, path: '/' },
     { key: 'upload', label: 'انشر', icon: <UploadBookIcon className="h-[22px] w-[22px]" />, path: '/upload-book' },
     ...(user && !adminCheckLoading && isAdmin
-      ? [{ key: 'admin', label: 'إدارة', icon: <Settings className="h-[22px] w-[22px]" />, path: '/admin/books' }]
+      ? [{ key: 'admin', label: 'إدارة', icon: <IconGear className="h-[22px] w-[22px]" />, path: '/admin/books' }]
       : []),
     { key: 'quotes', label: 'اقتباسات', icon: <QuoteIcon className="h-[22px] w-[22px]" />, path: '/quotes' },
-    { key: 'rewards', label: 'مكافآت', icon: <Trophy className="h-[22px] w-[22px]" />, path: '/rewards' },
+    { key: 'rewards', label: 'مكافآت', icon: <IconTrophy className="h-[22px] w-[22px]" />, path: '/rewards' },
     { key: 'mybooks', label: 'كتبي', icon: <MyBooksIcon className="h-[22px] w-[22px]" />, path: '/my-books' },
     { key: 'profile', label: 'حسابي', icon: <ProfileIcon className="h-[22px] w-[22px]" />, path: '/profile' },
   ];
@@ -100,7 +100,7 @@ const BottomNavigation: React.FC = () => {
       className="mobile-bottom-navigation fixed inset-x-0 bottom-0 z-[9999] px-3 pb-3 pt-2 md:hidden pointer-events-none"
       style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 0.75rem)' }}
     >
-      <div className="liquid-nav relative mx-auto w-full max-w-[650px] overflow-hidden rounded-full border border-primary/25 pointer-events-auto"
+      <div className="liquid-nav relative mx-auto w-full max-w-[650px] overflow-hidden rounded-2xl border-2 border-primary/45 shadow-[0_4px_0_hsl(var(--primary)/0.35),0_12px_28px_-14px_hsl(var(--primary)/0.6)] pointer-events-auto"
         style={{
           background: 'hsl(var(--card))',
           padding: '8px 12px',
@@ -111,7 +111,7 @@ const BottomNavigation: React.FC = () => {
           {/* active pill */}
           <div
             aria-hidden
-            className="absolute rounded-full bg-primary"
+            className="absolute rounded-xl bg-primary border-2 border-primary-foreground/20"
             style={{
               top: 6,
               bottom: 6,
@@ -135,12 +135,12 @@ const BottomNavigation: React.FC = () => {
                 aria-label={item.label}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'relative z-[15] flex min-w-0 flex-1 items-center justify-center rounded-full py-2.5 transition-transform duration-150 active:scale-[0.97]',
+                  'relative z-[15] flex min-w-0 flex-1 items-center justify-center rounded-xl py-2.5 transition-transform duration-150 active:scale-[0.97]',
                 )}
               >
                 <span
                   className={cn(
-                    'flex items-center justify-center gap-1.5 text-[12px] font-medium',
+                    'flex items-center justify-center gap-1.5 text-[12px] font-extrabold',
                     active ? 'text-primary-foreground' : 'text-primary',
                   )}
                 >

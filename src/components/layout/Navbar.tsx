@@ -2,7 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import siteIcon from '@/assets/site-icon.svg';
-import { Bell, Heart, Menu, Settings, MessageSquare, Search, Mail, BookOpen } from 'lucide-react';
+import {
+  IconBell,
+  IconHeart,
+  IconMenu,
+  IconGear,
+  IconChat,
+  IconSearch,
+  IconMail,
+  IconBookOpen,
+  IconShield,
+} from '@/components/icons/KotobiIcons';
 import { useAuth } from '@/context/AuthContext';
 import { useFavorites } from '@/context/FavoritesContext';
 import { SearchDialog } from '@/components/search/SearchDialog';
@@ -85,7 +95,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className="sticky top-0 z-50 mx-2 mt-1 rounded-full border border-border/70"
+      className="sticky top-0 z-50 mx-2 mt-1 rounded-2xl border-2 border-primary/45 shadow-[0_4px_0_hsl(var(--primary)/0.35),0_10px_24px_-12px_hsl(var(--primary)/0.5)]"
       style={{
         background: 'hsl(var(--card))',
         contain: 'layout paint',
@@ -97,7 +107,7 @@ const Navbar: React.FC = () => {
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full" aria-label="فتح القائمة">
-              <Menu className="h-5 w-5" />
+              <IconMenu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
 
@@ -115,8 +125,8 @@ const Navbar: React.FC = () => {
               <MenuButton label="المؤلفين" icon={<AuthorsIcon />} onClick={() => handleNavigation('/authors')} active={isActive('/authors')} />
               <MenuButton label="الأقسام" icon={<CategoriesIcon />} onClick={() => handleNavigation('/categories')} active={isActive('/categories')} />
               <MenuButton label="المفضلة" icon={<FavoriteIcon />} onClick={() => handleNavigation('/favorites')} active={isActive('/favorites')} badge={favoritesCount} />
-              <MenuButton label="اقتراحات 💡" icon={<MessageSquare className="h-5 w-5" />} onClick={() => handleNavigation('/suggestions')} active={isActive('/suggestions')} />
-              <MenuButton label="نوادي القراءة 📚" icon={<BookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/reading-clubs')} active={isActive('/reading-clubs')} />
+              <MenuButton label="اقتراحات 💡" icon={<IconChat className="h-5 w-5" />} onClick={() => handleNavigation('/suggestions')} active={isActive('/suggestions')} />
+              <MenuButton label="نوادي القراءة 📚" icon={<IconBookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/reading-clubs')} active={isActive('/reading-clubs')} />
               
 
               {user && (
@@ -126,20 +136,20 @@ const Navbar: React.FC = () => {
                   <MenuButton label="كتبي" icon={<MyBooksIcon />} onClick={() => handleNavigation('/my-books')} />
                   <MenuButton label="حسابي" icon={<ProfileIcon />} onClick={() => handleNavigation('/profile')} />
                   {!adminCheckLoading && isAdmin && (
-                    <MenuButton label="إدارة الكتب" icon={<Settings />} onClick={() => handleNavigation('/admin/books')} />
+                    <MenuButton label="إدارة الكتب" icon={<IconGear className="h-5 w-5" />} onClick={() => handleNavigation('/admin/books')} />
                   )}
                 </>
               )}
 
               <div className="my-3 h-px bg-border" />
               
-              <MenuButton label="اتصل بنا" icon={<MessageSquare />} onClick={() => handleNavigation('/contact-us')} active={isActive('/contact-us')} />
-              <MenuButton label="دعم المشروع" icon={<Heart />} onClick={() => handleNavigation('/donation')} />
+              <MenuButton label="اتصل بنا" icon={<IconChat className="h-5 w-5" />} onClick={() => handleNavigation('/contact-us')} active={isActive('/contact-us')} />
+              <MenuButton label="دعم المشروع" icon={<IconHeart className="h-5 w-5" />} onClick={() => handleNavigation('/donation')} />
 
               <div className="my-3 h-px bg-border" />
-              <MenuButton label="من نحن" icon={<BookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/about')} active={isActive('/about')} />
-              <MenuButton label="سياسة الخصوصية" icon={<PrivacyPolicyIcon className="h-5 w-5" />} onClick={() => handleNavigation('/privacy-policy')} active={isActive('/privacy-policy')} />
-              <MenuButton label="شروط الاستخدام" icon={<BookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/terms-of-service')} active={isActive('/terms-of-service')} />
+              <MenuButton label="من نحن" icon={<IconBookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/about')} active={isActive('/about')} />
+              <MenuButton label="سياسة الخصوصية" icon={<IconShield className="h-5 w-5" />} onClick={() => handleNavigation('/privacy-policy')} active={isActive('/privacy-policy')} />
+              <MenuButton label="شروط الاستخدام" icon={<IconBookOpen className="h-5 w-5" />} onClick={() => handleNavigation('/terms-of-service')} active={isActive('/terms-of-service')} />
             </div>
           </SheetContent>
         </Sheet>
@@ -159,12 +169,12 @@ const Navbar: React.FC = () => {
             onClick={() => setSearchOpen(true)}
             aria-label="بحث"
           >
-            <Search className="h-5 w-5" />
+            <IconSearch className="h-5 w-5" />
           </Button>
 
           <SiteUpdatesDropdown>
             <Button variant="ghost" className="rounded-full text-primary" aria-label="تحديثات الموقع">
-              <MessageSquare className="h-4 w-4 ml-1" />
+              <IconChat className="h-[18px] w-[18px] ml-1" />
               <span className="hidden sm:inline">تحديثات</span>
             </Button>
           </SiteUpdatesDropdown>
@@ -182,7 +192,7 @@ const Navbar: React.FC = () => {
                 onClick={() => navigate('/messages')}
                 aria-label="الرسائل"
               >
-                <Mail className="h-5 w-5" />
+                <IconMail className="h-5 w-5" />
                 {unreadMessages > 0 && (
                   <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
                     {unreadMessages > 9 ? '9+' : unreadMessages}
@@ -192,7 +202,7 @@ const Navbar: React.FC = () => {
 
               <NotificationsDropdown>
                 <Button variant="ghost" className="rounded-full relative text-primary" aria-label="الإشعارات">
-                  <Bell className="h-4 w-4" />
+                  <IconBell className="h-[18px] w-[18px]" />
                   {unreadNotificationsCount > 0 && (
                     <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full px-1">
                       {unreadNotificationsCount}
@@ -204,7 +214,7 @@ const Navbar: React.FC = () => {
           )}
 
           {!user && !loading && (
-            <Button onClick={() => navigate('/auth')} className="rounded-full">
+            <Button onClick={() => navigate('/auth')} className="rounded-2xl">
               تسجيل الدخول
             </Button>
           )}
