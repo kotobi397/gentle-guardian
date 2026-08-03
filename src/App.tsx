@@ -176,7 +176,9 @@ function AppContent() {
       {!isReaderPage && <DailyLoginModal />}
       {!isReaderPage && <MysteryDropHunter />}
       <BookQuizLauncher />
+      {!isReaderPage && <WhatsNewModal />}
     </div>
+
   );
 }
 
