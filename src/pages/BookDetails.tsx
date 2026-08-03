@@ -1259,8 +1259,9 @@ const BookDetailsContent = () => {
                               size="sm"
                               showCount={true}
                               className="justify-center"
-                              likeClassName="bg-muted hover:bg-muted/80 text-foreground font-cairo text-sm py-2 px-4 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
-                              dislikeClassName="bg-muted hover:bg-muted/80 text-foreground font-cairo text-sm py-2 px-4 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
+                              likeClassName="font-cairo"
+                              dislikeClassName="font-cairo"
+
                             />
                           </div>
                         )}
@@ -1374,8 +1375,9 @@ const BookDetailsContent = () => {
                               size="sm"
                               showCount={true}
                               className="justify-center"
-                              likeClassName="bg-muted hover:bg-muted/80 text-foreground font-cairo text-sm py-2 px-4 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
-                              dislikeClassName="bg-muted hover:bg-muted/80 text-foreground font-cairo text-sm py-2 px-4 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
+                              likeClassName="font-cairo"
+                              dislikeClassName="font-cairo"
+
                             />
                           </div>
                         )}
