@@ -17,6 +17,8 @@ import UnlimitedDownloadsPrompt from '@/components/pwa/UnlimitedDownloadsPrompt'
 import BookQuizLauncher from '@/components/reading/BookQuizLauncher';
 import ScrollToTop from './components/utility/ScrollToTop';
 import { installRoutePrefetcher } from './utils/routePrefetch';
+import WhatsNewModal from './components/updates/WhatsNewModal';
+
 
 // Critical route - eagerly loaded
 import Index from './pages/Index';
@@ -174,7 +176,9 @@ function AppContent() {
       {!isReaderPage && <DailyLoginModal />}
       {!isReaderPage && <MysteryDropHunter />}
       <BookQuizLauncher />
+      {!isReaderPage && <WhatsNewModal />}
     </div>
+
   );
 }
 
