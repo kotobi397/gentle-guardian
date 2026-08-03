@@ -14,6 +14,7 @@ interface SiteUpdate {
 const CACHE_KEY = 'site_updates_cache_v1';
 const FETCHED_KEY = 'site_updates_fetched_v1';
 const UNREAD_KEY = 'site_updates_has_unread_v1';
+const LOCAL_DISMISS_KEY = 'site_updates_dismissed_v1';
 
 const loadCache = (): SiteUpdate[] => {
   try {
@@ -47,7 +48,22 @@ export const useSiteUpdates = () => {
 
       if (fetchError) throw fetchError;
 
-      const list = data || [];
+      let list = data || [];
+
+      // استبعاد التحديثات التي تخطاها المستخدم
+      if (user) {
+        const { data: dismissed } = await supabase
+          .from('site_update_dismissals')
+          .select('update_id')
+          .eq('user_id', user.id);
+        const dismissedIds = new Set((dismissed || []).map(d => d.update_id));
+        list = list.filter(u => !dismissedIds.has(u.id));
+      } else {
+        const localJson = localStorage.getItem(LOCAL_DISMISS_KEY);
+        const dismissedIds: string[] = localJson ? JSON.parse(localJson) : [];
+        list = list.filter(u => !dismissedIds.includes(u.id));
+      }
+
       setUpdates(list);
       try {
         sessionStorage.setItem(CACHE_KEY, JSON.stringify(list));
@@ -112,6 +128,28 @@ export const useSiteUpdates = () => {
     try { sessionStorage.setItem(UNREAD_KEY, '0'); } catch {}
   }, [user]);
 
+  const dismissUpdate = useCallback(async (updateId: string) => {
+    setUpdates(prev => prev.filter(u => u.id !== updateId));
+    try {
+      const cached = loadCache().filter(u => u.id !== updateId);
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(cached));
+    } catch {}
+
+    if (user) {
+      const { error: dismissError } = await supabase
+        .from('site_update_dismissals')
+        .upsert({ user_id: user.id, update_id: updateId }, { onConflict: 'user_id,update_id' });
+      if (dismissError) console.error('Error dismissing update:', dismissError);
+    } else {
+      try {
+        const localJson = localStorage.getItem(LOCAL_DISMISS_KEY);
+        const ids: string[] = localJson ? JSON.parse(localJson) : [];
+        if (!ids.includes(updateId)) ids.push(updateId);
+        localStorage.setItem(LOCAL_DISMISS_KEY, JSON.stringify(ids));
+      } catch {}
+    }
+  }, [user]);
+
   const markAllAsRead = useCallback(async () => {
     const updateIds = updates.map(u => u.id);
     await markAsRead(updateIds);
@@ -127,5 +165,6 @@ export const useSiteUpdates = () => {
     ensureFetched,
     markAsRead,
     markAllAsRead,
+    dismissUpdate,
   };
 };
