@@ -8,7 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';
-import { Upload, Download, AlertTriangle, CheckCircle, FileText, X, Info, Pause, Play, Plus } from 'lucide-react';
+import { Upload, Download, AlertTriangle, CheckCircle, FileText, X, Info, Pause, Play, Plus } from '@/components/icons/kotobi-lucide';
 import Papa from 'papaparse';
 import FileValidationChecker from './FileValidationChecker';
 import BulkUploadStorageReport, { type BulkUploadStorageReportItem } from './BulkUploadStorageReport';

@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowUp, ArrowDown, ArrowLeft, BookOpen, Share2, Bookmark } from 'lucide-react';
+import { ArrowUp, ArrowDown, ArrowLeft, Bookmark } from 'lucide-react';
+import { BookOpen, Share2 } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 

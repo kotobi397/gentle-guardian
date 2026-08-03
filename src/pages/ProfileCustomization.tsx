@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BadgeCheck, Lock, Save } from 'lucide-react';
+import { BadgeCheck, Save } from 'lucide-react';
+import { Lock } from '@/components/icons/kotobi-lucide';
 import { useAuth } from '@/context/AuthContext';
 import { useSubscription } from '@/hooks/useSubscription';
 import {

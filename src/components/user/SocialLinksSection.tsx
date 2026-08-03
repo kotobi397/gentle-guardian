@@ -2,15 +2,8 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { motion } from 'framer-motion';
-import { 
-  Globe, 
-  Instagram, 
-  Twitter, 
-  Facebook, 
-  Youtube, 
-  Linkedin,
-  MessageCircle
-} from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube, Linkedin } from 'lucide-react';
+import { Globe, MessageCircle } from '@/components/icons/kotobi-lucide';
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (

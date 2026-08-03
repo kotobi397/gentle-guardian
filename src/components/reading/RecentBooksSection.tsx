@@ -2,7 +2,8 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Clock, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { BookOpen, Clock } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { getRecentBooks, calculateProgressPercentage } from '@/utils/readingProgressUtils';
 import { booksData } from '@/data/editableBooksData';

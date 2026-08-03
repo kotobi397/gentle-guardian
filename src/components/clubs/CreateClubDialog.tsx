@@ -15,7 +15,7 @@ import { Switch } from '@/components/ui/switch';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useReadingClubs } from '@/hooks/useReadingClubs';
 import { useApprovedBooksForSelect } from '@/hooks/useApprovedBooksForSelect';
-import { BookOpen, Users, Lock, Globe, Search, Check } from 'lucide-react';
+import { BookOpen, Users, Lock, Globe, Search, Check } from '@/components/icons/kotobi-lucide';
 import { optimizeImageUrl } from '@/utils/imageProxy';
 
 interface CreateClubDialogProps {

@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Trash2 } from 'lucide-react';
+import { Trash2 } from '@/components/icons/kotobi-lucide';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 

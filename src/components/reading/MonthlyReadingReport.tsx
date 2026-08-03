@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, BookOpen, Calendar, FileText, TrendingUp, Loader2, CheckCircle2, Send } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Mail, BookOpen, Calendar, FileText, TrendingUp, CheckCircle2, Send } from '@/components/icons/kotobi-lucide';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';

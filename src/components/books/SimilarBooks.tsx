@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { SimpleBookCard } from './SimpleBookCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from '@/components/icons/kotobi-lucide';
 import { useCategoryImagesPreloader } from '@/hooks/useImagePreloader';
 
 interface SimilarBook {

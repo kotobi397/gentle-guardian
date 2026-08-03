@@ -4,11 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  BookOpen, Users, Eye, Download, Star, TrendingUp,
-  BarChart3, PieChart, Activity, RefreshCw, ArrowLeft,
-  Clock, Heart, MessageSquare, Globe, Layers, Shield
-} from 'lucide-react';
+import { BarChart3, PieChart, Activity, ArrowLeft, Layers } from 'lucide-react';
+import { BookOpen, Users, Eye, Download, Star, TrendingUp, RefreshCw, Clock, Heart, MessageSquare, Globe, Shield } from '@/components/icons/kotobi-lucide';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, PieChart as RechartsPie, Pie, Cell,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, X } from 'lucide-react';
+import { Heart, X } from '@/components/icons/kotobi-lucide';
 
 interface DonationPromptProps {
   onDismiss?: () => void;

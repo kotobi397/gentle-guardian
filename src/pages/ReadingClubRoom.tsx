@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Users, BookOpen, Send, ArrowRight, Crown, 
-  MessageCircle, BookMarked, LogOut, MoreVertical, Trash2, UserPlus
-} from 'lucide-react';
+import { ArrowRight, BookMarked, LogOut, MoreVertical, UserPlus } from 'lucide-react';
+import { Users, BookOpen, Send, Crown, MessageCircle, Trash2 } from '@/components/icons/kotobi-lucide';
 import InviteToClubDialog from '@/components/clubs/InviteToClubDialog';
 import Navbar from '@/components/layout/Navbar';
 import BottomNavigation from '@/components/layout/BottomNavigation';

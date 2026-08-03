@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
-import { Mail, Loader2, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Mail, CheckCircle, XCircle, AlertTriangle } from '@/components/icons/kotobi-lucide';
 import { cn } from '@/lib/utils';
 import * as authUtils from '@/utils/authUtils';
 

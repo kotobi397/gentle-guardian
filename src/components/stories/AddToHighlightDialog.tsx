@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Loader2, Plus, Star } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Plus, Star } from '@/components/icons/kotobi-lucide';
 import { useStoryHighlights } from '@/hooks/useStoryHighlights';
 import { toast } from 'sonner';
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight, Trash2, Eye, Pause, Play, Volume2, VolumeX, Heart, BookOpen, Star } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Trash2, Eye, Pause, Play, Heart, BookOpen, Star } from '@/components/icons/kotobi-lucide';
 import AddToHighlightDialog from './AddToHighlightDialog';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GroupedStories, StoryWithUser, StoryViewer as StoryViewerType, useStories } from '@/hooks/useStories';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Megaphone, Sparkles, Bell } from 'lucide-react';
+import { Megaphone, Sparkles, Bell } from '@/components/icons/kotobi-lucide';
 import { ReactionIcon, KOTOBI_REACTION_ICONS } from '@/components/notifications/KotobiReactionIcons';
 
 const STORAGE_KEY = 'kotobi_whats_new_seen_v1';

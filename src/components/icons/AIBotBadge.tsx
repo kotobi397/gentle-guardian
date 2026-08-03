@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot } from 'lucide-react';
+import { Bot } from '@/components/icons/kotobi-lucide';
 
 interface AIBotBadgeProps {
   size?: 'sm' | 'md' | 'lg';

@@ -5,7 +5,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Sun, Moon, BookOpen, Eye, Leaf, Palette, Coffee, Monitor } from 'lucide-react';
+import { Sun, Moon, Leaf, Coffee, Monitor } from 'lucide-react';
+import { BookOpen, Eye, Palette } from '@/components/icons/kotobi-lucide';
 
 export type ReadingMode = 'normal' | 'dark' | 'sepia' | 'paper' | 'focus' | 'eye-care' | 'green' | 'warm';
 

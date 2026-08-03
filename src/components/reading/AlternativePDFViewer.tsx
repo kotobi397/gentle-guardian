@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Home, ZoomIn, ZoomOut, RotateCcw, Menu } from 'lucide-react';
+import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home, Menu } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 

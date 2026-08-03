@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bell, CheckCircle, XCircle, Clock, Eye, RefreshCw, Trash2, BookOpen } from 'lucide-react';
+import { Bell, CheckCircle, XCircle, Clock, Eye, RefreshCw, Trash2, BookOpen } from '@/components/icons/kotobi-lucide';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';

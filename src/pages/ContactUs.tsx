@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Send, MessageSquare, MessageCircle, ExternalLink } from 'lucide-react';
+import { Send, MessageSquare, MessageCircle, ExternalLink } from '@/components/icons/kotobi-lucide';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/context/AuthContext';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';

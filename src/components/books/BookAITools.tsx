@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Sparkles, BookOpen, Quote, HelpCircle, Loader2, Coins, Clock, Puzzle, Users } from 'lucide-react';
+import { HelpCircle, Loader2, Puzzle } from 'lucide-react';
+import { Sparkles, BookOpen, Quote, Coins, Clock, Users } from '@/components/icons/kotobi-lucide';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';

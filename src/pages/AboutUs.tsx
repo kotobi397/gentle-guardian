@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, Heart } from 'lucide-react';
+import { BookOpen, Heart } from '@/components/icons/kotobi-lucide';
 import { SEOHead } from '@/components/seo/SEOHead';
 
 const AboutUs = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Heart } from 'lucide-react';
+import { Heart } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { useReviewLikes } from '@/hooks/useReviewLikes';
 import { useAuth } from '@/context/AuthContext';

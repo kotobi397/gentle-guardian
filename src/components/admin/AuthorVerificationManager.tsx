@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Shield, ShieldCheck, Search, Users, BookOpen, Heart } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import { Shield, Search, Users, BookOpen, Heart } from '@/components/icons/kotobi-lucide';
 import { useVerifiedAuthors } from '@/hooks/useVerifiedAuthors';
 import { optimizeImageUrl } from '@/utils/imageProxy';
 

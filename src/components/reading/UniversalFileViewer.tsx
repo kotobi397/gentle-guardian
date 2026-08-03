@@ -1,14 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { 
-  BookOpen, 
-  Home, 
-  Download, 
-  Maximize, 
-  Moon, 
-  Sun 
-} from 'lucide-react';
+import { Maximize, Moon, Sun } from 'lucide-react';
+import { BookOpen, Home, Download } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { useBookDetails } from '@/hooks/useBookDetails';
 import { useBookViews } from '@/hooks/useBookViews';

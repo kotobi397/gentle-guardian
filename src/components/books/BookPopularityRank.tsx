@@ -1,5 +1,6 @@
 import React from 'react';
-import { Trophy, TrendingUp, Flame, Crown, Medal, Award } from 'lucide-react';
+import { Medal } from 'lucide-react';
+import { Trophy, TrendingUp, Flame, Crown, Award } from '@/components/icons/kotobi-lucide';
 import { getCategoryInArabic } from '@/utils/categoryTranslation';
 
 interface BookPopularityRankProps {

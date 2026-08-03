@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { BookOpen, Share2, Heart, Clock, User, Calendar, Check, ExternalLink, Download, Globe } from 'lucide-react';
+import { BookOpen, Share2, Heart, Clock, User, Calendar, Check, ExternalLink, Download, Globe } from '@/components/icons/kotobi-lucide';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import AuthorList from './AuthorList';

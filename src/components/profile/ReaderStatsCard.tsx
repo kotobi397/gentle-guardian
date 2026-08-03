@@ -1,15 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import {
-  BookOpen,
-  Clock,
-  Layers,
-  Star,
-  TrendingUp,
-  Award,
-  Flame,
-} from 'lucide-react';
+import { Layers } from 'lucide-react';
+import { BookOpen, Clock, Star, TrendingUp, Award, Flame } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';

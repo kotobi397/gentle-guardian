@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Trash2, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Trash2 } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,

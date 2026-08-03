@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Send, X, Users, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { MessageCircle, Send, X, Users } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

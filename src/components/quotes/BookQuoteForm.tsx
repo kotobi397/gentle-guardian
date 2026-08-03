@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Quote, Plus } from 'lucide-react';
+import { Quote, Plus } from '@/components/icons/kotobi-lucide';
 import { useQuotes } from '@/hooks/useQuotes';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';

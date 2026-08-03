@@ -2,18 +2,8 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  MessageCircle, 
-  Send, 
-  X, 
-  Sparkles,
-  Loader2,
-  BookOpen,
-  Lightbulb,
-  FileText,
-  HelpCircle,
-  RotateCcw
-} from 'lucide-react';
+import { Loader2, Lightbulb, HelpCircle, RotateCcw } from 'lucide-react';
+import { MessageCircle, Send, X, Sparkles, BookOpen, FileText } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase, supabaseFunctions } from '@/lib/supabaseClient';
 import { toast } from 'sonner';

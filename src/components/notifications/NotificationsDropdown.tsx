@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, CheckCircle, XCircle, Clock, Eye, Trash2, RefreshCw, BookOpen, Heart } from 'lucide-react';
+import { Bell, CheckCircle, XCircle, Clock, Eye, Trash2, RefreshCw, BookOpen, Heart } from '@/components/icons/kotobi-lucide';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

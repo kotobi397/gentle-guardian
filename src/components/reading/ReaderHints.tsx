@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lightbulb, BookOpen, Users, X } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
+import { BookOpen, Users, X } from '@/components/icons/kotobi-lucide';
 
 interface PageHint {
   paragraph_index: number;

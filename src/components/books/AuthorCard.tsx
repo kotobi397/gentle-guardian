@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Globe, ExternalLink, Users } from 'lucide-react';
+import { Globe, ExternalLink, Users } from '@/components/icons/kotobi-lucide';
 import { authorImageUrls } from '@/data/authorImageUrls';
 import { useNavigate } from 'react-router-dom';
 import { optimizeImageUrl } from '@/utils/imageProxy';

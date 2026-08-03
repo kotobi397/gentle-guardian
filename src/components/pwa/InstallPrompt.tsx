@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, X } from 'lucide-react';
+import { Download, X } from '@/components/icons/kotobi-lucide';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface InstallPromptProps {

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Upload, AlertCircle, Clock, UserCheck, LogIn } from 'lucide-react';
+import { UserCheck, LogIn } from 'lucide-react';
+import { Upload, AlertCircle, Clock } from '@/components/icons/kotobi-lucide';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
