@@ -129,7 +129,7 @@ const FloatingControls = ({
           >
             <Button
               size="icon"
-              className={`rounded-full h-12 w-12 shadow-lg ${
+              className={`kotobi-save-btn ${isFavorite ? 'is-saved is-bursting' : ''} rounded-full h-12 w-12 shadow-lg ${
                 isFavorite 
                   ? 'bg-gradient-to-br from-book-primary to-book-secondary text-white hover:shadow-book-primary/30' 
                   : 'bg-card/90 hover:bg-card border border-book-primary/20 text-book-primary'
@@ -140,14 +140,18 @@ const FloatingControls = ({
               }}
               title={isUserLoggedIn ? (isFavorite ? "إزالة من المفضلة" : "إضافة للمفضلة") : "تسجيل الدخول للإضافة للمفضلة"}
             >
-              <Bookmark 
-                className={`h-5 w-5 ${isFavorite ? 'animate-pulse' : ''}`} 
-                fill={isFavorite ? "white" : "none"} 
-              />
-              {isFavorite && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-book-primary animate-ping"></span>
-              )}
+              <span className="kotobi-save-mark">
+                <Bookmark 
+                  className="h-5 w-5" 
+                  fill={isFavorite ? "white" : "none"} 
+                />
+              </span>
+              <span className="kotobi-save-ring" aria-hidden="true" />
+              <span className="kotobi-save-sparks" aria-hidden="true">
+                <i /><i /><i /><i /><i /><i />
+              </span>
             </Button>
+
           </motion.div>
         </motion.div>
         
