@@ -56,6 +56,7 @@ import { useDynamicSEO } from "@/hooks/useDynamicSEO";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { parseBookSlug } from "@/utils/bookSlug";
 import { optimizeImageUrl, resolvePdfDownloadUrl } from "@/utils/imageProxy";
+import { startInstantDownload } from "@/utils/instantDownload";
 import { useStories } from "@/hooks/useStories";
 import { useBookPopularityRank } from "@/hooks/useBookPopularityRank";
 import BookPopularityRank from "@/components/books/BookPopularityRank";
@@ -368,46 +369,35 @@ const BookDetailsContent = () => {
 
     setIsDownloading(true);
     try {
-      const sourceUrl = resolvePdfDownloadUrl(book.book_file_url);
-      const response = await fetch(sourceUrl);
-
-      if (!response.ok) {
-        throw new Error("فشل في تحميل الملف");
-      }
-
-      const blob = await response.blob();
-      if (!blob.size) {
-        throw new Error("الملف فارغ");
-      }
-
       const extension = getFileExtension(book.file_type, book.book_file_url);
-      const objectUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = objectUrl;
-      link.download = `${book.title} - kotobi${extension}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(objectUrl);
+      const fileName = `${book.title} - kotobi${extension}`;
 
-      await recordDownload();
+      // يبدأ التنزيل فورًا عبر رابط مباشر (بدون انتظار تحميل الملف كاملًا)
+      startInstantDownload(book.book_file_url, fileName);
+      toast.success("بدأ تحميل الكتاب");
 
-      if (user) {
-        await supabase.from("user_downloads").upsert(
-          {
-            user_id: user.id,
-            book_id: String(book.id),
-            book_title: book.title,
-            book_author: book.author || null,
-            book_cover_url: validateCoverImage() || null,
-            book_slug: book.slug || null,
-            downloaded_at: new Date().toISOString(),
-          },
-          { onConflict: "user_id,book_id" },
-        );
-      }
-
-      toast.success("تم تحميل الكتاب بنجاح");
+      // تسجيل الإحصائيات في الخلفية دون تعطيل التنزيل
+      void (async () => {
+        try {
+          await recordDownload();
+          if (user) {
+            await supabase.from("user_downloads").upsert(
+              {
+                user_id: user.id,
+                book_id: String(book.id),
+                book_title: book.title,
+                book_author: book.author || null,
+                book_cover_url: validateCoverImage() || null,
+                book_slug: book.slug || null,
+                downloaded_at: new Date().toISOString(),
+              },
+              { onConflict: "user_id,book_id" },
+            );
+          }
+        } catch (e) {
+          console.error("خطأ في تسجيل التحميل:", e);
+        }
+      })();
     } catch (error) {
       console.error("خطأ في التحميل المباشر:", error);
       toast.error("تعذر تحميل الكتاب الآن، تأكد من توفر الملف ثم حاول مجددًا");
