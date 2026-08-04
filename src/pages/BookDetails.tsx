@@ -48,6 +48,7 @@ import { StarRating } from "@/components/ui/star-rating";
 import { useBookReviewStats } from "@/hooks/useBookReviewStats";
 import { BookLikeDislikeButtons } from "@/components/books/BookLikeDislikeButtons";
 import SaveBookButton from "@/components/books/SaveBookButton";
+import DownloadBookButton from "@/components/books/DownloadBookButton";
 
 import { BookQuoteForm } from "@/components/quotes/BookQuoteForm";
 import { useBookDownloads } from "@/hooks/useBookDownloads";
