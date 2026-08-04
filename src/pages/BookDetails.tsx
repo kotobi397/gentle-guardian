@@ -1144,17 +1144,11 @@ const BookDetailsContent = () => {
                         {book.book_file_url && book.display_type !== "read_only" && (
                           <div className="space-y-2">
                             <div className="grid grid-cols-3 gap-2">
-                              <Button
-                                onClick={handleDirectDownload}
-                                disabled={isDownloading}
-                                className="w-full bg-muted hover:bg-muted/80 text-foreground font-cairo text-sm py-2 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
-                              >
-                                {isDownloading ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                ) : (
-                                  "تحميل"
-                                )}
-                              </Button>
+                              <DownloadBookButton
+                                onDownload={handleDirectDownload}
+                                loading={isDownloading}
+                              />
+
 
                               <SaveBookButton
                                 saved={isFavorite(book.id)}
