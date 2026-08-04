@@ -56,6 +56,7 @@ import { useDynamicSEO } from "@/hooks/useDynamicSEO";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { parseBookSlug } from "@/utils/bookSlug";
 import { optimizeImageUrl, resolvePdfDownloadUrl } from "@/utils/imageProxy";
+import { startInstantDownload } from "@/utils/instantDownload";
 import { useStories } from "@/hooks/useStories";
 import { useBookPopularityRank } from "@/hooks/useBookPopularityRank";
 import BookPopularityRank from "@/components/books/BookPopularityRank";
