@@ -1673,3 +1673,91 @@ html.low-end-device .kotobi-dl-btn * { animation: none !important; }
 }
 html.low-end-device .kotobi-vote-sparks { display: none; }
 html.low-end-device .kotobi-vote-btn * { animation: none !important; }
+
+/* ===== أنميشن زر المتابعة الخاص بكتبي (GPU-only: transform/opacity) ===== */
+.kotobi-follow-btn {
+  transition: background-color .25s ease, color .2s ease, border-color .25s ease, transform .18s cubic-bezier(.34,1.56,.64,1);
+}
+.kotobi-follow-btn:active { transform: scale(.955); }
+
+.kotobi-follow-mark { display: inline-flex; transform-origin: 50% 60%; }
+.kotobi-follow-btn.is-bursting.is-in .kotobi-follow-mark { animation: kotobi-follow-in .55s cubic-bezier(.34,1.56,.64,1); }
+.kotobi-follow-btn.is-bursting.is-out .kotobi-follow-mark { animation: kotobi-follow-out .5s ease-out; }
+.kotobi-follow-btn.is-loading .kotobi-follow-mark { animation: kotobi-follow-pulse 1s ease-in-out infinite; }
+
+.kotobi-follow-head, .kotobi-follow-body { transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+
+.kotobi-follow-plus {
+  transform-origin: 18.5px 8.7px;
+  transition: opacity .2s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.kotobi-follow-btn.is-following .kotobi-follow-plus { opacity: 0; transform: rotate(90deg) scale(.4); }
+
+.kotobi-follow-check {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 10;
+  opacity: 0;
+  transition: stroke-dashoffset .35s ease .08s, opacity .2s ease .08s;
+}
+.kotobi-follow-btn.is-following .kotobi-follow-check { stroke-dashoffset: 0; opacity: 1; }
+
+.kotobi-follow-label { position: relative; display: inline-block; }
+.kotobi-follow-btn.is-bursting .kotobi-follow-label { animation: kotobi-label-pop .45s ease-out; }
+
+.kotobi-follow-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid hsl(var(--primary) / .5);
+  opacity: 0;
+  transform: scale(.88);
+  pointer-events: none;
+}
+.kotobi-follow-btn.is-bursting.is-in .kotobi-follow-ring { animation: kotobi-ring .6s ease-out; }
+.kotobi-follow-btn.is-bursting.is-out .kotobi-follow-ring { animation: kotobi-ring-in .45s ease-out; }
+
+.kotobi-follow-sparks {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+.kotobi-follow-sparks i {
+  position: absolute;
+  width: 4px; height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  opacity: 0;
+}
+.kotobi-follow-btn.is-bursting.is-in .kotobi-follow-sparks i { animation: kotobi-spark .55s ease-out forwards; }
+.kotobi-follow-sparks i:nth-child(1) { --sx: 20px;  --sy: -15px; }
+.kotobi-follow-sparks i:nth-child(2) { --sx: -22px; --sy: -11px; animation-delay: .04s; }
+.kotobi-follow-sparks i:nth-child(3) { --sx: 12px;  --sy: 17px;  animation-delay: .06s; }
+.kotobi-follow-sparks i:nth-child(4) { --sx: -14px; --sy: 16px;  animation-delay: .02s; }
+.kotobi-follow-sparks i:nth-child(5) { --sx: 30px;  --sy: 5px;   animation-delay: .08s; }
+
+@keyframes kotobi-follow-in {
+  0%   { transform: translateY(3px) scale(.8) rotate(-8deg); }
+  55%  { transform: translateY(-2px) scale(1.16) rotate(4deg); }
+  100% { transform: translateY(0) scale(1) rotate(0); }
+}
+@keyframes kotobi-follow-out {
+  0%   { transform: scale(1) rotate(0); }
+  40%  { transform: scale(.82) rotate(-6deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes kotobi-follow-pulse {
+  0%, 100% { transform: scale(1); opacity: .75; }
+  50%      { transform: scale(1.1); opacity: 1; }
+}
+@keyframes kotobi-ring-in {
+  0%   { opacity: .8; transform: scale(1.12); }
+  100% { opacity: 0;  transform: scale(.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kotobi-follow-btn, .kotobi-follow-btn * { animation: none !important; transition: none !important; }
+}
+html.low-end-device .kotobi-follow-sparks { display: none; }
+html.low-end-device .kotobi-follow-btn * { animation: none !important; }
