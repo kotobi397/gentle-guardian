@@ -47,6 +47,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { StarRating } from "@/components/ui/star-rating";
 import { useBookReviewStats } from "@/hooks/useBookReviewStats";
 import { BookLikeDislikeButtons } from "@/components/books/BookLikeDislikeButtons";
+import SaveBookButton from "@/components/books/SaveBookButton";
+
 import { BookQuoteForm } from "@/components/quotes/BookQuoteForm";
 import { useBookDownloads } from "@/hooks/useBookDownloads";
 import { useDynamicSEO } from "@/hooks/useDynamicSEO";
