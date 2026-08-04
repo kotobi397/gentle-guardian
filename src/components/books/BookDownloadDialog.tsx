@@ -72,30 +72,9 @@ const BookDownloadDialog: React.FC<BookDownloadDialogProps> = ({ book, trigger }
     setIsDownloading(true);
 
     try {
-      const proxiedUrl = convertPdfToProxyUrl(book.downloadUrl);
-      const response = await fetch(proxiedUrl);
-      
-      if (!response.ok || !response.body) {
-        throw new Error('فشل في تحميل الملف');
-      }
-
-      const reader = response.body.getReader();
-      let chunks: BlobPart[] = [];
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        if (value) {
-          chunks.push(value);
-        }
-      }
-
-      // تحديد نوع الملف
-      let mimeType = 'application/pdf';
+      // تحديد امتداد الملف
       let fileExtension = '.pdf';
-      
       if (book.file_type) {
-        mimeType = book.file_type;
         switch (book.file_type) {
           case 'text/plain':
             fileExtension = '.txt';
@@ -106,46 +85,39 @@ const BookDownloadDialog: React.FC<BookDownloadDialogProps> = ({ book, trigger }
           case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
             fileExtension = '.docx';
             break;
-          default:
+          default: {
             const urlParts = book.downloadUrl.split('.');
             if (urlParts.length > 1) {
               fileExtension = '.' + urlParts[urlParts.length - 1].split('?')[0];
             }
+          }
         }
       }
 
-      const blob = new Blob(chunks, { type: mimeType });
+      // تنزيل فوري بدون انتظار تحميل الملف كاملًا
+      startInstantDownload(book.downloadUrl, `${book.title} - kotobi${fileExtension}`);
 
-      const downloadUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `${book.title} - kotobi${fileExtension}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(downloadUrl);
+      setDownloadComplete(true);
+      toast.success('بدأ تحميل الكتاب');
 
-      await recordDownload();
-      
-      // تسجيل التحميل في سجل المستخدم
-      if (user) {
+      void (async () => {
         try {
-          await supabase.from('user_downloads').upsert({
-            user_id: user.id,
-            book_id: String(book.id),
-            book_title: book.title,
-            book_author: book.author?.name || null,
-            book_cover_url: book.coverImage || null,
-            book_slug: book.slug || null,
-            downloaded_at: new Date().toISOString(),
-          }, { onConflict: 'user_id,book_id' });
+          await recordDownload();
+          if (user) {
+            await supabase.from('user_downloads').upsert({
+              user_id: user.id,
+              book_id: String(book.id),
+              book_title: book.title,
+              book_author: book.author?.name || null,
+              book_cover_url: book.coverImage || null,
+              book_slug: book.slug || null,
+              downloaded_at: new Date().toISOString(),
+            }, { onConflict: 'user_id,book_id' });
+          }
         } catch (e) {
           console.error('Error tracking download:', e);
         }
-      }
-      
-      setDownloadComplete(true);
-      toast.success('تم تحميل الكتاب بنجاح!');
+      })();
 
       setTimeout(() => {
         setIsOpen(false);
