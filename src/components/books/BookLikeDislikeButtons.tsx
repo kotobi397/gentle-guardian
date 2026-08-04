@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconBookThumbUp, IconBookThumbDown } from '@/components/icons/KotobiVoteIcons';
 import { useBookLikes } from '@/hooks/useBookLikes';
@@ -33,6 +33,17 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
   const { likesCount, isLiked, loading: likeLoading, toggleLike, removeLikeLocally } = useBookLikes(bookId);
   const { dislikesCount, isDisliked, loading: dislikeLoading, toggleDislike, removeDislikeLocally } = useBookDislikes(bookId);
 
+  const [burst, setBurst] = useState<'up' | 'down' | null>(null);
+  const burstTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(burstTimer.current), []);
+
+  const triggerBurst = (kind: 'up' | 'down') => {
+    setBurst(kind);
+    clearTimeout(burstTimer.current);
+    burstTimer.current = setTimeout(() => setBurst(null), 650);
+  };
+
   const requireAuth = () => {
     const redirectPath = location.pathname + location.search;
     localStorage.setItem('auth_redirect_path', redirectPath);
@@ -45,6 +56,7 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
       requireAuth();
       return;
     }
+    triggerBurst('up');
     if (isDisliked) removeDislikeLocally();
     try {
       await toggleLike();
@@ -60,6 +72,7 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
       requireAuth();
       return;
     }
+    triggerBurst('down');
     if (isLiked) removeLikeLocally();
     try {
       await toggleDislike();
@@ -93,14 +106,16 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
         disabled={likeLoading || dislikeLoading}
         aria-pressed={isLiked}
         aria-label="أعجبني"
-        className={`${baseClash} ${buttonSizeClasses[size]} ${likeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
+        className={`kotobi-vote-btn is-up ${burst === 'up' ? 'is-bursting' : ''} ${baseClash} ${buttonSizeClasses[size]} ${likeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
           isLiked ? '!text-clash-gold ring-2 ring-clash-gold/70' : '!text-clash-foreground/90'
         }`}
       >
-        <span className={iconBoxClasses[size]}>
+        <span className={`kotobi-vote-icon ${iconBoxClasses[size]}`}>
           <IconBookThumbUp />
         </span>
-        {showCount && <span className="tabular-nums">{likesCount}</span>}
+        {showCount && <span className="kotobi-vote-count tabular-nums">{likesCount}</span>}
+        <span className="kotobi-vote-ring" aria-hidden="true" />
+        <span className="kotobi-vote-sparks" aria-hidden="true"><i /><i /><i /><i /><i /></span>
       </button>
 
       <button
@@ -109,14 +124,16 @@ export const BookLikeDislikeButtons: React.FC<BookLikeDislikeButtonsProps> = ({
         disabled={likeLoading || dislikeLoading}
         aria-pressed={isDisliked}
         aria-label="لم يعجبني"
-        className={`${baseClash} ${buttonSizeClasses[size]} ${dislikeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
+        className={`kotobi-vote-btn is-down ${burst === 'down' ? 'is-bursting' : ''} ${baseClash} ${buttonSizeClasses[size]} ${dislikeClassName} border-clash-gold-deep/70 bg-clash-deep shadow-[0_3px_0_hsl(var(--clash-panel-deep))] ${
           isDisliked ? '!text-clash-gold ring-2 ring-clash-gold/70' : '!text-clash-foreground/90'
         }`}
       >
-        <span className={iconBoxClasses[size]}>
+        <span className={`kotobi-vote-icon ${iconBoxClasses[size]}`}>
           <IconBookThumbDown />
         </span>
-        {showCount && <span className="tabular-nums">{dislikesCount}</span>}
+        {showCount && <span className="kotobi-vote-count tabular-nums">{dislikesCount}</span>}
+        <span className="kotobi-vote-ring" aria-hidden="true" />
+        <span className="kotobi-vote-sparks" aria-hidden="true"><i /><i /><i /><i /><i /></span>
       </button>
     </div>
   );
