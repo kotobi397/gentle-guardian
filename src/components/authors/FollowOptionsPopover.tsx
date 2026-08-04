@@ -11,6 +11,7 @@ import { Heart, MessageCircle } from '@/components/icons/kotobi-lucide';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { buildWhatsAppUrl } from '@/utils/whatsapp';
+import KotobiFollowButton from '@/components/authors/KotobiFollowButton';
 
 // X (Twitter) Icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -138,28 +139,13 @@ export const FollowOptionsPopover: React.FC<FollowOptionsPopoverProps> = ({
 
   // زر المتابعة الأساسي
   const FollowTriggerButton = (
-    <Button
-      onClick={handleButtonClick}
-      disabled={loading}
-      variant="secondary"
-      size="sm"
-      className={`gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-300 dark:border-gray-600 whitespace-nowrap ${hideText ? 'px-3' : ''} ${className}`}
-      title={hideText ? (isFollowing ? 'إلغاء المتابعة' : 'متابعة') : undefined}
-    >
-      {loading ? (
-        <LoaderCircle className="h-4 w-4 animate-spin" />
-      ) : isFollowing ? (
-        <>
-          <UserMinus className="h-4 w-4 flex-shrink-0" />
-          {!hideText && <span className="truncate">إلغاء المتابعة</span>}
-        </>
-      ) : (
-        <>
-          <UserPlus className="h-4 w-4 flex-shrink-0" />
-          {!hideText && <span className="truncate">متابعة</span>}
-        </>
-      )}
-    </Button>
+    <KotobiFollowButton
+      isFollowing={isFollowing}
+      loading={loading}
+      hideText={hideText}
+      onPress={handleButtonClick}
+      className={className}
+    />
   );
 
   // إذا لم تكن هناك روابط اجتماعية أو كان يتابع بالفعل، لا نعرض Popover
