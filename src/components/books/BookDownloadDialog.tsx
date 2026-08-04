@@ -12,6 +12,7 @@ import { Download, Check, BookOpen } from '@/components/icons/kotobi-lucide';
 import { toast } from 'sonner';
 import { useBookDownloads } from '@/hooks/useBookDownloads';
 import { convertPdfToProxyUrl } from '@/utils/imageProxy';
+import { startInstantDownload } from '@/utils/instantDownload';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
