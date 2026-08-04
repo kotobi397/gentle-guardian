@@ -1604,3 +1604,72 @@ html.low-end-device .kotobi-save-sparks { display: none; }
 html.low-end-device .kotobi-save-btn * { animation: none !important; }
 html.low-end-device .kotobi-dl-btn * { animation: none !important; }
 
+
+/* ===== أنميشن الإعجاب/عدم الإعجاب الخاص بكتبي (GPU-only) ===== */
+.kotobi-vote-btn {
+  position: relative;
+  transition: color .2s ease, box-shadow .25s ease, transform .18s cubic-bezier(.34,1.56,.64,1);
+}
+.kotobi-vote-btn:active { transform: scale(.94); }
+
+.kotobi-vote-icon { display: inline-flex; transform-origin: 50% 80%; }
+.kotobi-vote-btn.is-up.is-bursting .kotobi-vote-icon { animation: kotobi-vote-up .55s cubic-bezier(.34,1.56,.64,1); }
+.kotobi-vote-btn.is-down.is-bursting .kotobi-vote-icon { animation: kotobi-vote-down .55s cubic-bezier(.34,1.56,.64,1); }
+
+.kotobi-vote-count { display: inline-block; }
+.kotobi-vote-btn.is-bursting .kotobi-vote-count { animation: kotobi-vote-count .4s ease-out; }
+
+.kotobi-vote-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid hsl(var(--clash-gold) / .6);
+  opacity: 0;
+  transform: scale(.86);
+  pointer-events: none;
+}
+.kotobi-vote-btn.is-bursting .kotobi-vote-ring { animation: kotobi-ring .6s ease-out; }
+
+.kotobi-vote-sparks {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+.kotobi-vote-sparks i {
+  position: absolute;
+  width: 4px; height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 9999px;
+  background: hsl(var(--clash-gold));
+  opacity: 0;
+}
+.kotobi-vote-btn.is-bursting .kotobi-vote-sparks i { animation: kotobi-spark .5s ease-out forwards; }
+.kotobi-vote-sparks i:nth-child(1) { --sx: 18px;  --sy: -14px; }
+.kotobi-vote-sparks i:nth-child(2) { --sx: -20px; --sy: -10px; animation-delay: .04s; }
+.kotobi-vote-sparks i:nth-child(3) { --sx: 10px;  --sy: 16px;  animation-delay: .06s; }
+.kotobi-vote-sparks i:nth-child(4) { --sx: -12px; --sy: 15px;  animation-delay: .02s; }
+.kotobi-vote-sparks i:nth-child(5) { --sx: 26px;  --sy: 4px;   animation-delay: .08s; }
+
+@keyframes kotobi-vote-up {
+  0%   { transform: translateY(0) rotate(0) scale(1); }
+  40%  { transform: translateY(-4px) rotate(-12deg) scale(1.18); }
+  70%  { transform: translateY(1px) rotate(4deg) scale(.97); }
+  100% { transform: translateY(0) rotate(0) scale(1); }
+}
+@keyframes kotobi-vote-down {
+  0%   { transform: translateY(0) rotate(0) scale(1); }
+  40%  { transform: translateY(4px) rotate(12deg) scale(1.14); }
+  70%  { transform: translateY(-1px) rotate(-4deg) scale(.97); }
+  100% { transform: translateY(0) rotate(0) scale(1); }
+}
+@keyframes kotobi-vote-count {
+  0%   { transform: translateY(7px) scale(.85); opacity: .3; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kotobi-vote-btn, .kotobi-vote-btn * { animation: none !important; transition: none !important; }
+}
+html.low-end-device .kotobi-vote-sparks { display: none; }
+html.low-end-device .kotobi-vote-btn * { animation: none !important; }
