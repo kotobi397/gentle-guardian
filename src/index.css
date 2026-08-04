@@ -1442,3 +1442,39 @@ html.save-data .pointer-events-none[aria-hidden="true"] {
 html, body {
   touch-action: manipulation;
 }
+
+/* ===== تهدئة الأصفر الفاقع في كل الموقع (مريح للعين) ===== */
+@layer utilities {
+  .text-yellow-300, .text-yellow-400, .text-yellow-500, .text-amber-300, .text-amber-400, .text-amber-500 {
+    color: hsl(40 45% 48%);
+  }
+  .dark .text-yellow-300, .dark .text-yellow-400, .dark .text-yellow-500,
+  .dark .text-amber-300, .dark .text-amber-400, .dark .text-amber-500 {
+    color: hsl(40 42% 62%);
+  }
+  .bg-yellow-300, .bg-yellow-400, .bg-yellow-500, .bg-amber-300, .bg-amber-400, .bg-amber-500 {
+    background-color: hsl(40 42% 55%);
+  }
+  .bg-yellow-50, .bg-yellow-100, .bg-amber-50, .bg-amber-100 {
+    background-color: hsl(40 22% 93%);
+  }
+  .dark .bg-yellow-50, .dark .bg-yellow-100, .dark .bg-amber-50, .dark .bg-amber-100 {
+    background-color: hsl(34 12% 22%);
+  }
+  .border-yellow-300, .border-yellow-400, .border-yellow-500,
+  .border-amber-300, .border-amber-400, .border-amber-500 {
+    border-color: hsl(40 30% 60%);
+  }
+  .from-yellow-300, .from-yellow-400, .from-yellow-500, .from-amber-300, .from-amber-400, .from-amber-500 {
+    --tw-gradient-from: hsl(40 42% 55%) var(--tw-gradient-from-position);
+    --tw-gradient-to: hsl(40 42% 55% / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  .to-yellow-300, .to-yellow-400, .to-yellow-500, .to-amber-300, .to-amber-400, .to-amber-500 {
+    --tw-gradient-to: hsl(38 38% 48%) var(--tw-gradient-to-position);
+  }
+  .via-yellow-400, .via-amber-400 {
+    --tw-gradient-to: hsl(40 42% 55% / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), hsl(40 42% 55%) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  }
+}
