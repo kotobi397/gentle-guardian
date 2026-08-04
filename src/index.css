@@ -1478,3 +1478,82 @@ html, body {
     --tw-gradient-stops: var(--tw-gradient-from), hsl(40 42% 55%) var(--tw-gradient-via-position), var(--tw-gradient-to);
   }
 }
+
+/* ===== أنميشن زر الحفظ الخاص بكتبي (GPU-only: transform/opacity) ===== */
+.kotobi-save-btn {
+  transition: background-color .25s ease, box-shadow .25s ease, transform .18s cubic-bezier(.34,1.56,.64,1);
+  will-change: auto;
+}
+.kotobi-save-btn:active { transform: scale(.955); }
+
+.kotobi-save-mark { display: inline-flex; transform-origin: 50% 85%; }
+.kotobi-save-btn.is-saved .kotobi-save-mark { animation: kotobi-mark-drop .5s cubic-bezier(.34,1.56,.64,1); }
+
+.kotobi-save-check {
+  stroke-dasharray: 12;
+  stroke-dashoffset: 12;
+  opacity: 0;
+  transition: stroke-dashoffset .35s ease .1s, opacity .2s ease .1s;
+}
+.kotobi-save-btn.is-saved .kotobi-save-check { stroke-dashoffset: 0; opacity: 1; }
+
+.kotobi-save-label { position: relative; }
+.kotobi-save-btn.is-bursting .kotobi-save-label { animation: kotobi-label-pop .45s ease-out; }
+
+.kotobi-save-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid hsl(var(--primary) / .55);
+  opacity: 0;
+  transform: scale(.85);
+  pointer-events: none;
+}
+.kotobi-save-btn.is-bursting .kotobi-save-ring { animation: kotobi-ring .6s ease-out; }
+
+.kotobi-save-sparks {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+.kotobi-save-sparks i {
+  position: absolute;
+  width: 4px; height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  opacity: 0;
+}
+.kotobi-save-btn.is-bursting .kotobi-save-sparks i { animation: kotobi-spark .55s ease-out forwards; }
+.kotobi-save-sparks i:nth-child(1) { --sx: 22px;  --sy: -16px; }
+.kotobi-save-sparks i:nth-child(2) { --sx: -24px; --sy: -12px; animation-delay: .04s; }
+.kotobi-save-sparks i:nth-child(3) { --sx: 14px;  --sy: 18px;  animation-delay: .06s; }
+.kotobi-save-sparks i:nth-child(4) { --sx: -16px; --sy: 18px;  animation-delay: .02s; }
+.kotobi-save-sparks i:nth-child(5) { --sx: 32px;  --sy: 6px;   animation-delay: .08s; }
+.kotobi-save-sparks i:nth-child(6) { --sx: -32px; --sy: 4px;   animation-delay: .05s; }
+
+@keyframes kotobi-mark-drop {
+  0%   { transform: translateY(-6px) scale(.7); }
+  55%  { transform: translateY(2px) scale(1.12); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes kotobi-label-pop {
+  0%   { transform: translateY(6px); opacity: .2; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes kotobi-ring {
+  0%   { opacity: .9; transform: scale(.88); }
+  100% { opacity: 0;  transform: scale(1.14); }
+}
+@keyframes kotobi-spark {
+  0%   { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+  100% { opacity: 0; transform: translate3d(var(--sx), var(--sy), 0) scale(.4); }
+}
+
+/* إيقاف الأنميشن على الأجهزة الضعيفة أو عند تفضيل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .kotobi-save-btn, .kotobi-save-btn * { animation: none !important; transition: none !important; }
+}
+html.low-end-device .kotobi-save-sparks { display: none; }
+html.low-end-device .kotobi-save-btn * { animation: none !important; }
