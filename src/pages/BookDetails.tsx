@@ -1154,12 +1154,11 @@ const BookDetailsContent = () => {
                                 )}
                               </Button>
 
-                              <Button
-                                className="w-full bg-gray-700 hover:bg-gray-800 text-white font-cairo text-sm py-2 rounded-2xl border-0 shadow-sm hover:shadow-md transition-all duration-300"
-                                onClick={handleFavoriteToggle}
-                              >
-                                {isFavorite(book.id) ? "محفوظ" : "حفظ"}
-                              </Button>
+                              <SaveBookButton
+                                saved={isFavorite(book.id)}
+                                onToggle={handleFavoriteToggle}
+                              />
+
 
                               <Popover>
                                 <PopoverTrigger asChild>
