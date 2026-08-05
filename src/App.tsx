@@ -54,6 +54,8 @@ const AuthorPage = lazy(() => import('./pages/AuthorPage'));
 const PublicUserProfile = lazy(() => import('./pages/PublicUserProfile'));
 const Suggestions = lazy(() => import('./pages/Suggestions'));
 const Messages = lazy(() => import('./pages/Messages'));
+const BookRequests = lazy(() => import('./pages/BookRequests'));
+
 
 const ReadingClubs = lazy(() => import('./pages/ReadingClubs'));
 const ReadingClubRoom = lazy(() => import('./pages/ReadingClubRoom'));
