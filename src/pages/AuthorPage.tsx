@@ -42,6 +42,7 @@ import { MessageButton } from "@/components/messaging/MessageButton";
 import { getPublicUserProfilePath } from "@/utils/userProfile";
 
 import { optimizeImageUrl } from '@/utils/imageProxy';
+import { UserBadgesSection } from '@/components/badges/UserBadgesSection';
 
 const encodePathSegment = (value: string) => {
   try {
