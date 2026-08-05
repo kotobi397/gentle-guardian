@@ -61,6 +61,8 @@ Allow: /book/*
 Allow: /tahmil/*
 Allow: /qiraa/*
 Allow: /molakhas/*
+Allow: /user/*
+Allow: /sitemaps/*
 Allow: /category/*
 Allow: /author/*
 Allow: /categories
@@ -84,7 +86,7 @@ Allow: /*.jpeg$
 Allow: /*.webp$
 Allow: /*.svg$
 
-# Sitemap location
+# Sitemap index (points to chunked child sitemaps)
 Sitemap: https://kotobi.xyz/sitemap.xml
 
 # Host (preferred domain)
