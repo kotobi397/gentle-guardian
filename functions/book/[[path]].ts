@@ -230,6 +230,7 @@ export const onRequest = async (context: any) => {
 
     if (isSearchEngine) {
       const response = await next();
+      if (!response.ok) return notFoundResponse();
       const originalHtml = await response.text();
       const modifiedHtml = injectMetaIntoHtml(originalHtml, meta);
 
