@@ -99,22 +99,20 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const pageRef = useRef(0);
+  const totalsRequestRef = useRef(0);
+  const selectionRequestRef = useRef(0);
 
-  // جلب قائمة الكتب + الإحصائيات العامة — يعتمد على المدة فقط،
-  // لذلك اختيار كتاب لا يعيد جلب الكتب ولا يُحدّث القائمة إطلاقاً.
+  // قائمة الكتب ثابتة وتعرض إحصائيات كل الوقت. تغيير الفترة لا يلمسها إطلاقاً.
   const fetchBooks = useCallback(async () => {
     setLoading(true);
     setError(null);
     pageRef.current = 0;
     try {
-      const [booksRes, totalsRes] = await Promise.all([
-        supabase.rpc('get_uploader_book_analytics', {
-          p_days: days,
-          p_limit: BOOKS_PER_PAGE,
-          p_offset: 0,
-        }),
-        supabase.rpc('get_uploader_overall_stats', { p_days: days }),
-      ]);
+      const booksRes = await supabase.rpc('get_uploader_book_analytics', {
+        p_days: 0,
+        p_limit: BOOKS_PER_PAGE,
+        p_offset: 0,
+      });
 
       if (booksRes.error) throw booksRes.error;
 
@@ -122,13 +120,32 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
       const mapped = rows.map(mapBook);
       setBooks(mapped);
 
-      const overall = ((totalsRes.data as any[]) || [])[0];
-      const count = overall ? toNumber(overall.total_books) : toNumber(rows[0]?.total_books);
+      const count = toNumber(rows[0]?.total_books);
       setTotalBooks(count);
+      setHasMore(mapped.length >= BOOKS_PER_PAGE && mapped.length < count);
+    } catch (err: any) {
+      console.error('[useUploaderAnalytics] خطأ:', err);
+      setError('حدث خطأ في جلب الإحصائيات');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // الملخص العلوي وحده يتغير مع الفترة، من دون إعادة تحميل قائمة الكتب.
+  const fetchTotals = useCallback(async () => {
+    const requestId = ++totalsRequestRef.current;
+    try {
+      const { data, error: rpcError } = await supabase.rpc('get_uploader_overall_stats', {
+        p_days: days,
+      });
+      if (rpcError) throw rpcError;
+      if (requestId !== totalsRequestRef.current) return;
+
+      const overall = ((data as any[]) || [])[0];
       setTotals(
         overall
           ? {
-              total_books: count,
+              total_books: toNumber(overall.total_books),
               downloads: toNumber(overall.downloads),
               reads_online: toNumber(overall.reads_online),
               card_clicks: toNumber(overall.card_clicks),
@@ -142,17 +159,16 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
             }
           : EMPTY_TOTALS,
       );
-      setHasMore(mapped.length >= BOOKS_PER_PAGE && mapped.length < count);
-    } catch (err: any) {
-      console.error('[useUploaderAnalytics] خطأ:', err);
-      setError('حدث خطأ في جلب الإحصائيات');
-    } finally {
-      setLoading(false);
+    } catch (err) {
+      if (requestId === totalsRequestRef.current) {
+        console.error('[useUploaderAnalytics] خطأ في الملخص:', err);
+      }
     }
   }, [days]);
 
   // جلب بيانات الاختيار (الخط الزمني + الدول) فقط — عند تغيير الكتاب المحدد
   const fetchSelection = useCallback(async () => {
+    const requestId = ++selectionRequestRef.current;
     setSelectionLoading(true);
     try {
       const [countriesRes, timelineRes] = await Promise.all([
@@ -166,6 +182,8 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
           p_book_id: bookId ?? null,
         }),
       ]);
+
+      if (requestId !== selectionRequestRef.current) return;
 
       setCountries(
         ((countriesRes.data as any[]) || []).map((row) => ({
@@ -189,7 +207,7 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
     } catch (err) {
       console.error('[useUploaderAnalytics] خطأ في بيانات الكتاب المحدد:', err);
     } finally {
-      setSelectionLoading(false);
+      if (requestId === selectionRequestRef.current) setSelectionLoading(false);
     }
   }, [days, bookId]);
 
@@ -199,7 +217,7 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
     try {
       const nextPage = pageRef.current + 1;
       const { data, error: rpcError } = await supabase.rpc('get_uploader_book_analytics', {
-        p_days: days,
+        p_days: 0,
         p_limit: BOOKS_PER_PAGE,
         p_offset: nextPage * BOOKS_PER_PAGE,
       });
@@ -218,11 +236,15 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
     } finally {
       setLoadingMore(false);
     }
-  }, [days, hasMore, loading, loadingMore, totalBooks]);
+  }, [hasMore, loading, loadingMore, totalBooks]);
 
   useEffect(() => {
     fetchBooks();
   }, [fetchBooks]);
+
+  useEffect(() => {
+    fetchTotals();
+  }, [fetchTotals]);
 
   useEffect(() => {
     fetchSelection();
@@ -230,8 +252,9 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
 
   const refetch = useCallback(() => {
     fetchBooks();
+    fetchTotals();
     fetchSelection();
-  }, [fetchBooks, fetchSelection]);
+  }, [fetchBooks, fetchSelection, fetchTotals]);
 
   return {
     books,

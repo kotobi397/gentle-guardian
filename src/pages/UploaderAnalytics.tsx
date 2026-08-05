@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -63,7 +63,7 @@ const StatTile: React.FC<{
   value: number;
   accent: string;
 }> = ({ icon, label, value, accent }) => (
-  <motion.div variants={itemVariants} whileHover={{ y: -4 }} className="will-change-transform">
+  <motion.div variants={itemVariants}>
     <Card className="h-full border-border overflow-hidden">
       <CardContent className="p-4 flex items-center gap-3">
         <div className={`rounded-xl p-2.5 ${accent}`}>{icon}</div>
@@ -78,22 +78,22 @@ const StatTile: React.FC<{
   </motion.div>
 );
 
-const BookRow: React.FC<{
+const BookRow = React.memo<{
   book: UploaderBookAnalytics;
   selected: boolean;
-  onSelect: () => void;
-  onOpen: () => void;
-}> = ({ book, selected, onSelect, onOpen }) => {
+  onSelect: (bookId: string) => void;
+  onOpen: (book: UploaderBookAnalytics) => void;
+}>(({ book, selected, onSelect, onOpen }) => {
   const clicks = book.card_clicks || 0;
   const opened = book.detail_views || 0;
   const conversion = clicks > 0 ? Math.min(100, Math.round((opened / clicks) * 100)) : 0;
 
   return (
-    <motion.div variants={itemVariants} layout>
+    <div className="analytics-book-row">
       <Card
-        onClick={onSelect}
-        className={`cursor-pointer transition-all duration-300 border-border hover:shadow-lg ${
-          selected ? 'ring-2 ring-primary shadow-lg' : ''
+        onClick={() => onSelect(book.book_id)}
+        className={`cursor-pointer border-border ${
+          selected ? 'ring-2 ring-primary' : ''
         }`}
       >
         <CardContent className="p-3 sm:p-4">
@@ -115,7 +115,7 @@ const BookRow: React.FC<{
                   className="font-tajawal text-xs shrink-0"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onOpen();
+                    onOpen(book);
                   }}
                 >
                   فتح الكتاب
@@ -157,9 +157,10 @@ const BookRow: React.FC<{
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   );
-};
+});
+BookRow.displayName = 'BookRow';
 
 const UploaderAnalytics: React.FC = () => {
   const { user, loading: authLoading } = useAuth();
@@ -184,6 +185,15 @@ const UploaderAnalytics: React.FC = () => {
 
   const sentinelRef = React.useRef<HTMLDivElement | null>(null);
 
+  const handleSelectBook = useCallback((bookId: string) => {
+    setSelectedBook((current) => (current === bookId ? null : bookId));
+  }, []);
+
+  const handleOpenBook = useCallback(
+    (book: UploaderBookAnalytics) => navigate(`/book/${book.slug || book.book_id}`),
+    [navigate],
+  );
+
   React.useEffect(() => {
     if (!authLoading && !user) navigate('/auth', { replace: true });
   }, [authLoading, user, navigate]);
@@ -204,7 +214,7 @@ const UploaderAnalytics: React.FC = () => {
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [hasMore, loadMore, books.length]);
+  }, [hasMore, loadMore]);
 
   // الإحصائيات العامة تشمل جميع الكتب (محسوبة في قاعدة البيانات)
   const totals = useMemo(
@@ -263,13 +273,9 @@ const UploaderAnalytics: React.FC = () => {
           {/* الترويسة */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 justify-between">
             <div className="flex items-center gap-3">
-              <motion.div
-                animate={{ scale: [1, 1.06, 1] }}
-                transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                className="rounded-2xl bg-primary/10 p-3"
-              >
+              <div className="rounded-2xl bg-primary/10 p-3">
                 <BarChart3 className="h-6 w-6 text-primary" />
-              </motion.div>
+              </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-cairo font-black text-foreground">
                   لوحة تحليلات الكاتب
@@ -388,7 +394,7 @@ const UploaderAnalytics: React.FC = () => {
                         stroke="hsl(var(--primary))"
                         fill="url(#gClicks)"
                         strokeWidth={2}
-                        animationDuration={700}
+                        isAnimationActive={false}
                       />
                       <Area
                         type="monotone"
@@ -396,7 +402,7 @@ const UploaderAnalytics: React.FC = () => {
                         stroke="#0ea5e9"
                         fill="#0ea5e922"
                         strokeWidth={2}
-                        animationDuration={900}
+                        isAnimationActive={false}
                       />
                       <Area
                         type="monotone"
@@ -404,7 +410,7 @@ const UploaderAnalytics: React.FC = () => {
                         stroke="#10b981"
                         fill="#10b98122"
                         strokeWidth={2}
-                        animationDuration={1100}
+                        isAnimationActive={false}
                       />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -452,20 +458,16 @@ const UploaderAnalytics: React.FC = () => {
                   </CardContent>
                 </Card>
               ) : (
-                <motion.div variants={containerVariants} className="space-y-3">
-                  <AnimatePresence initial={false}>
-                    {books.map((book) => (
-                      <BookRow
-                        key={book.book_id}
-                        book={book}
-                        selected={selectedBook === book.book_id}
-                        onSelect={() =>
-                          setSelectedBook(selectedBook === book.book_id ? null : book.book_id)
-                        }
-                        onOpen={() => navigate(`/book/${book.slug || book.book_id}`)}
-                      />
-                    ))}
-                  </AnimatePresence>
+                <div className="space-y-3">
+                  {books.map((book) => (
+                    <BookRow
+                      key={book.book_id}
+                      book={book}
+                      selected={selectedBook === book.book_id}
+                      onSelect={handleSelectBook}
+                      onOpen={handleOpenBook}
+                    />
+                  ))}
 
                   {/* حسّاس التحميل التدريجي */}
                   <div ref={sentinelRef} className="h-1 w-full" aria-hidden />
@@ -504,7 +506,7 @@ const UploaderAnalytics: React.FC = () => {
                       </Button>
                     </div>
                   )}
-                </motion.div>
+                </div>
               )}
             </motion.div>
 
@@ -537,11 +539,9 @@ const UploaderAnalytics: React.FC = () => {
                           </span>
                         </div>
                         <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                          <motion.div
+                          <div
                             className="h-full bg-primary rounded-full"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${Math.round((c.events / maxCountry) * 100)}%` }}
-                            transition={{ duration: 0.6, delay: index * 0.04 }}
+                            style={{ width: `${Math.round((c.events / maxCountry) * 100)}%` }}
                           />
                         </div>
                       </div>

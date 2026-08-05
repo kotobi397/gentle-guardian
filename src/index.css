@@ -1361,6 +1361,13 @@ img {
   contain-intrinsic-size: 280px 360px;
 }
 
+/* لوحة الكاتب: لا نرسم صفوف الكتب البعيدة عن نافذة العرض أثناء التمرير. */
+.analytics-book-row {
+  content-visibility: auto;
+  contain: layout paint style;
+  contain-intrinsic-size: auto 130px;
+}
+
 /* 2) تقليل ضغط الـ GPU: نزيل will-change الدائم من بطاقات الكتب
    ونضيفه فقط عند الـ hover (أجهزة سطح المكتب) */
 .book-card {
