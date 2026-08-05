@@ -12,6 +12,8 @@ import { useBookReviewStats } from '@/hooks/useBookReviewStats';
 import { useBookDownloads } from '@/hooks/useBookDownloads';
 import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Download } from '@/components/icons/kotobi-lucide';
+import { trackBookEvent } from '@/utils/bookAnalytics';
+
 
 interface BookCardProps {
   id: number | string;
@@ -73,9 +75,11 @@ export const BookCard = memo(({ id, title, author, coverImage, description, cate
   const showNewBadge = isNewBook();
 
   return (
-    <a href={bookUrl} className="block h-full">
+    <a href={bookUrl} className="block h-full" onClick={() => trackBookEvent(id, 'card_click')}>
       <Card 
         className="group relative bg-card text-card-foreground rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden h-full min-h-[220px] flex flex-col border-border"
+
+
         onMouseEnter={() => !isMobile && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

@@ -42,6 +42,7 @@ const Favorites = lazy(() => import('./pages/Favorites'));
 const Quotes = lazy(() => import('./pages/Quotes'));
 const SiteUpdates = lazy(() => import('./pages/SiteUpdates'));
 const MyBooks = lazy(() => import('./pages/MyBooks'));
+const UploaderAnalytics = lazy(() => import('./pages/UploaderAnalytics'));
 const Donation = lazy(() => import('./pages/Donation'));
 const DonationSuccess = lazy(() => import('./pages/DonationSuccess'));
 const SearchResults = lazy(() => import('./pages/SearchResults'));
@@ -138,6 +139,7 @@ function AppContent() {
             <Route path="/admin/seo" element={<AdminSEO />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/my-books" element={<MyBooks />} />
+            <Route path="/uploader-analytics" element={<UploaderAnalytics />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/quotes" element={<Quotes />} />
             <Route path="/site-updates" element={<SiteUpdates />} />

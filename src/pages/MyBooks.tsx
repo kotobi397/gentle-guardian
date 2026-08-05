@@ -4,7 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { Loader2 } from '@/components/icons/kotobi-lucide';
 import { motion } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BookOpen, Upload, Download } from '@/components/icons/kotobi-lucide';
+import { BookOpen, Upload, Download, BarChart3 } from '@/components/icons/kotobi-lucide';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import UserBookSubmissions from '@/components/books/UserBookSubmissions';
@@ -90,7 +90,17 @@ const MyBooks: React.FC = () => {
               سجل قراءاتك والكتب التي قمت برفعها
             </p>
             <div className="h-1 w-24 bg-gradient-to-r from-book-primary to-book-accent mx-auto mt-4 rounded-full"></div>
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => navigate('/uploader-analytics')}
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary/10 px-5 py-2.5 text-primary font-tajawal font-black text-sm hover:bg-primary/20 transition-colors"
+            >
+              <BarChart3 className="h-4 w-4" />
+              لوحة تحليلات الكاتب
+            </motion.button>
           </motion.div>
+
 
           <motion.div 
             variants={itemVariants}
