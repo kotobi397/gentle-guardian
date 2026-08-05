@@ -6315,7 +6315,7 @@ export type Database = {
         Returns: number
       }
       get_uploader_book_analytics: {
-        Args: { p_days?: number }
+        Args: { p_days?: number; p_limit?: number; p_offset?: number }
         Returns: {
           average_rating: number
           avg_progress: number
@@ -6332,6 +6332,7 @@ export type Database = {
           reviews_count: number
           slug: string
           title: string
+          total_books: number
           views: number
         }[]
       }
@@ -6343,6 +6344,22 @@ export type Database = {
           detail_views: number
           downloads: number
           reads_online: number
+        }[]
+      }
+      get_uploader_overall_stats: {
+        Args: { p_days?: number }
+        Returns: {
+          average_rating: number
+          avg_progress: number
+          card_clicks: number
+          completions: number
+          detail_views: number
+          downloads: number
+          likes_count: number
+          reads_online: number
+          reviews_count: number
+          total_books: number
+          views: number
         }[]
       }
       get_uploader_top_countries: {
