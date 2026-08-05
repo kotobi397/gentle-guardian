@@ -16,6 +16,7 @@ import ReviewLikeButton from './ReviewLikeButton';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { ar } from 'date-fns/locale';
 import { getAvatarFrameClass, getNameColorStyle, getCommentHighlightStyle } from '@/lib/cosmetics';
+import { KotobiBadge } from '@/components/badges/KotobiBadge';
 
 interface Review {
   id: string;
@@ -552,9 +553,7 @@ const BookReviews: React.FC<BookReviewsProps> = ({ bookId, bookTitle }) => {
                               >
                                 {review.profiles?.username || review.profiles?.email?.split('@')[0] || 'مستخدم'}
                               </span>
-                              {review.selected_badge && (
-                                <span className="text-base shrink-0" title="شارة">{review.selected_badge}</span>
-                              )}
+                              <KotobiBadge value={review.selected_badge} size={18} />
                               {review.profiles?.is_ai_bot && <AIBotBadge size="sm" className="mr-1 shrink-0" />}
                             </div>
                             <div className="flex items-center gap-2 mt-1 flex-wrap">
