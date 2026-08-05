@@ -12,7 +12,15 @@ const GEO_CACHE_KEY = 'kotobi:geo:v1';
 const GEO_TTL_MS = 1000 * 60 * 60 * 24 * 7; // أسبوع
 const SESSION_KEY = 'kotobi:analyticsSession:v1';
 const DEDUPE_PREFIX = 'kotobi:evt:';
-const DEDUPE_WINDOW_MS = 1000 * 60 * 30; // نصف ساعة لنفس الحدث لنفس الكتاب
+// نوافذ منع التكرار لكل نوع حدث:
+// الضغطات وفتح التفاصيل تُحتسب في كل دخول جديد للصفحة (نافذة قصيرة جداً
+// تمنع فقط الاحتساب المزدوج للضغطة على البطاقة + تحميل الصفحة نفسها).
+const DEDUPE_WINDOWS: Record<string, number> = {
+  card_click: 8 * 1000,
+  detail_view: 8 * 1000,
+  read_online: 1000 * 60 * 30,
+  download: 1000 * 60 * 30,
+};
 
 let geoPromise: Promise<GeoInfo> | null = null;
 
