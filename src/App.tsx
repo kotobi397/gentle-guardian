@@ -26,6 +26,7 @@ import Index from './pages/Index';
 // Lazy-loaded routes
 const NotFound = lazy(() => import('./pages/NotFound'));
 const BookDetails = lazy(() => import('./pages/BookDetails'));
+const BookLanding = lazy(() => import('./pages/BookLanding'));
 const PDFReaderPage = lazy(() => import('./pages/PDFReaderPage'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
