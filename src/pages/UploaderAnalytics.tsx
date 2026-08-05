@@ -452,6 +452,7 @@ const UploaderAnalytics: React.FC = () => {
                 </Card>
               ) : (
                 <motion.div variants={containerVariants} className="space-y-3">
+                <motion.div variants={containerVariants} className="space-y-3">
                   <AnimatePresence initial={false}>
                     {books.map((book) => (
                       <BookRow
@@ -465,6 +466,44 @@ const UploaderAnalytics: React.FC = () => {
                       />
                     ))}
                   </AnimatePresence>
+
+                  {/* حسّاس التحميل التدريجي */}
+                  <div ref={sentinelRef} className="h-1 w-full" aria-hidden />
+
+                  {loadingMore && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-3"
+                    >
+                      <div className="flex items-center justify-center gap-2 py-2 text-muted-foreground font-tajawal text-xs">
+                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                        جارٍ تحميل ٢٤ كتاباً إضافياً...
+                      </div>
+                      {[0, 1].map((i) => (
+                        <Skeleton key={i} className="h-32 w-full rounded-xl" />
+                      ))}
+                    </motion.div>
+                  )}
+
+                  {!hasMore && !loadingMore && books.length > 0 && (
+                    <p className="text-center text-[11px] font-tajawal text-muted-foreground py-2">
+                      عرضت جميع كتبك ({totalBooks.toLocaleString('ar-EG')})
+                    </p>
+                  )}
+
+                  {hasMore && !loadingMore && (
+                    <div className="flex justify-center pt-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="font-tajawal text-xs"
+                        onClick={loadMore}
+                      >
+                        تحميل المزيد
+                      </Button>
+                    </div>
+                  )}
                 </motion.div>
               )}
             </motion.div>
