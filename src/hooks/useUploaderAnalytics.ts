@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 export interface UploaderBookAnalytics {
@@ -8,6 +8,20 @@ export interface UploaderBookAnalytics {
   slug: string | null;
   category: string | null;
   created_at: string;
+  downloads: number;
+  reads_online: number;
+  card_clicks: number;
+  detail_views: number;
+  views: number;
+  reviews_count: number;
+  average_rating: number;
+  likes_count: number;
+  completions: number;
+  avg_progress: number;
+}
+
+export interface UploaderOverallStats {
+  total_books: number;
   downloads: number;
   reads_online: number;
   card_clicks: number;
@@ -38,19 +52,65 @@ export interface UploaderTimelinePoint {
 
 const toNumber = (value: unknown) => Number(value ?? 0) || 0;
 
+export const BOOKS_PER_PAGE = 24;
+
+const EMPTY_TOTALS: UploaderOverallStats = {
+  total_books: 0,
+  downloads: 0,
+  reads_online: 0,
+  card_clicks: 0,
+  detail_views: 0,
+  views: 0,
+  reviews_count: 0,
+  average_rating: 0,
+  likes_count: 0,
+  completions: 0,
+  avg_progress: 0,
+};
+
+const mapBook = (row: any): UploaderBookAnalytics => ({
+  book_id: row.book_id,
+  title: row.title,
+  cover_image_url: row.cover_image_url,
+  slug: row.slug,
+  category: row.category,
+  created_at: row.created_at,
+  downloads: toNumber(row.downloads),
+  reads_online: toNumber(row.reads_online),
+  card_clicks: toNumber(row.card_clicks),
+  detail_views: toNumber(row.detail_views),
+  views: toNumber(row.views),
+  reviews_count: toNumber(row.reviews_count),
+  average_rating: toNumber(row.average_rating),
+  likes_count: toNumber(row.likes_count),
+  completions: toNumber(row.completions),
+  avg_progress: toNumber(row.avg_progress),
+});
+
 export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
   const [books, setBooks] = useState<UploaderBookAnalytics[]>([]);
+  const [totals, setTotals] = useState<UploaderOverallStats>(EMPTY_TOTALS);
+  const [totalBooks, setTotalBooks] = useState(0);
   const [countries, setCountries] = useState<UploaderCountry[]>([]);
   const [timeline, setTimeline] = useState<UploaderTimelinePoint[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const pageRef = useRef(0);
 
   const fetchAll = useCallback(async () => {
     setLoading(true);
     setError(null);
+    pageRef.current = 0;
     try {
-      const [booksRes, countriesRes, timelineRes] = await Promise.all([
-        supabase.rpc('get_uploader_book_analytics', { p_days: days }),
+      const [booksRes, totalsRes, countriesRes, timelineRes] = await Promise.all([
+        supabase.rpc('get_uploader_book_analytics', {
+          p_days: days,
+          p_limit: BOOKS_PER_PAGE,
+          p_offset: 0,
+        }),
+        supabase.rpc('get_uploader_overall_stats', { p_days: days }),
         supabase.rpc('get_uploader_top_countries', {
           p_book_id: bookId ?? null,
           p_days: days,
@@ -64,21 +124,31 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
 
       if (booksRes.error) throw booksRes.error;
 
-      setBooks(
-        ((booksRes.data as any[]) || []).map((row) => ({
-          ...row,
-          downloads: toNumber(row.downloads),
-          reads_online: toNumber(row.reads_online),
-          card_clicks: toNumber(row.card_clicks),
-          detail_views: toNumber(row.detail_views),
-          views: toNumber(row.views),
-          reviews_count: toNumber(row.reviews_count),
-          average_rating: toNumber(row.average_rating),
-          likes_count: toNumber(row.likes_count),
-          completions: toNumber(row.completions),
-          avg_progress: toNumber(row.avg_progress),
-        })),
+      const rows = (booksRes.data as any[]) || [];
+      const mapped = rows.map(mapBook);
+      setBooks(mapped);
+
+      const overall = ((totalsRes.data as any[]) || [])[0];
+      const count = overall ? toNumber(overall.total_books) : toNumber(rows[0]?.total_books);
+      setTotalBooks(count);
+      setTotals(
+        overall
+          ? {
+              total_books: count,
+              downloads: toNumber(overall.downloads),
+              reads_online: toNumber(overall.reads_online),
+              card_clicks: toNumber(overall.card_clicks),
+              detail_views: toNumber(overall.detail_views),
+              views: toNumber(overall.views),
+              reviews_count: toNumber(overall.reviews_count),
+              average_rating: toNumber(overall.average_rating),
+              likes_count: toNumber(overall.likes_count),
+              completions: toNumber(overall.completions),
+              avg_progress: toNumber(overall.avg_progress),
+            }
+          : EMPTY_TOTALS,
       );
+      setHasMore(mapped.length >= BOOKS_PER_PAGE && mapped.length < count);
 
       setCountries(
         ((countriesRes.data as any[]) || []).map((row) => ({
@@ -107,9 +177,48 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
     }
   }, [days, bookId]);
 
+  const loadMore = useCallback(async () => {
+    if (loading || loadingMore || !hasMore) return;
+    setLoadingMore(true);
+    try {
+      const nextPage = pageRef.current + 1;
+      const { data, error: rpcError } = await supabase.rpc('get_uploader_book_analytics', {
+        p_days: days,
+        p_limit: BOOKS_PER_PAGE,
+        p_offset: nextPage * BOOKS_PER_PAGE,
+      });
+      if (rpcError) throw rpcError;
+
+      const mapped = ((data as any[]) || []).map(mapBook);
+      pageRef.current = nextPage;
+      setBooks((prev) => {
+        const seen = new Set(prev.map((b) => b.book_id));
+        const merged = [...prev, ...mapped.filter((b) => !seen.has(b.book_id))];
+        setHasMore(mapped.length >= BOOKS_PER_PAGE && merged.length < totalBooks);
+        return merged;
+      });
+    } catch (err) {
+      console.error('[useUploaderAnalytics] خطأ في تحميل المزيد:', err);
+    } finally {
+      setLoadingMore(false);
+    }
+  }, [days, hasMore, loading, loadingMore, totalBooks]);
+
   useEffect(() => {
     fetchAll();
   }, [fetchAll]);
 
-  return { books, countries, timeline, loading, error, refetch: fetchAll };
+  return {
+    books,
+    totals,
+    totalBooks,
+    countries,
+    timeline,
+    loading,
+    loadingMore,
+    hasMore,
+    loadMore,
+    error,
+    refetch: fetchAll,
+  };
 };
