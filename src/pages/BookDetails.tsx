@@ -209,6 +209,9 @@ const BookDetailsContent = () => {
 
   useEffect(() => {
     if (book) {
+      // كل دخول لصفحة الكتاب (من البطاقة، البحث، رابط مباشر، مشاركة، أو أي مكان)
+      // يُحتسب ضغطة + فتح تفاصيل بدقة
+      trackBookEvent(book.id, 'card_click');
       trackBookEvent(book.id, 'detail_view');
       addRecentlyViewed({
         id: book.id,
