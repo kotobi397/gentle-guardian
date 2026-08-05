@@ -15,7 +15,7 @@ import {
   BarChart3,
   Download,
   BookOpen,
-  MousePointerClick,
+  TrendingUp,
   Eye,
   Star,
   Heart,
@@ -49,7 +49,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
 };
 
 const flagFromCode = (code: string) => {
@@ -139,7 +139,7 @@ const BookRow: React.FC<{
                   <BookOpen className="h-3 w-3 text-sky-500" /> {book.reads_online} قراءة
                 </span>
                 <span className="flex items-center gap-1 text-muted-foreground">
-                  <MousePointerClick className="h-3 w-3 text-amber-500" /> {book.card_clicks} ضغطة
+                  <TrendingUp className="h-3 w-3 text-amber-500" /> {book.card_clicks} ضغطة
                 </span>
                 <span className="flex items-center gap-1 text-muted-foreground">
                   <Eye className="h-3 w-3 text-violet-500" /> {book.views} مشاهدة
@@ -297,7 +297,7 @@ const UploaderAnalytics: React.FC = () => {
               accent="bg-sky-500/10"
             />
             <StatTile
-              icon={<MousePointerClick className="h-5 w-5 text-amber-500" />}
+              icon={<TrendingUp className="h-5 w-5 text-amber-500" />}
               label="ضغطات البطاقة"
               value={totals.clicks}
               accent="bg-amber-500/10"
@@ -479,7 +479,7 @@ const UploaderAnalytics: React.FC = () => {
                             className="h-full bg-primary rounded-full"
                             initial={{ width: 0 }}
                             animate={{ width: `${Math.round((c.events / maxCountry) * 100)}%` }}
-                            transition={{ duration: 0.6, delay: index * 0.04, ease: 'easeOut' }}
+                            transition={{ duration: 0.6, delay: index * 0.04 }}
                           />
                         </div>
                       </div>
