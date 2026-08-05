@@ -4,6 +4,12 @@
 https://kotobi.netlify.app/* https://kotobi.xyz/:splat 301!
 https://kutubi-platform.pages.dev/* https://kotobi.xyz/:splat 301!
 
+# Canonical aliases (avoid duplicate content)
+/about        /about-us          301
+/contact      /contact-us        301
+/privacy      /privacy-policy    301
+/terms        /terms-of-service  301
+
 # Handle image and file proxy functions BEFORE SPA fallback
 /i/*     /i/:splat     200
 /f/*     /f/:splat     200
