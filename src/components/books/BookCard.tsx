@@ -12,6 +12,8 @@ import { useBookReviewStats } from '@/hooks/useBookReviewStats';
 import { useBookDownloads } from '@/hooks/useBookDownloads';
 import { useNavigationHistory } from '@/hooks/useNavigationHistory';
 import { Download } from '@/components/icons/kotobi-lucide';
+import { trackBookEvent } from '@/utils/bookAnalytics';
+
 
 interface BookCardProps {
   id: number | string;
