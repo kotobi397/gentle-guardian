@@ -8,31 +8,6 @@ const SUPABASE_URL = 'https://kydmyxsgyxeubhmqzrgo.supabase.co';
 const SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZG15eHNneXhldWJobXF6cmdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0ODQ3NjQsImV4cCI6MjA2MjA2MDc2NH0.b-ckDfOmmf2x__FG5Snm9px8j4pqPke5Ra1RgoGEqP0';
 
-
-/** fetch with timeout so a slow upstream never turns into a 5xx for Googlebot */
-async function tfetch(input: string, init: any = {}, ms = 6000): Promise<Response | null> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), ms);
-  try {
-    return await fetch(input, { ...init, signal: controller.signal });
-  } catch (_) {
-    return null;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-/** Real 404 + noindex for crawlers instead of a soft-404 SPA shell */
-function notFoundResponse(): Response {
-  return new Response(
-    `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">` +
-      `<meta name="robots" content="noindex, follow"><title>الصفحة غير موجودة | منصة كتبي</title>` +
-      `</head><body><h1>الصفحة غير موجودة</h1>` +
-      `<p><a href="https://kotobi.xyz/">العودة إلى الصفحة الرئيسية</a></p></body></html>`,
-    { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300' } }
-  );
-}
-
 function escapeHtml(str: string): string {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
@@ -51,18 +26,18 @@ async function fetchBook(identifier: string) {
   const fields =
     'id,title,author,description,cover_image_url,category,slug,publication_year,language,page_count,publisher';
 
-  let res = await tfetch(
+  let res = await fetch(
     `${SUPABASE_URL}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=eq.${encodeURIComponent(identifier)}&limit=1`,
     { headers }
   );
-  let books = res && res.ok ? await res.json().catch(() => []) : [];
+  let books = await res.json();
 
-  if (!books?.length && /^[0-9a-f-]{36}$/i.test(identifier)) {
-    res = await tfetch(
+  if (!books?.length) {
+    res = await fetch(
       `${SUPABASE_URL}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${encodeURIComponent(identifier)}&limit=1`,
       { headers }
-    );
-    books = res && res.ok ? await res.json().catch(() => []) : [];
+    ).catch(() => null as any);
+    books = res ? await res.json().catch(() => []) : [];
   }
 
   return books?.[0] || null;
@@ -86,10 +61,10 @@ export function createLandingHandler(variant: LandingVariantKey) {
       try {
         identifier = decodeURIComponent(identifier);
       } catch (_) {}
-      if (!identifier) return notFoundResponse();
+      if (!identifier) return next();
 
       const book = await fetchBook(identifier);
-      if (!book) return notFoundResponse();
+      if (!book) return next();
 
       const meta = buildLandingMeta(variant, {
         title: book.title,

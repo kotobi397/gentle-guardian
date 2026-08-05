@@ -8,7 +8,7 @@ export const SUPABASE_ANON_KEY =
 
 // Rows fetched per child sitemap. Books produce 4 URLs per row (book + 3 landings),
 // so 5000 rows = 20k URLs — well under the 50k limit and fast to render.
-export const BOOKS_PER_FILE = 20000;
+export const BOOKS_PER_FILE = 5000;
 export const ROWS_PER_FILE = 20000;
 
 export const headers = {
@@ -33,11 +33,9 @@ export function xmlEscape(value: string) {
     .replace(/'/g, '&apos;');
 }
 
-/** Returns an ISO date only when the row carries a real timestamp — never "now". */
-export function iso(value?: string | null): string | undefined {
-  if (!value) return undefined;
-  const d = new Date(value);
-  return isNaN(d.getTime()) ? undefined : d.toISOString();
+export function iso(value?: string | null) {
+  const d = value ? new Date(value) : new Date();
+  return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
 }
 
 export interface Url {
@@ -134,14 +132,15 @@ export async function buildIndex() {
   const [books, authors, users, categories, clubs] = await Promise.all([
     countRows('book_submissions', '&status=eq.approved'),
     countRows('authors'),
-    countRows('profiles', '&username=not.is.null'),
+    countRows('profiles'),
     countRows('categories'),
     countRows('reading_clubs', '&is_public=eq.true'),
   ]);
 
+  const now = new Date().toISOString();
   const entries: { loc: string; lastmod?: string }[] = [
     { loc: `${SITE}/sitemaps/pages.xml` },
-    { loc: `${SITE}/sitemaps/latest.xml` },
+    { loc: `${SITE}/sitemaps/latest.xml`, lastmod: now },
   ];
 
   const chunks = (total: number, per: number) => Math.max(1, Math.ceil(total / per));
@@ -184,6 +183,9 @@ export async function buildChild(type: string, page: number): Promise<string | n
       const slug = encodePathSegment(book.slug || book.id);
       const lastmod = iso(book.reviewed_at || book.created_at);
       urls.push({ url: `${SITE}/book/${slug}`, lastmod, changefreq: 'daily', priority: 0.9 });
+      for (const prefix of ['tahmil', 'qiraa', 'molakhas']) {
+        urls.push({ url: `${SITE}/${prefix}/${slug}`, lastmod, changefreq: 'daily', priority: 0.8 });
+      }
     }
     return renderUrlset(urls);
   }
@@ -199,6 +201,9 @@ export async function buildChild(type: string, page: number): Promise<string | n
       const slug = encodePathSegment(book.slug || book.id);
       const lastmod = iso(book.reviewed_at || book.created_at);
       urls.push({ url: `${SITE}/book/${slug}`, lastmod, changefreq: 'monthly', priority: 0.8 });
+      for (const prefix of ['tahmil', 'qiraa', 'molakhas']) {
+        urls.push({ url: `${SITE}/${prefix}/${slug}`, lastmod, changefreq: 'monthly', priority: 0.7 });
+      }
     }
     return renderUrlset(urls);
   }
@@ -240,7 +245,7 @@ export async function buildChild(type: string, page: number): Promise<string | n
 
   if (type === 'users') {
     const rows = await fetchRows(
-      `profiles?select=id,username,created_at,last_seen&username=not.is.null&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
+      `profiles?select=id,username,created_at,last_seen&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
     );
     for (const u of rows) {
       const identifier = u.username && u.username.trim() !== '' ? u.username : u.id;

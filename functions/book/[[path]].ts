@@ -1,31 +1,6 @@
 // Cloudflare Pages Function — Book share meta middleware
 // Route: /book/*  (passes through normal users, prerenders for crawlers)
 
-
-/** fetch with timeout so a slow upstream never turns into a 5xx for Googlebot */
-async function tfetch(input: string, init: any = {}, ms = 6000): Promise<Response | null> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), ms);
-  try {
-    return await fetch(input, { ...init, signal: controller.signal });
-  } catch (_) {
-    return null;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-/** Real 404 + noindex for crawlers instead of a soft-404 SPA shell */
-function notFoundResponse(): Response {
-  return new Response(
-    `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">` +
-      `<meta name="robots" content="noindex, follow"><title>الصفحة غير موجودة | منصة كتبي</title>` +
-      `</head><body><h1>الصفحة غير موجودة</h1>` +
-      `<p><a href="https://kotobi.xyz/">العودة إلى الصفحة الرئيسية</a></p></body></html>`,
-    { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300' } }
-  );
-}
-
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -47,19 +22,29 @@ async function fetchBookData(bookId: string) {
   const fields =
     'id,title,author,description,cover_image_url,category,slug,publication_year,language,page_count';
 
-  let res = await tfetch(
+  let res = await fetch(
     `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=eq.${encodeURIComponent(bookId)}&limit=1`,
     { headers }
   );
-  let books = res && res.ok ? await res.json().catch(() => []) : [];
+  let books = await res.json();
 
-  // بحث تقريبي بالـ slug مُلغى عمداً: كان يُرجع كتاباً خاطئاً فيولّد صفحات مكرّرة.
-  if (!books?.length && /^[0-9a-f-]{36}$/i.test(bookId)) {
-    res = await tfetch(
-      `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${bookId}&limit=1`,
+  if (!books?.length) {
+    const flex = bookId.replace(/-/g, ' ').toLowerCase();
+    res = await fetch(
+      `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=ilike.*${encodeURIComponent(flex)}*&limit=1`,
       { headers }
     );
-    books = res && res.ok ? await res.json().catch(() => []) : [];
+    books = await res.json();
+  }
+
+  if (!books?.length) {
+    try {
+      res = await fetch(
+        `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${bookId}&limit=1`,
+        { headers }
+      );
+      books = await res.json();
+    } catch (_) {}
   }
 
   return books?.[0] || null;
@@ -215,22 +200,15 @@ export const onRequest = async (context: any) => {
       bookId = decodeURIComponent(bookId);
     } catch (_) {}
 
-    if (!bookId) return isSearchEngine ? notFoundResponse() : next();
+    if (!bookId) return next();
 
     const book = await fetchBookData(bookId);
-    if (!book) return isSearchEngine ? notFoundResponse() : next();
+    if (!book) return next();
 
     const meta = buildBookMeta(book);
 
-    // توحيد الرابط: /book/<uuid> يعيد توجيه 301 دائماً إلى /book/<slug>
-    const isUuidUrl = /^[0-9a-f-]{36}$/i.test(bookId);
-    if (book.slug && isUuidUrl && !isViewSource) {
-      return Response.redirect(meta.bookUrl, 301);
-    }
-
     if (isSearchEngine) {
       const response = await next();
-      if (!response.ok) return notFoundResponse();
       const originalHtml = await response.text();
       const modifiedHtml = injectMetaIntoHtml(originalHtml, meta);
 

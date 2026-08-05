@@ -1,14 +1,3 @@
-
-/** Real 404 + noindex for crawlers instead of a soft-404 SPA shell */
-function notFoundResponse(): Response {
-  return new Response(
-    `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">` +
-      `<meta name="robots" content="noindex, follow"><title>الصفحة غير موجودة | منصة كتبي</title>` +
-      `</head><body><h1>الصفحة غير موجودة</h1>` +
-      `<p><a href="https://kotobi.xyz/">العودة إلى الصفحة الرئيسية</a></p></body></html>`,
-    { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300' } }
-  );
-}
 // Cloudflare Pages Function — Author share meta middleware
 // Route: /author/*
 
@@ -219,10 +208,10 @@ export const onRequest = async (context: any) => {
       authorParam = decodeURIComponent(authorParam);
     } catch (_) {}
 
-    if (!authorParam) return notFoundResponse();
+    if (!authorParam) return next();
 
     const author = await fetchAuthorData(authorParam);
-    if (!author) return notFoundResponse();
+    if (!author) return next();
 
     const authorBooks = await fetchAuthorBooks(author.name);
     const meta = buildAuthorMeta(author, authorBooks);

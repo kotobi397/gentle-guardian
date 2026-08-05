@@ -55,16 +55,6 @@ Disallow: /profile
 Disallow: /my-books
 Disallow: /messages
 Disallow: /book/reading/
-Disallow: /search
-Disallow: /favorites
-Disallow: /my-books
-Disallow: /profile-customization
-Disallow: /uploader-analytics
-Disallow: /donation-success
-Disallow: /daily-messages
-Disallow: /*?q=
-Disallow: /*?page=
-Disallow: /f/
 
 # Allow important public pages
 Allow: /book/*
