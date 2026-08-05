@@ -167,10 +167,21 @@ const UploaderAnalytics: React.FC = () => {
   const [days, setDays] = useState<number>(30);
   const [selectedBook, setSelectedBook] = useState<string | null>(null);
 
-  const { books, countries, timeline, loading, error, refetch } = useUploaderAnalytics(
-    days,
-    selectedBook,
-  );
+  const {
+    books,
+    totals: overall,
+    totalBooks,
+    countries,
+    timeline,
+    loading,
+    loadingMore,
+    hasMore,
+    loadMore,
+    error,
+    refetch,
+  } = useUploaderAnalytics(days, selectedBook);
+
+  const sentinelRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     if (!authLoading && !user) navigate('/auth', { replace: true });
@@ -180,20 +191,31 @@ const UploaderAnalytics: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  // تحميل تدريجي: ٢٤ كتاباً في كل مرة عند الوصول لأسفل القائمة
+  React.useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node || !hasMore) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) loadMore();
+      },
+      { rootMargin: '400px 0px' },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasMore, loadMore, books.length]);
+
+  // الإحصائيات العامة تشمل جميع الكتب (محسوبة في قاعدة البيانات)
   const totals = useMemo(
-    () =>
-      books.reduce(
-        (acc, b) => ({
-          downloads: acc.downloads + b.downloads,
-          reads: acc.reads + b.reads_online,
-          clicks: acc.clicks + b.card_clicks,
-          views: acc.views + b.views,
-          reviews: acc.reviews + b.reviews_count,
-          likes: acc.likes + b.likes_count,
-        }),
-        { downloads: 0, reads: 0, clicks: 0, views: 0, reviews: 0, likes: 0 },
-      ),
-    [books],
+    () => ({
+      downloads: overall.downloads,
+      reads: overall.reads_online,
+      clicks: overall.card_clicks,
+      views: overall.views,
+      reviews: overall.reviews_count,
+      likes: overall.likes_count,
+    }),
+    [overall],
   );
 
   const maxCountry = countries[0]?.events || 1;
