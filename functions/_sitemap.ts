@@ -175,6 +175,23 @@ export async function buildChild(type: string, page: number): Promise<string | n
     return renderUrlset(STATIC_PAGES);
   }
 
+  if (type === 'latest') {
+    const rows = await fetchRows(
+      `book_submissions?select=id,slug,reviewed_at,created_at&status=eq.approved&order=created_at.desc&limit=${LATEST_LIMIT}`
+    );
+    for (const book of rows) {
+      const slug = encodePathSegment(book.slug || book.id);
+      const lastmod = iso(book.reviewed_at || book.created_at);
+      urls.push({ url: `${SITE}/book/${slug}`, lastmod, changefreq: 'daily', priority: 0.9 });
+      for (const prefix of ['tahmil', 'qiraa', 'molakhas']) {
+        urls.push({ url: `${SITE}/${prefix}/${slug}`, lastmod, changefreq: 'daily', priority: 0.8 });
+      }
+    }
+    return renderUrlset(urls);
+  }
+
+
+
   if (type === 'books') {
     const offset = (page - 1) * BOOKS_PER_FILE;
     const rows = await fetchRows(
