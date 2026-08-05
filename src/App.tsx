@@ -160,7 +160,9 @@ function AppContent() {
             <Route path="/user/:userIdentifier" element={<PublicUserProfile />} />
             <Route path="/suggestions" element={<Suggestions />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/book-requests" element={<BookRequests />} />
             <Route path="/reading-clubs" element={<ReadingClubs />} />
+
             <Route path="/reading-clubs/:clubId" element={<ReadingClubRoom />} />
             <Route path="/cover-designer" element={<CoverDesigner />} />
             <Route path="/about" element={<AboutUs />} />
