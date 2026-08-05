@@ -81,6 +81,27 @@ async function fetchAuthorBooks(authorName: string) {
   return [];
 }
 
+/** Exact number of approved books for this author (used in title/description/schema) */
+async function countAuthorBooks(authorName: string) {
+  const supabaseUrl = 'https://kydmyxsgyxeubhmqzrgo.supabase.co';
+  const supabaseKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZG15eHNneXhldWJobXF6cmdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0ODQ3NjQsImV4cCI6MjA2MjA2MDc2NH0.b-ckDfOmmf2x__FG5Snm9px8j4pqPke5Ra1RgoGEqP0';
+  try {
+    const res = await fetch(
+      `${supabaseUrl}/rest/v1/book_submissions?select=id&status=eq.approved&author=eq.${encodeURIComponent(authorName)}&limit=1`,
+      {
+        method: 'HEAD',
+        headers: { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, Prefer: 'count=exact' },
+        signal: AbortSignal.timeout(6000),
+      }
+    );
+    const total = parseInt((res.headers.get('content-range') || '').split('/')[1] || '0', 10);
+    return isNaN(total) ? 0 : total;
+  } catch (_) {
+    return 0;
+  }
+}
+
 function encodePathSegment(value: string) {
   try {
     return encodeURIComponent(decodeURIComponent(value));
@@ -89,7 +110,7 @@ function encodePathSegment(value: string) {
   }
 }
 
-function buildAuthorMeta(author: any, authorBooks: any[]) {
+function buildAuthorMeta(author: any, authorBooks: any[], booksCount = 0) {
   const baseUrl = 'https://kotobi.xyz';
   const authorUrl = `${baseUrl}/author/${encodePathSegment(author.slug || author.name)}`;
   const imageUrl = author.avatar_url
@@ -98,15 +119,20 @@ function buildAuthorMeta(author: any, authorBooks: any[]) {
       : `${baseUrl}${author.avatar_url}`
     : `${baseUrl}/default-author-avatar.png`;
 
+  const count = booksCount || author.books_count || 0;
+  const countText = count > 0 ? `${count} كتاب` : 'كتب';
   const bio = author.bio?.trim();
-  const description = bio
-    ? bio.length > 160
-      ? bio.substring(0, 160) + '...'
-      : bio
-    : `اكتشف ${author.books_count || ''} كتاب للمؤلف ${author.name} على منصة كتبي. اقرأ وحمّل كتبه مجاناً.`;
+  const base = bio ? bio.replace(/\s+/g, ' ') : '';
+  const description = (
+    base
+      ? `${base} — ${countText} للمؤلف ${author.name} على منصة كتبي، للقراءة والتحميل مجاناً.`
+      : `${author.name}: ${countText} متاحة على منصة كتبي. سيرة المؤلف وقائمة أعماله كاملة للقراءة أونلاين والتحميل PDF مجاناً.`
+  ).slice(0, 300);
 
   const bookTitles = authorBooks.map((b: any) => b.title).join('، ');
-  const title = `${author.name} - المؤلف | منصة كتبي`;
+  const title = count > 0
+    ? `${author.name} — ${countText} للتحميل والقراءة | منصة كتبي`
+    : `${author.name} - المؤلف | منصة كتبي`;
 
   return {
     title,
@@ -114,7 +140,8 @@ function buildAuthorMeta(author: any, authorBooks: any[]) {
     imageUrl,
     authorUrl,
     name: author.name,
-    booksCount: author.books_count,
+    booksCount: count,
+    books: authorBooks,
     bookTitles,
     country: author.country_name,
   };
@@ -173,9 +200,35 @@ function injectMetaIntoHtml(html: string, meta: ReturnType<typeof buildAuthorMet
     ...(meta.country ? { nationality: meta.country } : {}),
   });
 
+  const baseUrl = 'https://kotobi.xyz';
+  const encodeSeg = (v: string) => {
+    try {
+      return encodeURIComponent(decodeURIComponent(v));
+    } catch {
+      return encodeURIComponent(v);
+    }
+  };
+  const booksSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: meta.title,
+    description: meta.description,
+    url: meta.authorUrl,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: meta.booksCount || (meta.books || []).length,
+      itemListElement: (meta.books || []).map((b: any, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${baseUrl}/book/${encodeSeg(b.slug || b.id)}`,
+        name: b.title,
+      })),
+    },
+  });
+
   html = html.replace(
     '</head>',
-    `<script type="application/ld+json">${personSchema}</script>\n</head>`
+    `<script type="application/ld+json">${personSchema}</script>\n<script type="application/ld+json">${booksSchema}</script>\n</head>`
   );
 
   return html;
@@ -215,8 +268,11 @@ export const onRequest = async (context: any) => {
     const author = await fetchAuthorData(authorParam);
     if (!author) return next();
 
-    const authorBooks = await fetchAuthorBooks(author.name);
-    const meta = buildAuthorMeta(author, authorBooks);
+    const [authorBooks, booksCount] = await Promise.all([
+      fetchAuthorBooks(author.name),
+      countAuthorBooks(author.name),
+    ]);
+    const meta = buildAuthorMeta(author, authorBooks, booksCount);
 
     if (isSearchEngine) {
       const response = await next();
