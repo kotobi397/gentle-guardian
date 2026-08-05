@@ -71,7 +71,7 @@ export const KotobiVerifiedIcon: React.FC<KotobiVerifiedIconProps> = ({
       <circle cx="50" cy="50" r="33" fill="none" stroke="#ffffff" strokeOpacity="0.55" strokeWidth="2.5" />
 
       {/* كتاب مفتوح */}
-      <g fill="none" stroke={`url(#${shine})`} strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round">
+      <g fill="none" opacity="0.4" stroke={`url(#${shine})`} strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="M50 38.5c-3.6-3-8.2-4.4-13.5-4.4H29v25.2h7.5c5.3 0 9.9 1.4 13.5 4.4" />
         <path d="M50 38.5c3.6-3 8.2-4.4 13.5-4.4H71v25.2h-7.5c-5.3 0-9.9 1.4-13.5 4.4" />
         <path d="M50 38.5v25.2" strokeWidth="3" />
