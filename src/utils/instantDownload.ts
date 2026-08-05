@@ -26,6 +26,17 @@ const isSameOrigin = (href: string): boolean => {
   }
 };
 
+const buildBookDownloadEndpoint = (bookId: string, fileName: string): string => {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  if (!supabaseUrl) {
+    throw new Error('Supabase URL is not configured');
+  }
+  const url = new URL('/functions/v1/download-book', supabaseUrl);
+  url.searchParams.set('book_id', bookId);
+  url.searchParams.set('filename', fileName);
+  return url.href;
+};
+
 /**
  * تنزيل عبر iframe مخفي: الرابط يعيد Content-Disposition: attachment
  * فيبدأ المتصفح التنزيل فورًا دون أي انتقال (navigation) للمستخدم.
@@ -50,7 +61,15 @@ const downloadViaHiddenFrame = (href: string): void => {
 /**
  * يبدأ التنزيل فورًا (بدون fetch/blob وبدون نقل المستخدم إلى رابط Supabase).
  */
-export const startInstantDownload = (rawUrl: string, fileName: string): void => {
+export const startInstantDownload = (rawUrl: string, fileName: string, bookId?: string): void => {
+  // تمر جميع تنزيلات الكتب المعروفة عبر Supabase Edge Function. تقوم الدالة ببث
+  // ملف S3/Supabase مع Content-Disposition: attachment، لذلك لا ينتقل المستخدم
+  // إلى رابط التخزين ولا نحمّل الملف كاملًا في ذاكرة المتصفح.
+  if (bookId) {
+    downloadViaHiddenFrame(buildBookDownloadEndpoint(bookId, fileName));
+    return;
+  }
+
   const href = buildInstantDownloadUrl(rawUrl, fileName);
 
   // نفس الأصل: سمة download تعمل بشكل موثوق

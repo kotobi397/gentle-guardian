@@ -96,7 +96,7 @@ const BookDownloadDialog: React.FC<BookDownloadDialogProps> = ({ book, trigger }
       }
 
       // تنزيل فوري بدون انتظار تحميل الملف كاملًا
-      startInstantDownload(book.downloadUrl, `${book.title} - kotobi${fileExtension}`);
+      startInstantDownload(book.downloadUrl, `${book.title} - kotobi${fileExtension}`, String(book.id));
 
       setDownloadComplete(true);
       toast.success('بدأ تحميل الكتاب');
