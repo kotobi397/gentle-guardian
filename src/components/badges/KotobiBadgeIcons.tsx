@@ -131,8 +131,10 @@ export const KotobiCrest: React.FC<CrestProps> = ({
         <circle key={i} cx={cx} cy={cy} r={3.1} fill={rim[1]} stroke="#1b2338" strokeWidth="1.4" />
       ))}
 
-      {/* الرمز الداخلي */}
-      <g>{children}</g>
+      {/* الرمز الداخلي — مرفوع قليلاً ومصغّر ليبقى داخل الدرع بعيداً عن النجوم */}
+      <g transform={`translate(50 ${RARITY_STARS[rarity] > 0 ? 44 : 47}) scale(0.88) translate(-50 -50)`}>
+        {children}
+      </g>
 
       {/* نجوم الندرة */}
       {Array.from({ length: RARITY_STARS[rarity] }).map((_, i, arr) => {
