@@ -75,9 +75,11 @@ export const onRequest = async (context: any) => {
         '</head>',
         `<link rel="canonical" href="${canonicalUrl}">\n</head>`
       );
-      if (!/<meta[^>]*\sproperty=["']og:url["'][^>]*>/i.test(html)) {
-        html = html.replace('</head>', `<meta property="og:url" content="${canonicalUrl}">\n</head>`);
-      }
+      // The static shell ships og:url pointing at the homepage — make it self-referencing.
+      const ogUrlTag = `<meta property="og:url" content="${canonicalUrl}">`;
+      html = /<meta[^>]*\sproperty=["']og:url["'][^>]*>/i.test(html)
+        ? html.replace(/<meta[^>]*\sproperty=["']og:url["'][^>]*>/i, ogUrlTag)
+        : html.replace('</head>', `${ogUrlTag}\n</head>`);
     }
 
     headers.delete('content-length');
