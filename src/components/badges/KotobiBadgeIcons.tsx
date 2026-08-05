@@ -55,7 +55,8 @@ export const KotobiCrest: React.FC<CrestProps> = ({
   rarity,
   children,
 }) => {
-  const uid = useId().replace(/:/g, '');
+  // معرّف فريد لكل نسخة (يمنع تعارض التدرجات عند وجود عدة شارات في نفس الصفحة)
+  const uid = useId().replace(/:/g, '') + '-' + palette.join('').replace(/#/g, '') + rarity;
   const gBody = `kb-body-${uid}`;
   const gRim = `kb-rim-${uid}`;
   const gGloss = `kb-gloss-${uid}`;
@@ -116,11 +117,17 @@ export const KotobiCrest: React.FC<CrestProps> = ({
       </g>
 
       {/* مسامير معدنية */}
-      {[
-        [17, 20],
-        [83, 20],
-        [50, 92],
-      ].map(([cx, cy], i) => (
+      {(RARITY_STARS[rarity] > 0
+        ? [
+            [17, 20],
+            [83, 20],
+          ]
+        : [
+            [17, 20],
+            [83, 20],
+            [50, 92],
+          ]
+      ).map(([cx, cy], i) => (
         <circle key={i} cx={cx} cy={cy} r={3.1} fill={rim[1]} stroke="#1b2338" strokeWidth="1.4" />
       ))}
 
@@ -129,10 +136,10 @@ export const KotobiCrest: React.FC<CrestProps> = ({
 
       {/* نجوم الندرة */}
       {Array.from({ length: RARITY_STARS[rarity] }).map((_, i, arr) => {
-        const spread = 15;
+        const spread = 16;
         const cx = 50 + (i - (arr.length - 1) / 2) * spread;
-        const cy = 94 - (arr.length > 1 && i === (arr.length - 1) / 2 ? 5 : 0);
-        return <Star key={i} cx={cx} cy={cy} r={8} fill="#ffd45e" stroke="#7a4a08" />;
+        const cy = 91 - (arr.length > 1 && i === (arr.length - 1) / 2 ? 6 : 0);
+        return <Star key={i} cx={cx} cy={cy} r={7.5} fill="#ffd45e" stroke="#7a4a08" />;
       })}
     </svg>
   );
