@@ -249,9 +249,22 @@ export async function buildChild(type: string, page: number): Promise<string | n
     return renderUrlset(urls);
   }
 
-  // User profiles are intentionally noindex (thin content) -> never listed.
+  // Public member profiles. Profiles that own books redirect to /author/... ,
+  // so they are excluded here to avoid redirect duplicates in the sitemap.
   if (type === 'users') {
-    return renderUrlset([]);
+    const rows = await fetchRows(
+      `profiles?select=id,username,last_seen,created_at&username=not.is.null&author_slug=is.null&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
+    );
+    for (const u of rows) {
+      if (!u.username) continue;
+      urls.push({
+        url: `${SITE}/user/${encodePathSegment(u.username)}`,
+        lastmod: iso(u.last_seen || u.created_at),
+        changefreq: 'weekly',
+        priority: 0.5,
+      });
+    }
+    return renderUrlset(urls);
   }
 
   if (type === 'clubs') {
