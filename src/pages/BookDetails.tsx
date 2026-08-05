@@ -373,7 +373,7 @@ const BookDetailsContent = () => {
       const fileName = `${book.title} - kotobi${extension}`;
 
       // يبدأ التنزيل فورًا عبر رابط مباشر (بدون انتظار تحميل الملف كاملًا)
-      startInstantDownload(book.book_file_url, fileName);
+      startInstantDownload(book.book_file_url, fileName, String(book.id));
       toast.success("بدأ تحميل الكتاب");
 
       // تسجيل الإحصائيات في الخلفية دون تعطيل التنزيل
