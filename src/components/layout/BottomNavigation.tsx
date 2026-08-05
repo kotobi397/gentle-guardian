@@ -6,6 +6,8 @@ import UploadBookIcon from '@/components/icons/UploadBookIcon';
 import QuoteIcon from '@/components/icons/QuoteIcon';
 import ProfileIcon from '@/components/icons/ProfileIcon';
 import MyBooksIcon from '@/components/icons/MyBooksIcon';
+import BookRequestIcon from '@/components/icons/BookRequestIcon';
+
 
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
@@ -55,7 +57,9 @@ const BottomNavigation: React.FC = () => {
       ? [{ key: 'admin', label: 'إدارة', icon: <IconGear className="h-[22px] w-[22px]" />, path: '/admin/books' }]
       : []),
     { key: 'quotes', label: 'اقتباسات', icon: <QuoteIcon className="h-[22px] w-[22px]" />, path: '/quotes' },
+    { key: 'requests', label: 'اطلب كتاباً', icon: <BookRequestIcon className="h-[22px] w-[22px]" />, path: '/book-requests' },
     { key: 'rewards', label: 'مكافآت', icon: <IconTrophy className="h-[22px] w-[22px]" />, path: '/rewards' },
+
     { key: 'mybooks', label: 'كتبي', icon: <MyBooksIcon className="h-[22px] w-[22px]" />, path: '/my-books' },
     { key: 'profile', label: 'حسابي', icon: <ProfileIcon className="h-[22px] w-[22px]" />, path: '/profile' },
   ];

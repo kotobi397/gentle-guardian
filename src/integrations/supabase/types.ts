@@ -928,6 +928,80 @@ export type Database = {
         }
         Relationships: []
       }
+      book_request_votes: {
+        Row: {
+          created_at: string
+          id: string
+          request_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          request_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          request_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_request_votes_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "book_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      book_requests: {
+        Row: {
+          admin_note: string | null
+          author: string | null
+          created_at: string
+          fulfilled_book_id: string | null
+          id: string
+          language: string
+          reason: string | null
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+          votes_count: number
+        }
+        Insert: {
+          admin_note?: string | null
+          author?: string | null
+          created_at?: string
+          fulfilled_book_id?: string | null
+          id?: string
+          language?: string
+          reason?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+          votes_count?: number
+        }
+        Update: {
+          admin_note?: string | null
+          author?: string | null
+          created_at?: string
+          fulfilled_book_id?: string | null
+          id?: string
+          language?: string
+          reason?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+          votes_count?: number
+        }
+        Relationships: []
+      }
       book_reviews: {
         Row: {
           book_id: string

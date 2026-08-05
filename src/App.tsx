@@ -54,6 +54,8 @@ const AuthorPage = lazy(() => import('./pages/AuthorPage'));
 const PublicUserProfile = lazy(() => import('./pages/PublicUserProfile'));
 const Suggestions = lazy(() => import('./pages/Suggestions'));
 const Messages = lazy(() => import('./pages/Messages'));
+const BookRequests = lazy(() => import('./pages/BookRequests'));
+
 
 const ReadingClubs = lazy(() => import('./pages/ReadingClubs'));
 const ReadingClubRoom = lazy(() => import('./pages/ReadingClubRoom'));
@@ -158,7 +160,9 @@ function AppContent() {
             <Route path="/user/:userIdentifier" element={<PublicUserProfile />} />
             <Route path="/suggestions" element={<Suggestions />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/book-requests" element={<BookRequests />} />
             <Route path="/reading-clubs" element={<ReadingClubs />} />
+
             <Route path="/reading-clubs/:clubId" element={<ReadingClubRoom />} />
             <Route path="/cover-designer" element={<CoverDesigner />} />
             <Route path="/about" element={<AboutUs />} />
