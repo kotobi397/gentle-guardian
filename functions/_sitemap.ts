@@ -113,24 +113,35 @@ export const STATIC_PAGES: Url[] = [
   { url: `${SITE}/suggestions`, changefreq: 'weekly', priority: 0.7 },
   { url: `${SITE}/upload-book`, changefreq: 'monthly', priority: 0.6 },
   { url: `${SITE}/leaderboard`, changefreq: 'weekly', priority: 0.6 },
+  { url: `${SITE}/shop`, changefreq: 'weekly', priority: 0.5 },
+  { url: `${SITE}/rewards`, changefreq: 'weekly', priority: 0.5 },
+  { url: `${SITE}/cover-designer`, changefreq: 'monthly', priority: 0.5 },
+  { url: `${SITE}/site-updates`, changefreq: 'weekly', priority: 0.5 },
   { url: `${SITE}/about-us`, changefreq: 'monthly', priority: 0.5 },
   { url: `${SITE}/contact-us`, changefreq: 'monthly', priority: 0.5 },
   { url: `${SITE}/donation`, changefreq: 'monthly', priority: 0.5 },
-  { url: `${SITE}/site-updates`, changefreq: 'weekly', priority: 0.5 },
   { url: `${SITE}/privacy-policy`, changefreq: 'yearly', priority: 0.3 },
   { url: `${SITE}/terms-of-service`, changefreq: 'yearly', priority: 0.3 },
 ];
 
+/** Newest approved books — small, refreshed often so Google picks up uploads fast */
+export const LATEST_LIMIT = 500;
+
 /** Builds the sitemap index (small, instant to load) */
 export async function buildIndex() {
-  const [books, authors, users, categories] = await Promise.all([
+  const [books, authors, users, categories, clubs] = await Promise.all([
     countRows('book_submissions', '&status=eq.approved'),
     countRows('authors'),
     countRows('profiles'),
     countRows('categories'),
+    countRows('reading_clubs', '&is_public=eq.true'),
   ]);
 
-  const entries: { loc: string; lastmod?: string }[] = [{ loc: `${SITE}/sitemaps/pages.xml` }];
+  const now = new Date().toISOString();
+  const entries: { loc: string; lastmod?: string }[] = [
+    { loc: `${SITE}/sitemaps/pages.xml` },
+    { loc: `${SITE}/sitemaps/latest.xml`, lastmod: now },
+  ];
 
   const chunks = (total: number, per: number) => Math.max(1, Math.ceil(total / per));
 
@@ -146,9 +157,15 @@ export async function buildIndex() {
   for (let i = 1; i <= chunks(users, ROWS_PER_FILE); i++) {
     entries.push({ loc: `${SITE}/sitemaps/users-${i}.xml` });
   }
+  if (clubs > 0) {
+    for (let i = 1; i <= chunks(clubs, ROWS_PER_FILE); i++) {
+      entries.push({ loc: `${SITE}/sitemaps/clubs-${i}.xml` });
+    }
+  }
 
   return renderIndex(entries);
 }
+
 
 /** Builds one child sitemap: type + 1-based page number */
 export async function buildChild(type: string, page: number): Promise<string | null> {
