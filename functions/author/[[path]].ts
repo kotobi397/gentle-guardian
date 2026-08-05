@@ -24,6 +24,7 @@ async function fetchAuthorData(authorParam: string) {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=representation' },
     body: JSON.stringify({ p_author_name: authorParam }),
+    signal: AbortSignal.timeout(6000),
   });
 
   if (res.ok) {
@@ -51,7 +52,7 @@ async function fetchAuthorData(authorParam: string) {
   ];
 
   for (const q of searches) {
-    res = await fetch(`${supabaseUrl}/rest/v1/authors?select=*&${q}&limit=1`, { headers });
+    res = await fetch(`${supabaseUrl}/rest/v1/authors?select=*&${q}&limit=1`, { headers, signal: AbortSignal.timeout(6000) });
     const authors = await res.json();
     if (authors?.length) return authors[0];
   }
@@ -72,6 +73,7 @@ async function fetchAuthorBooks(authorName: string) {
           Authorization: `Bearer ${supabaseKey}`,
           'Content-Type': 'application/json',
         },
+        signal: AbortSignal.timeout(6000),
       }
     );
     if (res.ok) return await res.json();

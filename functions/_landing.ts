@@ -28,14 +28,14 @@ async function fetchBook(identifier: string) {
 
   let res = await fetch(
     `${SUPABASE_URL}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=eq.${encodeURIComponent(identifier)}&limit=1`,
-    { headers }
+    { headers, signal: AbortSignal.timeout(6000) }
   );
   let books = await res.json();
 
   if (!books?.length) {
     res = await fetch(
       `${SUPABASE_URL}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${encodeURIComponent(identifier)}&limit=1`,
-      { headers }
+      { headers, signal: AbortSignal.timeout(6000) }
     ).catch(() => null as any);
     books = res ? await res.json().catch(() => []) : [];
   }

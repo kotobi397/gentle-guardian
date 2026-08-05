@@ -92,6 +92,7 @@ export async function countRows(table: string, filter = '') {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?select=id${filter}&limit=1`, {
     method: 'HEAD',
     headers: { ...headers, Prefer: 'count=exact' },
+    signal: AbortSignal.timeout(8000),
   });
   const range = res.headers.get('content-range') || '';
   const total = parseInt(range.split('/')[1] || '0', 10);
@@ -99,7 +100,10 @@ export async function countRows(table: string, filter = '') {
 }
 
 export async function fetchRows(path: string) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers });
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers,
+    signal: AbortSignal.timeout(15000),
+  });
   if (!res.ok) return [];
   return (await res.json()) as any[];
 }
@@ -129,10 +133,9 @@ export const LATEST_LIMIT = 500;
 
 /** Builds the sitemap index (small, instant to load) */
 export async function buildIndex() {
-  const [books, authors, users, categories, clubs] = await Promise.all([
+  const [books, authors, categories, clubs] = await Promise.all([
     countRows('book_submissions', '&status=eq.approved'),
     countRows('authors'),
-    countRows('profiles'),
     countRows('categories'),
     countRows('reading_clubs', '&is_public=eq.true'),
   ]);
@@ -153,9 +156,6 @@ export async function buildIndex() {
   }
   for (let i = 1; i <= chunks(categories, ROWS_PER_FILE); i++) {
     entries.push({ loc: `${SITE}/sitemaps/categories-${i}.xml` });
-  }
-  for (let i = 1; i <= chunks(users, ROWS_PER_FILE); i++) {
-    entries.push({ loc: `${SITE}/sitemaps/users-${i}.xml` });
   }
   if (clubs > 0) {
     for (let i = 1; i <= chunks(clubs, ROWS_PER_FILE); i++) {
@@ -243,21 +243,9 @@ export async function buildChild(type: string, page: number): Promise<string | n
     return renderUrlset(urls);
   }
 
+  // User profiles are intentionally noindex (thin content) -> never listed.
   if (type === 'users') {
-    const rows = await fetchRows(
-      `profiles?select=id,username,created_at,last_seen&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
-    );
-    for (const u of rows) {
-      const identifier = u.username && u.username.trim() !== '' ? u.username : u.id;
-      if (!identifier) continue;
-      urls.push({
-        url: `${SITE}/user/${encodePathSegment(identifier)}`,
-        lastmod: iso(u.last_seen || u.created_at),
-        changefreq: 'weekly',
-        priority: 0.6,
-      });
-    }
-    return renderUrlset(urls);
+    return renderUrlset([]);
   }
 
   if (type === 'clubs') {
