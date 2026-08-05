@@ -612,6 +612,48 @@ export type Database = {
           },
         ]
       }
+      book_events: {
+        Row: {
+          book_id: string
+          country_code: string | null
+          country_name: string | null
+          created_at: string
+          device_type: string | null
+          event_type: string
+          id: string
+          referrer: string | null
+          session_id: string | null
+          uploader_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          book_id: string
+          country_code?: string | null
+          country_name?: string | null
+          created_at?: string
+          device_type?: string | null
+          event_type: string
+          id?: string
+          referrer?: string | null
+          session_id?: string | null
+          uploader_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          book_id?: string
+          country_code?: string | null
+          country_name?: string | null
+          created_at?: string
+          device_type?: string | null
+          event_type?: string
+          id?: string
+          referrer?: string | null
+          session_id?: string | null
+          uploader_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       book_extracted_text: {
         Row: {
           book_id: string | null
@@ -6271,6 +6313,47 @@ export type Database = {
       get_unread_notifications_count: {
         Args: { p_user_id: string }
         Returns: number
+      }
+      get_uploader_book_analytics: {
+        Args: { p_days?: number }
+        Returns: {
+          average_rating: number
+          avg_progress: number
+          book_id: string
+          card_clicks: number
+          category: string
+          completions: number
+          cover_image_url: string
+          created_at: string
+          detail_views: number
+          downloads: number
+          likes_count: number
+          reads_online: number
+          reviews_count: number
+          slug: string
+          title: string
+          views: number
+        }[]
+      }
+      get_uploader_events_timeline: {
+        Args: { p_book_id?: string; p_days?: number }
+        Returns: {
+          card_clicks: number
+          day: string
+          detail_views: number
+          downloads: number
+          reads_online: number
+        }[]
+      }
+      get_uploader_top_countries: {
+        Args: { p_book_id?: string; p_days?: number; p_limit?: number }
+        Returns: {
+          country_code: string
+          country_name: string
+          downloads: number
+          events: number
+          reads_online: number
+        }[]
       }
       get_user_conversations: {
         Args: { p_user_id: string }
