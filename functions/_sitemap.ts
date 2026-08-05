@@ -133,11 +133,12 @@ export const LATEST_LIMIT = 500;
 
 /** Builds the sitemap index (small, instant to load) */
 export async function buildIndex() {
-  const [books, authors, categories, clubs] = await Promise.all([
+  const [books, authors, categories, clubs, users] = await Promise.all([
     countRows('book_submissions', '&status=eq.approved'),
     countRows('authors'),
     countRows('categories'),
     countRows('reading_clubs', '&is_public=eq.true'),
+    countRows('profiles', '&username=not.is.null&author_slug=is.null'),
   ]);
 
   const now = new Date().toISOString();
