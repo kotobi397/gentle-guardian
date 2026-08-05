@@ -1,4 +1,4 @@
-import { BadgeCheck } from '@/components/icons/kotobi-lucide';
+import KotobiVerifiedIcon from '@/components/icons/KotobiVerifiedIcon';
 import { useIsVerified } from '@/hooks/useSubscription';
 import { cn } from '@/lib/utils';
 
@@ -15,9 +15,9 @@ export function VerifiedBadge({ userId, size = 16, className }: Props) {
     <span
       title="حساب موثّق"
       aria-label="حساب موثّق"
-      className={cn('inline-flex items-center text-blue-500', className)}
+      className={cn('inline-flex items-center align-middle', className)}
     >
-      <BadgeCheck size={size} fill="currentColor" className="text-blue-500" stroke="white" strokeWidth={2} />
+      <KotobiVerifiedIcon size={size} />
     </span>
   );
 }
