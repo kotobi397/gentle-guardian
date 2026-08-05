@@ -66,7 +66,30 @@ export const startInstantDownload = (rawUrl: string, fileName: string): void => 
     return;
   }
 
-  // رابط خارجي (Supabase): سمة download يتجاهلها المتصفح ويحدث انتقال،
-  // لذلك نستخدم iframe مخفيًا مع رأس attachment.
-  downloadViaHiddenFrame(href);
+  // رابط Supabase العام: يرجع Content-Disposition: attachment مع ?download
+  // فيبدأ التنزيل داخل iframe مخفي بدون نقل المستخدم.
+  if (isSupabaseStorageUrl(href)) {
+    downloadViaHiddenFrame(href);
+    return;
+  }
+
+  // روابط خارجية أخرى (مثل signed S3): نجلب الملف كـ blob ثم ننزّله.
+  void (async () => {
+    try {
+      const res = await fetch(href, { mode: 'cors' });
+      if (!res.ok) throw new Error(String(res.status));
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = fileName;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 10000);
+    } catch {
+      downloadViaHiddenFrame(href);
+    }
+  })();
 };
