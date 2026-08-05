@@ -1,4 +1,6 @@
-// Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml.
+// Runs before `vite dev` and `vite build`; writes public/static-sitemap.xml (fallback only).
+// The live /sitemap.xml is a Cloudflare Pages Function (functions/sitemap.xml.ts) that
+// returns a sitemap index pointing to chunked child sitemaps.
 
 import { writeFileSync } from "fs"
 import { resolve } from "path"
@@ -53,5 +55,5 @@ function generateSitemap(items: SitemapEntry[]) {
   ].join("\n")
 }
 
-writeFileSync(resolve("public/sitemap.xml"), generateSitemap(entries))
-console.log(`sitemap.xml written (${entries.length} entries)`)
+writeFileSync(resolve("public/static-sitemap.xml"), generateSitemap(entries))
+console.log(`static-sitemap.xml written (${entries.length} entries)`)
