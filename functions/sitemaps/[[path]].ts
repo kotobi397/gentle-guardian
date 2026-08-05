@@ -16,7 +16,7 @@ export const onRequest = async (context: any) => {
   try {
     const body = await buildChild(type, page);
     if (!body) return new Response('Not found', { status: 404 });
-    return xmlResponse(body, type === 'pages' ? 86400 : 3600);
+    return xmlResponse(body, type === 'pages' ? 86400 : type === 'latest' ? 600 : 3600);
   } catch {
     return xmlResponse(renderUrlset([]), 300);
   }
