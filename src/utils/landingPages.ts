@@ -53,8 +53,11 @@ export const buildLandingMeta = (variant: LandingVariantKey, book: LandingBook) 
   const title = book.title || 'الكتاب';
   const author = book.author || 'مؤلف غير معروف';
   const slug = encodeURIComponent(book.slug || '');
-  const canonical = `${SITE_URL}/${config.path}/${slug}`;
   const bookUrl = `${SITE_URL}/book/${slug}`;
+  const pageUrl = `${SITE_URL}/${config.path}/${slug}`;
+  // صفحات الهبوط نسخ مقاربة لصفحة الكتاب — نوحّد الـcanonical نحو صفحة الكتاب
+  // حتى لا تتنافس مع بعضها وتُهدر ميزانية الزحف (نفس أسلوب المنصات الكبيرة).
+  const canonical = bookUrl;
   const h1 = config.titlePattern.replace('{title}', title);
 
   const shortDesc = (book.description || '').replace(/\s+/g, ' ').trim().slice(0, 110);
