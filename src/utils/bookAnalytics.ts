@@ -93,7 +93,8 @@ const shouldSkip = (bookId: string, eventType: BookEventType): boolean => {
   try {
     const key = `${DEDUPE_PREFIX}${eventType}:${bookId}`;
     const last = Number(sessionStorage.getItem(key) || 0);
-    if (last && Date.now() - last < DEDUPE_WINDOW_MS) return true;
+    const windowMs = DEDUPE_WINDOWS[eventType] ?? 8 * 1000;
+    if (last && Date.now() - last < windowMs) return true;
     sessionStorage.setItem(key, String(Date.now()));
     return false;
   } catch {
