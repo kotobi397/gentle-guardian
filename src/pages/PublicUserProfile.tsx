@@ -411,6 +411,13 @@ const PublicUserProfile: React.FC = () => {
               </CardContent>
             </Card>
 
+            {/* الشارات الحصرية */}
+            <UserBadgesSection
+              userId={profile.id}
+              isOwner={user?.id === profile.id}
+              className="mb-8"
+            />
+
             {/* Highlights */}
             <HighlightsBar userId={profile.id} />
 
