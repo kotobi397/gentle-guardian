@@ -129,12 +129,13 @@ export const buildLandingMeta = (variant: LandingVariantKey, book: LandingBook) 
     faq: v.faq,
     canonical,
     bookUrl,
+    pageUrl,
     keywords: `${h1}, ${title}, ${author}, تحميل كتب PDF مجانا, قراءة كتب اون لاين${book.category ? `, ${book.category}` : ''}`,
     structuredData,
     breadcrumbs: [
       { name: 'الرئيسية', url: SITE_URL },
       { name: title, url: bookUrl },
-      { name: config.label, url: canonical },
+      { name: config.label, url: pageUrl },
     ],
   };
 };
