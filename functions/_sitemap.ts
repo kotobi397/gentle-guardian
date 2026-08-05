@@ -163,6 +163,11 @@ export async function buildIndex() {
       entries.push({ loc: `${SITE}/sitemaps/clubs-${i}.xml` });
     }
   }
+  if (users > 0) {
+    for (let i = 1; i <= chunks(users, ROWS_PER_FILE); i++) {
+      entries.push({ loc: `${SITE}/sitemaps/users-${i}.xml` });
+    }
+  }
 
   return renderIndex(entries);
 }
