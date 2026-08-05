@@ -167,10 +167,21 @@ const UploaderAnalytics: React.FC = () => {
   const [days, setDays] = useState<number>(30);
   const [selectedBook, setSelectedBook] = useState<string | null>(null);
 
-  const { books, countries, timeline, loading, error, refetch } = useUploaderAnalytics(
-    days,
-    selectedBook,
-  );
+  const {
+    books,
+    totals: overall,
+    totalBooks,
+    countries,
+    timeline,
+    loading,
+    loadingMore,
+    hasMore,
+    loadMore,
+    error,
+    refetch,
+  } = useUploaderAnalytics(days, selectedBook);
+
+  const sentinelRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     if (!authLoading && !user) navigate('/auth', { replace: true });
@@ -180,20 +191,31 @@ const UploaderAnalytics: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  // تحميل تدريجي: ٢٤ كتاباً في كل مرة عند الوصول لأسفل القائمة
+  React.useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node || !hasMore) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) loadMore();
+      },
+      { rootMargin: '400px 0px' },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasMore, loadMore, books.length]);
+
+  // الإحصائيات العامة تشمل جميع الكتب (محسوبة في قاعدة البيانات)
   const totals = useMemo(
-    () =>
-      books.reduce(
-        (acc, b) => ({
-          downloads: acc.downloads + b.downloads,
-          reads: acc.reads + b.reads_online,
-          clicks: acc.clicks + b.card_clicks,
-          views: acc.views + b.views,
-          reviews: acc.reviews + b.reviews_count,
-          likes: acc.likes + b.likes_count,
-        }),
-        { downloads: 0, reads: 0, clicks: 0, views: 0, reviews: 0, likes: 0 },
-      ),
-    [books],
+    () => ({
+      downloads: overall.downloads,
+      reads: overall.reads_online,
+      clicks: overall.card_clicks,
+      views: overall.views,
+      reviews: overall.reviews_count,
+      likes: overall.likes_count,
+    }),
+    [overall],
   );
 
   const maxCountry = countries[0]?.events || 1;
@@ -395,7 +417,8 @@ const UploaderAnalytics: React.FC = () => {
             <motion.div variants={itemVariants} className="lg:col-span-2 space-y-3">
               <div className="flex items-center justify-between">
                 <h2 className="font-cairo font-black text-base text-foreground">
-                  إحصائيات كتبك ({books.length})
+                  إحصائيات كتبك ({books.length.toLocaleString('ar-EG')}
+                  {totalBooks > books.length ? ` من ${totalBooks.toLocaleString('ar-EG')}` : ''})
                 </h2>
                 {selectedBook && (
                   <Button
@@ -442,6 +465,44 @@ const UploaderAnalytics: React.FC = () => {
                       />
                     ))}
                   </AnimatePresence>
+
+                  {/* حسّاس التحميل التدريجي */}
+                  <div ref={sentinelRef} className="h-1 w-full" aria-hidden />
+
+                  {loadingMore && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-3"
+                    >
+                      <div className="flex items-center justify-center gap-2 py-2 text-muted-foreground font-tajawal text-xs">
+                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                        جارٍ تحميل ٢٤ كتاباً إضافياً...
+                      </div>
+                      {[0, 1].map((i) => (
+                        <Skeleton key={i} className="h-32 w-full rounded-xl" />
+                      ))}
+                    </motion.div>
+                  )}
+
+                  {!hasMore && !loadingMore && books.length > 0 && (
+                    <p className="text-center text-[11px] font-tajawal text-muted-foreground py-2">
+                      عرضت جميع كتبك ({totalBooks.toLocaleString('ar-EG')})
+                    </p>
+                  )}
+
+                  {hasMore && !loadingMore && (
+                    <div className="flex justify-center pt-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="font-tajawal text-xs"
+                        onClick={loadMore}
+                      >
+                        تحميل المزيد
+                      </Button>
+                    </div>
+                  )}
                 </motion.div>
               )}
             </motion.div>
