@@ -51,7 +51,7 @@ async function fetchAuthorData(authorParam: string) {
   ];
 
   for (const q of searches) {
-    res = await fetch(`${supabaseUrl}/rest/v1/authors?select=*&${q}&limit=1`, { headers });
+    res = await fetch(`${supabaseUrl}/rest/v1/authors?select=*&${q}&limit=1`, { headers, signal: AbortSignal.timeout(6000) });
     const authors = await res.json();
     if (authors?.length) return authors[0];
   }

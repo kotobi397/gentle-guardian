@@ -24,7 +24,7 @@ async function fetchBookData(bookId: string) {
 
   let res = await fetch(
     `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=eq.${encodeURIComponent(bookId)}&limit=1`,
-    { headers }
+    { headers, signal: AbortSignal.timeout(6000) }
   );
   let books = await res.json();
 
@@ -32,7 +32,7 @@ async function fetchBookData(bookId: string) {
     const flex = bookId.replace(/-/g, ' ').toLowerCase();
     res = await fetch(
       `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=ilike.*${encodeURIComponent(flex)}*&limit=1`,
-      { headers }
+      { headers, signal: AbortSignal.timeout(6000) }
     );
     books = await res.json();
   }
@@ -41,7 +41,7 @@ async function fetchBookData(bookId: string) {
     try {
       res = await fetch(
         `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${bookId}&limit=1`,
-        { headers }
+        { headers, signal: AbortSignal.timeout(6000) }
       );
       books = await res.json();
     } catch (_) {}
