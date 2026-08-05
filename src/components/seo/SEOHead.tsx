@@ -29,7 +29,15 @@ export const SEOHead = ({
   modifiedTime,
   breadcrumbs
 }: SEOHeadProps) => {
-  const currentUrl = canonical || (typeof window !== 'undefined' ? window.location.origin + window.location.pathname : 'https://kotobi.xyz');
+  // Always a clean, self-referencing canonical: no query string, no trailing slash,
+  // always on the primary domain. Prevents "duplicate without user-selected canonical".
+  const normalizePath = (path: string) =>
+    path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+  const currentUrl =
+    canonical ||
+    (typeof window !== 'undefined'
+      ? `https://kotobi.xyz${normalizePath(window.location.pathname)}`
+      : 'https://kotobi.xyz');
   const fullImageUrl = ogImage.startsWith('http') ? ogImage : `https://kotobi.xyz${ogImage}`;
   
   // Ensure title is under 60 chars for Google

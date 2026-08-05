@@ -55,13 +55,22 @@ Disallow: /profile
 Disallow: /my-books
 Disallow: /messages
 Disallow: /book/reading/
+Disallow: /pdf-reader
+Disallow: /search
+Disallow: /notifications
+Disallow: /settings
+# Internal file / image proxies (return 403 to crawlers by design)
+Disallow: /f/
+Disallow: /i/
+# Never crawl query-string duplicates
+Disallow: /*?*utm_
+Disallow: /*?*ref=
 
 # Allow important public pages
 Allow: /book/*
 Allow: /tahmil/*
 Allow: /qiraa/*
 Allow: /molakhas/*
-Allow: /user/*
 Allow: /sitemaps/*
 Allow: /category/*
 Allow: /author/*
