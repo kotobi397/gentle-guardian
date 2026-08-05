@@ -6522,6 +6522,7 @@ export type Database = {
         Args: { p_author_name: string }
         Returns: boolean
       }
+      is_book_requests_admin: { Args: { _user_id: string }; Returns: boolean }
       is_current_admin_user: { Args: never; Returns: boolean }
       is_current_user_admin: { Args: never; Returns: boolean }
       is_text_corrupted: { Args: { p_text: string }; Returns: boolean }
