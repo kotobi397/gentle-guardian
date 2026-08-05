@@ -246,13 +246,36 @@ const PublicUserProfile: React.FC = () => {
     );
   }
 
+  const profileCanonical = `https://kotobi.xyz/user/${encodeURIComponent(profile.username || userIdentifier || '')}`;
+  const profileDescription = `${profile.username} على منصة كتبي${profile.bio ? ` — ${profile.bio.slice(0, 110)}` : ''} • ${stats.booksCount} كتاب، ${stats.reviewsCount} مراجعة، ${stats.quotesCount} اقتباس.`;
+
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{`${profile.username} - ملف المستخدم | منصة كتبي`}</title>
-        <meta name="description" content={`ملف المستخدم ${profile.username} على منصة كتبي - ${stats.booksCount} كتاب، ${stats.reviewsCount} مراجعة، ${stats.quotesCount} اقتباس`} />
-        <meta name="robots" content="noindex" />
+        <title>{`${profile.username} - ملف القارئ | منصة كتبي`}</title>
+        <meta name="description" content={profileDescription} />
+        <link rel="canonical" href={profileCanonical} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${profile.username} - ملف القارئ | منصة كتبي`} />
+        <meta property="og:description" content={profileDescription} />
+        <meta property="og:url" content={profileCanonical} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            url: profileCanonical,
+            mainEntity: {
+              '@type': 'Person',
+              name: profile.username,
+              description: profileDescription,
+              url: profileCanonical,
+              ...(profile.avatar_url ? { image: profile.avatar_url } : {}),
+            },
+          })}
+        </script>
       </Helmet>
+
 
       <div className="min-h-screen flex flex-col bg-background pb-safe-bottom">
         <Navbar />
