@@ -74,6 +74,7 @@ Allow: /molakhas/*
 Allow: /sitemaps/*
 Allow: /category/*
 Allow: /author/*
+Allow: /user/*
 Allow: /categories
 Allow: /authors
 Allow: /quotes

@@ -133,11 +133,12 @@ export const LATEST_LIMIT = 500;
 
 /** Builds the sitemap index (small, instant to load) */
 export async function buildIndex() {
-  const [books, authors, categories, clubs] = await Promise.all([
+  const [books, authors, categories, clubs, users] = await Promise.all([
     countRows('book_submissions', '&status=eq.approved'),
     countRows('authors'),
     countRows('categories'),
     countRows('reading_clubs', '&is_public=eq.true'),
+    countRows('profiles', '&username=not.is.null&author_slug=is.null'),
   ]);
 
   const now = new Date().toISOString();
@@ -160,6 +161,11 @@ export async function buildIndex() {
   if (clubs > 0) {
     for (let i = 1; i <= chunks(clubs, ROWS_PER_FILE); i++) {
       entries.push({ loc: `${SITE}/sitemaps/clubs-${i}.xml` });
+    }
+  }
+  if (users > 0) {
+    for (let i = 1; i <= chunks(users, ROWS_PER_FILE); i++) {
+      entries.push({ loc: `${SITE}/sitemaps/users-${i}.xml` });
     }
   }
 
@@ -243,9 +249,22 @@ export async function buildChild(type: string, page: number): Promise<string | n
     return renderUrlset(urls);
   }
 
-  // User profiles are intentionally noindex (thin content) -> never listed.
+  // Public member profiles. Profiles that own books redirect to /author/... ,
+  // so they are excluded here to avoid redirect duplicates in the sitemap.
   if (type === 'users') {
-    return renderUrlset([]);
+    const rows = await fetchRows(
+      `profiles?select=id,username,last_seen,created_at&username=not.is.null&author_slug=is.null&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
+    );
+    for (const u of rows) {
+      if (!u.username) continue;
+      urls.push({
+        url: `${SITE}/user/${encodePathSegment(u.username)}`,
+        lastmod: iso(u.last_seen || u.created_at),
+        changefreq: 'weekly',
+        priority: 0.5,
+      });
+    }
+    return renderUrlset(urls);
   }
 
   if (type === 'clubs') {
