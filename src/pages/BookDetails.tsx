@@ -51,6 +51,7 @@ import SaveBookButton from "@/components/books/SaveBookButton";
 import DownloadBookButton from "@/components/books/DownloadBookButton";
 
 import { BookQuoteForm } from "@/components/quotes/BookQuoteForm";
+import { trackBookEvent } from "@/utils/bookAnalytics";
 import { useBookDownloads } from "@/hooks/useBookDownloads";
 import { useDynamicSEO } from "@/hooks/useDynamicSEO";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -329,6 +330,7 @@ const BookDetailsContent = () => {
   // دالة للانتقال لقراءة الكتاب
   const handleReadBook = async () => {
     if (book) {
+      trackBookEvent(book.id, 'read_online');
       navigateToBook(`/book/reading/${book.slug || id}`);
     }
   };
@@ -373,6 +375,7 @@ const BookDetailsContent = () => {
       const fileName = `${book.title} - kotobi${extension}`;
 
       // يبدأ التنزيل فورًا عبر رابط مباشر (بدون انتظار تحميل الملف كاملًا)
+      trackBookEvent(book.id, 'download');
       startInstantDownload(book.book_file_url, fileName, String(book.id));
       toast.success("بدأ تحميل الكتاب");
 
