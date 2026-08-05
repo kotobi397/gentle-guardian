@@ -222,8 +222,9 @@ export const onRequest = async (context: any) => {
 
     const meta = buildBookMeta(book);
 
-    // توحيد الرابط: /book/<uuid> يعيد توجيه 301 إلى /book/<slug>
-    if (book.slug && decodeURIComponent(url.pathname) !== decodeURIComponent(new URL(meta.bookUrl).pathname)) {
+    // توحيد الرابط: /book/<uuid> يعيد توجيه 301 دائماً إلى /book/<slug>
+    const isUuidUrl = /^[0-9a-f-]{36}$/i.test(bookId);
+    if (book.slug && isUuidUrl && !isViewSource) {
       return Response.redirect(meta.bookUrl, 301);
     }
 
