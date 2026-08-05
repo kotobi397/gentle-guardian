@@ -18,16 +18,55 @@ export const buildInstantDownloadUrl = (rawUrl: string, fileName: string): strin
   }
 };
 
+const isSameOrigin = (href: string): boolean => {
+  try {
+    return new URL(href, window.location.origin).origin === window.location.origin;
+  } catch {
+    return false;
+  }
+};
+
 /**
- * يبدأ التنزيل فورًا عبر رابط مباشر (بدون fetch/blob).
+ * تنزيل عبر iframe مخفي: الرابط يعيد Content-Disposition: attachment
+ * فيبدأ المتصفح التنزيل فورًا دون أي انتقال (navigation) للمستخدم.
+ */
+const downloadViaHiddenFrame = (href: string): void => {
+  const existing = document.getElementById('kotobi-dl-frame') as HTMLIFrameElement | null;
+  const frame = existing ?? document.createElement('iframe');
+  if (!existing) {
+    frame.id = 'kotobi-dl-frame';
+    frame.setAttribute('aria-hidden', 'true');
+    frame.style.position = 'fixed';
+    frame.style.width = '0';
+    frame.style.height = '0';
+    frame.style.border = '0';
+    frame.style.opacity = '0';
+    frame.style.pointerEvents = 'none';
+    document.body.appendChild(frame);
+  }
+  frame.src = href;
+};
+
+/**
+ * يبدأ التنزيل فورًا (بدون fetch/blob وبدون نقل المستخدم إلى رابط Supabase).
  */
 export const startInstantDownload = (rawUrl: string, fileName: string): void => {
   const href = buildInstantDownloadUrl(rawUrl, fileName);
-  const link = document.createElement('a');
-  link.href = href;
-  link.download = fileName;
-  link.rel = 'noopener';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+
+  // نفس الأصل: سمة download تعمل بشكل موثوق
+  if (isSameOrigin(href)) {
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = fileName;
+    link.rel = 'noopener';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return;
+  }
+
+  // رابط خارجي (Supabase): سمة download يتجاهلها المتصفح ويحدث انتقال،
+  // لذلك نستخدم iframe مخفيًا مع رأس attachment.
+  downloadViaHiddenFrame(href);
 };
