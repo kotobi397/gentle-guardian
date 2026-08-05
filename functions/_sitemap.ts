@@ -260,5 +260,22 @@ export async function buildChild(type: string, page: number): Promise<string | n
     return renderUrlset(urls);
   }
 
+  if (type === 'clubs') {
+    const rows = await fetchRows(
+      `reading_clubs?select=id,updated_at,created_at&is_public=eq.true&order=created_at.desc&offset=${offset}&limit=${ROWS_PER_FILE}`
+    );
+    for (const c of rows) {
+      urls.push({
+        url: `${SITE}/reading-clubs/${c.id}`,
+        lastmod: iso(c.updated_at || c.created_at),
+        changefreq: 'weekly',
+        priority: 0.5,
+      });
+    }
+    return renderUrlset(urls);
+  }
+
+
+
   return null;
 }
