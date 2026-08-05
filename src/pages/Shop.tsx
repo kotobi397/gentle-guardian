@@ -12,6 +12,7 @@ import {
   useClearCosmetic,
 } from '@/hooks/useGamification';
 import type { ShopCategory } from '@/services/gamification';
+import { getBadgeMeta, RARITY_LABEL, RARITY_STYLE } from '@/components/badges/KotobiBadge';
 import { useAuth } from '@/context/AuthContext';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -267,9 +268,19 @@ const PreviewBlock: React.FC<{ item: { category: ShopCategory; preview_value: st
     );
   }
   if (item.category === 'badge') {
+    const meta = getBadgeMeta(item.preview_value);
     return (
-      <div className="h-28 bg-muted/40 border-b border-border flex items-center justify-center text-5xl">
-        {item.preview_value}
+      <div className="h-28 bg-gradient-to-br from-muted/60 to-muted/20 border-b border-border flex flex-col items-center justify-center gap-1">
+        {meta ? (
+          <>
+            <meta.Icon size={62} title={meta.label} />
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${RARITY_STYLE[meta.rarity]}`}>
+              {RARITY_LABEL[meta.rarity]}
+            </span>
+          </>
+        ) : (
+          <span className="text-5xl">{item.preview_value}</span>
+        )}
       </div>
     );
   }

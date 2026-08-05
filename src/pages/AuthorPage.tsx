@@ -42,6 +42,7 @@ import { MessageButton } from "@/components/messaging/MessageButton";
 import { getPublicUserProfilePath } from "@/utils/userProfile";
 
 import { optimizeImageUrl } from '@/utils/imageProxy';
+import { UserBadgesSection } from '@/components/badges/UserBadgesSection';
 
 const encodePathSegment = (value: string) => {
   try {
@@ -632,6 +633,15 @@ const AuthorPage: React.FC = () => {
                 )}
               </CardContent>
             </Card>
+
+            {/* الشارات الحصرية */}
+            {authorData.user_id && (
+              <UserBadgesSection
+                userId={authorData.user_id}
+                isOwner={user?.id === authorData.user_id}
+                className="mb-8"
+              />
+            )}
 
             {/* التبويبات */}
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

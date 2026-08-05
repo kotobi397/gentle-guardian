@@ -55,7 +55,8 @@ export const KotobiCrest: React.FC<CrestProps> = ({
   rarity,
   children,
 }) => {
-  const uid = useId().replace(/:/g, '');
+  // معرّف فريد لكل نسخة (يمنع تعارض التدرجات عند وجود عدة شارات في نفس الصفحة)
+  const uid = useId().replace(/:/g, '') + '-' + palette.join('').replace(/#/g, '') + rarity;
   const gBody = `kb-body-${uid}`;
   const gRim = `kb-rim-${uid}`;
   const gGloss = `kb-gloss-${uid}`;
@@ -116,23 +117,31 @@ export const KotobiCrest: React.FC<CrestProps> = ({
       </g>
 
       {/* مسامير معدنية */}
-      {[
-        [17, 20],
-        [83, 20],
-        [50, 92],
-      ].map(([cx, cy], i) => (
+      {(RARITY_STARS[rarity] > 0
+        ? [
+            [17, 20],
+            [83, 20],
+          ]
+        : [
+            [17, 20],
+            [83, 20],
+            [50, 92],
+          ]
+      ).map(([cx, cy], i) => (
         <circle key={i} cx={cx} cy={cy} r={3.1} fill={rim[1]} stroke="#1b2338" strokeWidth="1.4" />
       ))}
 
-      {/* الرمز الداخلي */}
-      <g>{children}</g>
+      {/* الرمز الداخلي — مرفوع قليلاً ومصغّر ليبقى داخل الدرع بعيداً عن النجوم */}
+      <g transform={`translate(50 ${RARITY_STARS[rarity] > 0 ? 44 : 47}) scale(0.88) translate(-50 -50)`}>
+        {children}
+      </g>
 
       {/* نجوم الندرة */}
       {Array.from({ length: RARITY_STARS[rarity] }).map((_, i, arr) => {
-        const spread = 15;
+        const spread = 16;
         const cx = 50 + (i - (arr.length - 1) / 2) * spread;
-        const cy = 94 - (arr.length > 1 && i === (arr.length - 1) / 2 ? 5 : 0);
-        return <Star key={i} cx={cx} cy={cy} r={8} fill="#ffd45e" stroke="#7a4a08" />;
+        const cy = 91 - (arr.length > 1 && i === (arr.length - 1) / 2 ? 6 : 0);
+        return <Star key={i} cx={cx} cy={cy} r={7.5} fill="#ffd45e" stroke="#7a4a08" />;
       })}
     </svg>
   );
@@ -208,8 +217,8 @@ export const ScholarBadge: React.FC<IconProps> = (p) => (
   <KotobiCrest {...p} palette={['#fed7aa', '#c2410c', '#6b2005']} rim={['#ffe9cf', '#f59e5b']} rarity="epic">
     <path d="M50 24 L82 38 L50 52 L18 38 Z" fill={E} stroke="#4a1704" strokeWidth="3" strokeLinejoin="round" />
     <path d="M30 44 L30 62 C36 68 64 68 70 62 L70 44" fill={E} stroke="#4a1704" strokeWidth="3" strokeLinejoin="round" />
-    <path d="M78 40 L78 62" stroke="#ffe36e" strokeWidth="3.6" strokeLinecap="round" />
-    <circle cx="78" cy="66" r="4.5" fill="#ffe36e" stroke="#4a1704" strokeWidth="2.2" />
+    <path d="M74 42 L74 60" stroke="#ffe36e" strokeWidth="3.6" strokeLinecap="round" />
+    <circle cx="74" cy="64" r="4.2" fill="#ffe36e" stroke="#4a1704" strokeWidth="2.2" />
   </KotobiCrest>
 );
 
@@ -234,14 +243,14 @@ export const VipBadge: React.FC<IconProps> = (p) => (
 export const LegendBadge: React.FC<IconProps> = (p) => (
   <KotobiCrest {...p} palette={['#ffd0a1', '#ea580c', '#7a1d05']} rim={['#ffe9d0', '#ff9d4d']} rarity="legendary">
     <path
-      d="M50 16 C56 28 66 30 66 42 C66 50 59 56 50 56 C41 56 34 50 34 42 C34 30 44 28 50 16 Z"
+      d="M50 14 C56 25 66 27 66 38 C66 46 59 52 50 52 C41 52 34 46 34 38 C34 27 44 25 50 14 Z"
       fill="#ffe36e"
       stroke="#5b1704"
       strokeWidth="3"
       strokeLinejoin="round"
     />
-    <path d="M50 30 C53 36 57 38 57 44 C57 48 54 51 50 51 C46 51 43 48 43 44 C43 38 47 36 50 30 Z" fill="#fff6d6" />
-    <path d="M28 60 L50 54 L72 60 L72 72 L50 66 L28 72 Z" fill={E} stroke="#5b1704" strokeWidth="3" strokeLinejoin="round" />
-    <path d="M50 54 L50 66" stroke="#5b1704" strokeWidth="2.6" />
+    <path d="M50 27 C53 33 57 35 57 40 C57 44 54 47 50 47 C46 47 43 44 43 40 C43 35 47 33 50 27 Z" fill="#fff6d6" />
+    <path d="M28 56 L50 50 L72 56 L72 68 L50 62 L28 68 Z" fill={E} stroke="#5b1704" strokeWidth="3" strokeLinejoin="round" />
+    <path d="M50 50 L50 62" stroke="#5b1704" strokeWidth="2.6" />
   </KotobiCrest>
 );

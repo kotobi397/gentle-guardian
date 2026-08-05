@@ -29,6 +29,8 @@ import { KOTOBI_AI_USER_ID, KOTOBI_AI_AVATAR_URL } from '@/utils/kotobiAi';
 import { useUserCosmetics } from '@/hooks/useUserCosmetics';
 import { getAvatarFrameClass, getNameColorStyle } from '@/lib/cosmetics';
 import { supabase } from '@/integrations/supabase/client';
+import { KotobiBadge } from '@/components/badges/KotobiBadge';
+import { UserBadgesSection } from '@/components/badges/UserBadgesSection';
 
 const PublicUserProfile: React.FC = () => {
   const { userIdentifier } = useParams<{ userIdentifier: string }>();
@@ -303,9 +305,7 @@ const PublicUserProfile: React.FC = () => {
                   <h1 className="text-xl md:text-2xl font-bold" style={getNameColorStyle(cosmetics.selected_name_color) || { color: undefined }}>
                     {profile.username}
                   </h1>
-                  {cosmetics.selected_badge && (
-                    <span className="text-2xl" title="شارة">{cosmetics.selected_badge}</span>
-                  )}
+                  <KotobiBadge value={cosmetics.selected_badge} size={26} />
                   {profile.is_verified && (
                     <VerifiedIcon size={22} className="flex-shrink-0 w-5 h-5" />
                   )}
@@ -410,6 +410,13 @@ const PublicUserProfile: React.FC = () => {
                 )}
               </CardContent>
             </Card>
+
+            {/* الشارات الحصرية */}
+            <UserBadgesSection
+              userId={profile.id}
+              isOwner={user?.id === profile.id}
+              className="mb-8"
+            />
 
             {/* Highlights */}
             <HighlightsBar userId={profile.id} />

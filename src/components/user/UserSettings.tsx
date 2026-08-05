@@ -28,6 +28,7 @@ import StoryViewer from '@/components/stories/StoryViewer';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useUserCosmetics } from '@/hooks/useUserCosmetics';
 import { getAvatarFrameClass, getNameColorStyle } from '@/lib/cosmetics';
+import { KotobiBadge } from '@/components/badges/KotobiBadge';
 
 const STORAGE_BUCKET = 'avatars';
 
@@ -823,7 +824,7 @@ const UserSettings = () => {
                 <div className="text-center">
                   <h2 className="text-lg sm:text-xl font-bold flex items-center justify-center gap-2" style={getNameColorStyle(cosmetics.selected_name_color) || { color: undefined }}>
                     {isAuthor && authorName ? authorName : username || "مستخدم جديد"}
-                    {cosmetics.selected_badge && <span className="text-xl">{cosmetics.selected_badge}</span>}
+                    {cosmetics.selected_badge && <KotobiBadge value={cosmetics.selected_badge} size={24} />}
                   </h2>
                   {!avatarFile && (
                     <div className="flex flex-col items-center gap-2 mt-1">
