@@ -1505,6 +1505,29 @@ const BookDetailsContent = () => {
         {book && <BookReviews bookId={book.id} bookTitle={book.title} />}
       </div>
 
+      {/* روابط داخلية لصفحات الهبوط (تحسين الأرشفة في جوجل) */}
+      {book && (
+        <nav aria-label="صفحات مرتبطة بالكتاب" className="container mx-auto px-4 my-6">
+          <ul className="flex flex-wrap gap-3 text-sm font-tajawal">
+            <li>
+              <a className="text-primary hover:underline" href={`/tahmil/${encodeURIComponent(book.slug || book.id)}`}>
+                تحميل كتاب {book.title} PDF
+              </a>
+            </li>
+            <li>
+              <a className="text-primary hover:underline" href={`/qiraa/${encodeURIComponent(book.slug || book.id)}`}>
+                قراءة كتاب {book.title} أونلاين
+              </a>
+            </li>
+            <li>
+              <a className="text-primary hover:underline" href={`/molakhas/${encodeURIComponent(book.slug || book.id)}`}>
+                ملخص كتاب {book.title}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )}
+
       {/* قسم الكتب المشابهة بتصميم مُطابق للقسم الداكن */}
       {book && <SimilarBooks bookId={book.id} category={book.category} darkMode />}
 

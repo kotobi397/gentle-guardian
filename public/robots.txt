@@ -58,6 +58,9 @@ Disallow: /book/reading/
 
 # Allow important public pages
 Allow: /book/*
+Allow: /tahmil/*
+Allow: /qiraa/*
+Allow: /molakhas/*
 Allow: /category/*
 Allow: /author/*
 Allow: /categories

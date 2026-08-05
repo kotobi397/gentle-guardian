@@ -62,12 +62,22 @@ export const onRequest = async (_context: any) => {
       const books = await res.json();
       for (const book of books) {
         const slug = book.slug || book.id;
+        const lastmod = book.reviewed_at || book.created_at || new Date().toISOString();
         addUrl({
           url: `https://kotobi.xyz/book/${encodePathSegment(slug)}`,
-          lastmod: book.reviewed_at || book.created_at || new Date().toISOString(),
+          lastmod,
           changefreq: 'monthly',
           priority: 0.8,
         });
+        // صفحات الهبوط المولّدة تلقائياً (تحميل / قراءة / ملخص)
+        for (const prefix of ['tahmil', 'qiraa', 'molakhas']) {
+          addUrl({
+            url: `https://kotobi.xyz/${prefix}/${encodePathSegment(slug)}`,
+            lastmod,
+            changefreq: 'monthly',
+            priority: 0.7,
+          });
+        }
       }
       if (books.length < limit) break;
       offset += limit;

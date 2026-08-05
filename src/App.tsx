@@ -26,6 +26,7 @@ import Index from './pages/Index';
 // Lazy-loaded routes
 const NotFound = lazy(() => import('./pages/NotFound'));
 const BookDetails = lazy(() => import('./pages/BookDetails'));
+const BookLanding = lazy(() => import('./pages/BookLanding'));
 const PDFReaderPage = lazy(() => import('./pages/PDFReaderPage'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
@@ -132,6 +133,9 @@ function AppContent() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/book/:id" element={<BookDetails />} />
+            <Route path="/tahmil/:id" element={<BookLanding variant="download" />} />
+            <Route path="/qiraa/:id" element={<BookLanding variant="read" />} />
+            <Route path="/molakhas/:id" element={<BookLanding variant="summary" />} />
             <Route path="/book/reading/:id" element={<PDFReaderPage />} />
             <Route path="/upload-book" element={<UploadBook />} />
             <Route path="/admin/books" element={<AdminBooks />} />
