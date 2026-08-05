@@ -209,6 +209,7 @@ const BookDetailsContent = () => {
 
   useEffect(() => {
     if (book) {
+      trackBookEvent(book.id, 'detail_view');
       addRecentlyViewed({
         id: book.id,
         title: book.title,
@@ -217,6 +218,7 @@ const BookDetailsContent = () => {
       });
     }
   }, [book]);
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
