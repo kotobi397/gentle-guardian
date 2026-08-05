@@ -6,6 +6,8 @@ import UploadBookIcon from '@/components/icons/UploadBookIcon';
 import QuoteIcon from '@/components/icons/QuoteIcon';
 import ProfileIcon from '@/components/icons/ProfileIcon';
 import MyBooksIcon from '@/components/icons/MyBooksIcon';
+import BookRequestIcon from '@/components/icons/BookRequestIcon';
+
 
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
