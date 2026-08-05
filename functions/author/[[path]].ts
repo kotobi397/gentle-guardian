@@ -24,6 +24,7 @@ async function fetchAuthorData(authorParam: string) {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=representation' },
     body: JSON.stringify({ p_author_name: authorParam }),
+    signal: AbortSignal.timeout(6000),
   });
 
   if (res.ok) {
@@ -72,6 +73,7 @@ async function fetchAuthorBooks(authorName: string) {
           Authorization: `Bearer ${supabaseKey}`,
           'Content-Type': 'application/json',
         },
+        signal: AbortSignal.timeout(6000),
       }
     );
     if (res.ok) return await res.json();
