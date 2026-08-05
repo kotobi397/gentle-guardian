@@ -5620,6 +5620,7 @@ export type Database = {
         Returns: Json
       }
       gam_get_my_state: { Args: never; Returns: Json }
+      gam_get_user_badges: { Args: { _user_id: string }; Returns: Json }
       gam_purchase_shop_item: { Args: { _item_id: string }; Returns: Json }
       gam_select_cosmetic: { Args: { _item_id: string }; Returns: Json }
       gam_spend_coins: {
