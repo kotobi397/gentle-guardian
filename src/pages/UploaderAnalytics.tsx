@@ -518,7 +518,7 @@ const UploaderAnalytics: React.FC = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {loading ? (
+                  {selectionLoading ? (
                     [0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-8 w-full rounded-lg" />)
                   ) : countries.length === 0 ? (
                     <p className="text-sm text-muted-foreground font-tajawal">
