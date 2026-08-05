@@ -417,7 +417,8 @@ const UploaderAnalytics: React.FC = () => {
             <motion.div variants={itemVariants} className="lg:col-span-2 space-y-3">
               <div className="flex items-center justify-between">
                 <h2 className="font-cairo font-black text-base text-foreground">
-                  إحصائيات كتبك ({books.length})
+                  إحصائيات كتبك ({books.length.toLocaleString('ar-EG')}
+                  {totalBooks > books.length ? ` من ${totalBooks.toLocaleString('ar-EG')}` : ''})
                 </h2>
                 {selectedBook && (
                   <Button
