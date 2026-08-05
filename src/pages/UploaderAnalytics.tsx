@@ -174,6 +174,7 @@ const UploaderAnalytics: React.FC = () => {
     countries,
     timeline,
     loading,
+    selectionLoading,
     loadingMore,
     hasMore,
     loadMore,
