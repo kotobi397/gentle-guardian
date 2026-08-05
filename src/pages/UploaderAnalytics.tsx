@@ -452,7 +452,6 @@ const UploaderAnalytics: React.FC = () => {
                 </Card>
               ) : (
                 <motion.div variants={containerVariants} className="space-y-3">
-                <motion.div variants={containerVariants} className="space-y-3">
                   <AnimatePresence initial={false}>
                     {books.map((book) => (
                       <BookRow
