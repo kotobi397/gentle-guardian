@@ -94,32 +94,26 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
   const [countries, setCountries] = useState<UploaderCountry[]>([]);
   const [timeline, setTimeline] = useState<UploaderTimelinePoint[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectionLoading, setSelectionLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const pageRef = useRef(0);
 
-  const fetchAll = useCallback(async () => {
+  // جلب قائمة الكتب + الإحصائيات العامة — يعتمد على المدة فقط،
+  // لذلك اختيار كتاب لا يعيد جلب الكتب ولا يُحدّث القائمة إطلاقاً.
+  const fetchBooks = useCallback(async () => {
     setLoading(true);
     setError(null);
     pageRef.current = 0;
     try {
-      const [booksRes, totalsRes, countriesRes, timelineRes] = await Promise.all([
+      const [booksRes, totalsRes] = await Promise.all([
         supabase.rpc('get_uploader_book_analytics', {
           p_days: days,
           p_limit: BOOKS_PER_PAGE,
           p_offset: 0,
         }),
         supabase.rpc('get_uploader_overall_stats', { p_days: days }),
-        supabase.rpc('get_uploader_top_countries', {
-          p_book_id: bookId ?? null,
-          p_days: days,
-          p_limit: 12,
-        }),
-        supabase.rpc('get_uploader_events_timeline', {
-          p_days: days > 0 ? days : 30,
-          p_book_id: bookId ?? null,
-        }),
       ]);
 
       if (booksRes.error) throw booksRes.error;
@@ -149,6 +143,29 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
           : EMPTY_TOTALS,
       );
       setHasMore(mapped.length >= BOOKS_PER_PAGE && mapped.length < count);
+    } catch (err: any) {
+      console.error('[useUploaderAnalytics] خطأ:', err);
+      setError('حدث خطأ في جلب الإحصائيات');
+    } finally {
+      setLoading(false);
+    }
+  }, [days]);
+
+  // جلب بيانات الاختيار (الخط الزمني + الدول) فقط — عند تغيير الكتاب المحدد
+  const fetchSelection = useCallback(async () => {
+    setSelectionLoading(true);
+    try {
+      const [countriesRes, timelineRes] = await Promise.all([
+        supabase.rpc('get_uploader_top_countries', {
+          p_book_id: bookId ?? null,
+          p_days: days,
+          p_limit: 12,
+        }),
+        supabase.rpc('get_uploader_events_timeline', {
+          p_days: days > 0 ? days : 30,
+          p_book_id: bookId ?? null,
+        }),
+      ]);
 
       setCountries(
         ((countriesRes.data as any[]) || []).map((row) => ({
@@ -169,11 +186,10 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
           downloads: toNumber(row.downloads),
         })),
       );
-    } catch (err: any) {
-      console.error('[useUploaderAnalytics] خطأ:', err);
-      setError('حدث خطأ في جلب الإحصائيات');
+    } catch (err) {
+      console.error('[useUploaderAnalytics] خطأ في بيانات الكتاب المحدد:', err);
     } finally {
-      setLoading(false);
+      setSelectionLoading(false);
     }
   }, [days, bookId]);
 
@@ -205,8 +221,17 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
   }, [days, hasMore, loading, loadingMore, totalBooks]);
 
   useEffect(() => {
-    fetchAll();
-  }, [fetchAll]);
+    fetchBooks();
+  }, [fetchBooks]);
+
+  useEffect(() => {
+    fetchSelection();
+  }, [fetchSelection]);
+
+  const refetch = useCallback(() => {
+    fetchBooks();
+    fetchSelection();
+  }, [fetchBooks, fetchSelection]);
 
   return {
     books,
@@ -215,10 +240,11 @@ export const useUploaderAnalytics = (days: number, bookId?: string | null) => {
     countries,
     timeline,
     loading,
+    selectionLoading,
     loadingMore,
     hasMore,
     loadMore,
     error,
-    refetch: fetchAll,
+    refetch,
   };
 };

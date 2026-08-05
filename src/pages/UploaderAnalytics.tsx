@@ -174,6 +174,7 @@ const UploaderAnalytics: React.FC = () => {
     countries,
     timeline,
     loading,
+    selectionLoading,
     loadingMore,
     hasMore,
     loadMore,
@@ -358,7 +359,7 @@ const UploaderAnalytics: React.FC = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="h-64 pt-0">
-                {loading ? (
+                {selectionLoading ? (
                   <Skeleton className="w-full h-full rounded-xl" />
                 ) : (
                   <ResponsiveContainer width="100%" height="100%">
@@ -517,7 +518,7 @@ const UploaderAnalytics: React.FC = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {loading ? (
+                  {selectionLoading ? (
                     [0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-8 w-full rounded-lg" />)
                   ) : countries.length === 0 ? (
                     <p className="text-sm text-muted-foreground font-tajawal">
