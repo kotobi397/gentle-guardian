@@ -359,7 +359,7 @@ const UploaderAnalytics: React.FC = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="h-64 pt-0">
-                {loading ? (
+                {selectionLoading ? (
                   <Skeleton className="w-full h-full rounded-xl" />
                 ) : (
                   <ResponsiveContainer width="100%" height="100%">
