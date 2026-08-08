@@ -68,7 +68,7 @@
     --popover: 227 28% 18%;
     --popover-foreground: 220 25% 93%;
 
-    --primary: 208 52% 42%; /* أزرق كتبي - مريح للعين */
+    --primary: 206 48% 62%; /* أزرق كتبي - مريح للعين */
     --primary-foreground: 227 35% 10%;
 
     --secondary: 227 24% 22%;
@@ -85,7 +85,7 @@
 
     --border: 227 20% 27%;
     --input: 227 20% 27%;
-    --ring: 208 52% 42%;
+    --ring: 206 48% 62%;
 
     /* Chat bubbles (light mode) */
     --chat-outgoing: 208 45% 62%;
