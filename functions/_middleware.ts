@@ -15,7 +15,12 @@ const NOINDEX_PREFIXES = [
   '/auth',
   '/reset-password',
   '/profile',
+  '/profile-customization',
   '/my-books',
+  '/favorites',
+  '/uploader-analytics',
+  '/daily-messages',
+  '/donation-success',
   '/messages',
   '/admin',
   '/search',
@@ -24,6 +29,7 @@ const NOINDEX_PREFIXES = [
   '/notifications',
   '/settings',
 ];
+
 
 function isNoindexPath(pathname: string) {
   const p = pathname.toLowerCase();
