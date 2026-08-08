@@ -68,8 +68,8 @@
     --popover: 40 24% 97%;
     --popover-foreground: 30 25% 18%;
 
-    --primary: 38 45% 45%; /* ذهبي Clash */
-    --primary-foreground: 30 30% 15%;
+    --primary: 208 52% 42%; /* أزرق كتبي - مريح للعين */
+    --primary-foreground: 208 40% 97%;
 
     --secondary: 36 18% 88%;
     --secondary-foreground: 30 25% 18%;
@@ -85,11 +85,11 @@
 
     --border: 36 16% 80%;
     --input: 36 16% 80%;
-    --ring: 38 45% 45%;
+    --ring: 208 52% 42%;
 
     /* Chat bubbles (light mode) */
-    --chat-outgoing: 38 40% 60%;
-    --chat-outgoing-foreground: 30 30% 15%;
+    --chat-outgoing: 208 45% 62%;
+    --chat-outgoing-foreground: 210 45% 12%;
     --chat-incoming: 38 14% 90%;
     --chat-incoming-foreground: 30 25% 18%;
 
@@ -115,8 +115,8 @@
     --popover: 30 13% 23%;
     --popover-foreground: 40 38% 92%;
 
-    --primary: 40 45% 58%;
-    --primary-foreground: 30 30% 14%;
+    --primary: 206 48% 62%;
+    --primary-foreground: 210 45% 12%;
 
     --secondary: 28 14% 26%;
     --secondary-foreground: 40 40% 94%;
@@ -132,11 +132,11 @@
 
     --border: 32 14% 30%;
     --input: 32 14% 30%;
-    --ring: 40 45% 58%;
+    --ring: 206 48% 62%;
 
     /* Chat bubbles (dark mode) */
-    --chat-outgoing: 38 38% 45%;
-    --chat-outgoing-foreground: 30 30% 14%;
+    --chat-outgoing: 208 40% 42%;
+    --chat-outgoing-foreground: 205 40% 96%;
     --chat-incoming: 30 12% 26%;
     --chat-incoming-foreground: 40 40% 94%;
   }
