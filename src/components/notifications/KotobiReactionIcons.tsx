@@ -74,7 +74,7 @@ export const IconMedal: React.FC<IconProps> = ({ className }) => (
   <svg viewBox="0 0 32 32" className={className ?? base} aria-hidden>
     <path d="m11 3 4 8M21 3l-4 8" stroke="#3A78B0" strokeWidth="2.4" strokeLinecap="round" />
     <circle cx="16" cy="19" r="8" fill="#9EC9EA" stroke="#1E3E5E" strokeWidth="1.7" />
-    <circle cx="16" cy="19" r="4.6" fill="#FFF3C4" stroke="#3A78B0" strokeWidth="1.2" />
+    <circle cx="16" cy="19" r="4.6" fill="#E6F2FB" stroke="#3A78B0" strokeWidth="1.2" />
     <path d="m16 16 .9 1.9 2.1.3-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.3z" fill="#3A78B0" />
   </svg>
 );
@@ -82,7 +82,7 @@ export const IconMedal: React.FC<IconProps> = ({ className }) => (
 export const IconStarInk: React.FC<IconProps> = ({ className }) => (
   <svg viewBox="0 0 32 32" className={className ?? base} aria-hidden>
     <path d="m16 4 3.3 7.4 8 .8-6 5.4 1.7 7.9L16 21.4 8.9 25.5l1.8-7.9-6-5.4 8-.8z" fill="#9EC9EA" stroke="#1E3E5E" strokeWidth="1.6" strokeLinejoin="round" />
-    <path d="m16 9.5 1.7 3.9 4.2.4-3.2 2.8.9 4.2-3.6-2.1-3.6 2.1.9-4.2-3.2-2.8 4.2-.4z" fill="#FFF3C4" />
+    <path d="m16 9.5 1.7 3.9 4.2.4-3.2 2.8.9 4.2-3.6-2.1-3.6 2.1.9-4.2-3.2-2.8 4.2-.4z" fill="#E6F2FB" />
   </svg>
 );
 
