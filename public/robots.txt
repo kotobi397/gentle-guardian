@@ -52,13 +52,19 @@ Disallow: /_/
 Disallow: /auth
 Disallow: /reset-password
 Disallow: /profile
+Disallow: /profile-customization
 Disallow: /my-books
+Disallow: /favorites
+Disallow: /uploader-analytics
+Disallow: /daily-messages
+Disallow: /donation-success
 Disallow: /messages
 Disallow: /book/reading/
 Disallow: /pdf-reader
 Disallow: /search
 Disallow: /notifications
 Disallow: /settings
+
 # Internal file / image proxies (return 403 to crawlers by design)
 Disallow: /f/
 Disallow: /i/
