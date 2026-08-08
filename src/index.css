@@ -42,56 +42,56 @@
 @layer base {
   :root {
     /* لوحة إشعارات بأسلوب ألعاب القبائل (Clash) - ثابتة في الوضعين */
-    --clash-panel: 30 12% 30%;
-    --clash-panel-deep: 28 14% 22%;
-    --clash-bubble: 38 18% 90%;
-    --clash-bubble-foreground: 30 25% 18%;
-    --clash-bubble-muted: 30 12% 45%;
+    --clash-panel: 227 26% 20%;
+    --clash-panel-deep: 227 32% 13%;
+    --clash-bubble: 227 24% 24%;
+    --clash-bubble-foreground: 220 25% 94%;
+    --clash-bubble-muted: 222 16% 70%;
     --clash-gold: 208 52% 52%;
     --clash-gold-deep: 212 48% 34%;
-    --clash-panel-foreground: 40 40% 94%;
+    --clash-panel-foreground: 220 25% 94%;
 
     /* الوضع الفاتح - هوية Clash الذهبية (رقّ/ورق قديم) */
-    --background: 38 16% 91%; /* ورق قديم فاتح - أغمق قليلاً من البطاقات */
-    --foreground: 30 25% 18%;
+    --background: 227 31% 12%;
+    --foreground: 220 25% 94%;
 
     /* خلفية بطاقات الكتب */
-    --books-background: 38 16% 91%;
+    --books-background: 227 31% 12%;
 
     /* خلفية البطاقات العائمة — ورق كريمي مريح للعين (ليست بيضاء ساطعة) */
-    --card: 40 24% 97%;
-    --card-foreground: 30 25% 18%;
+    --card: 227 28% 17%;
+    --card-foreground: 220 25% 93%;
 
     /* إطار رفع الكتاب */
-    --upload-form-bg: 40 20% 95%;
+    --upload-form-bg: 227 28% 15%;
 
-    --popover: 40 24% 97%;
-    --popover-foreground: 30 25% 18%;
+    --popover: 227 28% 18%;
+    --popover-foreground: 220 25% 93%;
 
     --primary: 208 52% 42%; /* أزرق كتبي - مريح للعين */
-    --primary-foreground: 208 40% 97%;
+    --primary-foreground: 227 35% 10%;
 
-    --secondary: 36 18% 88%;
-    --secondary-foreground: 30 25% 18%;
+    --secondary: 227 24% 22%;
+    --secondary-foreground: 220 25% 94%;
 
-    --muted: 38 14% 92%;
-    --muted-foreground: 30 15% 38%;
+    --muted: 227 22% 20%;
+    --muted-foreground: 222 16% 72%;
 
-    --accent: 36 22% 85%;
-    --accent-foreground: 30 25% 18%;
+    --accent: 227 24% 25%;
+    --accent-foreground: 220 25% 94%;
 
     --destructive: 6 68% 48%;
-    --destructive-foreground: 40 40% 96%;
+    --destructive-foreground: 220 25% 96%;
 
-    --border: 36 16% 80%;
-    --input: 36 16% 80%;
+    --border: 227 20% 27%;
+    --input: 227 20% 27%;
     --ring: 208 52% 42%;
 
     /* Chat bubbles (light mode) */
     --chat-outgoing: 208 45% 62%;
     --chat-outgoing-foreground: 210 45% 12%;
-    --chat-incoming: 38 14% 90%;
-    --chat-incoming-foreground: 30 25% 18%;
+    --chat-incoming: 227 22% 23%;
+    --chat-incoming-foreground: 220 25% 94%;
 
     --radius: 1rem;
   }
@@ -99,46 +99,46 @@
 
   .dark {
     /* الوضع الداكن - لوحة Clash الخشبية الداكنة */
-    --background: 28 15% 10%;
-    --foreground: 40 40% 94%;
+    --background: 227 31% 12%;
+    --foreground: 220 25% 94%;
 
     /* خلفية بطاقات الكتب */
-    --books-background: 28 15% 10%;
+    --books-background: 227 31% 12%;
 
     /* خلفية البطاقات العائمة في الوضع الداكن — دافئة وغير قاتمة */
-    --card: 30 13% 22%;
-    --card-foreground: 40 38% 92%;
+    --card: 227 28% 17%;
+    --card-foreground: 220 25% 93%;
 
     /* إطار رفع الكتاب في الوضع المظلم */
-    --upload-form-bg: 30 13% 19%;
+    --upload-form-bg: 227 28% 15%;
 
-    --popover: 30 13% 23%;
-    --popover-foreground: 40 38% 92%;
+    --popover: 227 28% 18%;
+    --popover-foreground: 220 25% 93%;
 
     --primary: 206 48% 62%;
-    --primary-foreground: 210 45% 12%;
+    --primary-foreground: 227 35% 10%;
 
-    --secondary: 28 14% 26%;
-    --secondary-foreground: 40 40% 94%;
+    --secondary: 227 24% 22%;
+    --secondary-foreground: 220 25% 94%;
 
-    --muted: 28 12% 24%;
-    --muted-foreground: 38 20% 72%;
+    --muted: 227 22% 20%;
+    --muted-foreground: 222 16% 72%;
 
-    --accent: 34 20% 30%;
-    --accent-foreground: 40 40% 94%;
+    --accent: 227 24% 25%;
+    --accent-foreground: 220 25% 94%;
 
     --destructive: 6 65% 48%;
-    --destructive-foreground: 40 40% 96%;
+    --destructive-foreground: 220 25% 96%;
 
-    --border: 32 14% 30%;
-    --input: 32 14% 30%;
+    --border: 227 20% 27%;
+    --input: 227 20% 27%;
     --ring: 206 48% 62%;
 
     /* Chat bubbles (dark mode) */
     --chat-outgoing: 208 40% 42%;
     --chat-outgoing-foreground: 205 40% 96%;
-    --chat-incoming: 30 12% 26%;
-    --chat-incoming-foreground: 40 40% 94%;
+    --chat-incoming: 227 22% 23%;
+    --chat-incoming-foreground: 220 25% 94%;
   }
 
 
@@ -1165,13 +1165,13 @@ button, .clickable {
 /* Messages page: force white backgrounds only in LIGHT mode on /messages */
 /* Messages page: خلفية فاتحة مريحة (بدون أبيض ساطع) في الوضع الفاتح */
 html:not(.dark) .messages-page-white {
-  --background: 38 30% 96%;
-  --card: 38 34% 94%;
-  --popover: 38 34% 95%;
-  --foreground: 30 25% 18%;
-  --muted-foreground: 30 15% 40%;
-  --accent: 34 40% 88%;
-  --accent-foreground: 30 25% 18%;
+  --background: 227 31% 12%;
+  --card: 227 28% 17%;
+  --popover: 227 28% 18%;
+  --foreground: 220 25% 94%;
+  --muted-foreground: 222 16% 72%;
+  --accent: 227 24% 25%;
+  --accent-foreground: 220 25% 94%;
 }
 
 /* تحسينات الأداء المتقدمة للتطبيق */
