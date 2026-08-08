@@ -214,9 +214,39 @@ export const onRequest = async (context: any) => {
     if (!bookId) return next();
 
     const book = await fetchBookData(bookId);
-    if (!book) return next();
+
+    // Unknown book: return a real 404 to crawlers instead of a 200 soft-404,
+    // so Google drops the URL instead of reporting a duplicate/blocked page.
+    if (!book) {
+      if (isSearchEngine) {
+        const missing = await next();
+        const missingHtml = await missing.text();
+        return new Response(missingHtml, {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+            'X-Robots-Tag': 'noindex, follow',
+            'Cache-Control': 'no-store',
+          },
+        });
+      }
+      return next();
+    }
+
+    // Legacy / mistyped slug -> permanent redirect to the canonical book URL.
+    const canonicalSlug = String(book.slug || book.id);
+    if (bookId !== canonicalSlug && !isViewSource) {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          Location: `/book/${encodePathSegment(canonicalSlug)}`,
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    }
 
     const meta = buildBookMeta(book);
+
 
     if (isSearchEngine) {
       const response = await next();
