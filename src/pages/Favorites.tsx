@@ -97,6 +97,7 @@ const Favorites = () => {
           description="قم بتسجيل الدخول للوصول إلى قائمة الكتب المفضلة الخاصة بك في منصة كتبي"
           keywords="المفضلة, كتب مفضلة, تسجيل الدخول, منصة كتبي"
         canonical="https://kotobi.xyz/favorites"
+        noindex={true}
           ogType="website"
         />
         <div className={`min-h-screen pb-20 md:pb-0 ${theme === 'dark' ? 'dark' : ''}`} style={{ backgroundColor: 'hsl(var(--books-background))' }}>
@@ -128,6 +129,7 @@ const Favorites = () => {
           description="جاري تحميل قائمة الكتب المفضلة الخاصة بك في منصة كتبي"
           keywords="المفضلة, كتب مفضلة, تحميل, منصة كتبي"
         canonical="https://kotobi.xyz/favorites"
+        noindex={true}
           ogType="website"
         />
         <div className={`min-h-screen pb-20 md:pb-0 ${theme === 'dark' ? 'dark' : ''}`} style={{ backgroundColor: 'hsl(var(--books-background))' }}>
@@ -152,6 +154,7 @@ const Favorites = () => {
         description={`تصفح قائمة كتبك المفضلة في منصة كتبي. لديك ${favoriteBooks.length} كتاب في قائمة المفضلة الخاصة بك.`}
         keywords="المفضلة, كتب مفضلة, مكتبتي الشخصية, قائمة القراءة, منصة كتبي"
         canonical="https://kotobi.xyz/favorites"
+        noindex={true}
         ogType="website"
         ogImage="/lovable-uploads/b1cd70fc-5c3b-47ac-ba45-cc3236f7c840.png"
       />

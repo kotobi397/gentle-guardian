@@ -22,32 +22,43 @@ async function fetchBookData(bookId: string) {
   const fields =
     'id,title,author,description,cover_image_url,category,slug,publication_year,language,page_count';
 
-  let res = await fetch(
-    `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=eq.${encodeURIComponent(bookId)}&limit=1`,
-    { headers, signal: AbortSignal.timeout(6000) }
-  );
-  let books = await res.json();
-
-  if (!books?.length) {
-    const flex = bookId.replace(/-/g, ' ').toLowerCase();
-    res = await fetch(
-      `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&slug=ilike.*${encodeURIComponent(flex)}*&limit=1`,
-      { headers, signal: AbortSignal.timeout(6000) }
-    );
-    books = await res.json();
-  }
-
-  if (!books?.length) {
+  const query = async (filter: string) => {
     try {
-      res = await fetch(
-        `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&id=eq.${bookId}&limit=1`,
+      const res = await fetch(
+        `${supabaseUrl}/rest/v1/book_submissions?select=${fields}&status=eq.approved&${filter}&limit=1`,
         { headers, signal: AbortSignal.timeout(6000) }
       );
-      books = await res.json();
-    } catch (_) {}
+      const rows = await res.json();
+      return Array.isArray(rows) && rows.length ? rows[0] : null;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  // 1) Exact slug match.
+  let book = await query(`slug=eq.${encodeURIComponent(bookId)}`);
+  if (book) return book;
+
+  // 2) UUID match (legacy /book/<uuid> links).
+  if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(bookId)) {
+    book = await query(`id=eq.${bookId}`);
+    if (book) return book;
   }
 
-  return books?.[0] || null;
+  // 3) Legacy URLs carry extra trailing segments (author name + random suffix),
+  //    e.g. "<slug>-<author>-mpf1s0qa-dz64hw". Strip them one by one and match
+  //    on the slug prefix so the real book is still found (and later 301'd).
+  const parts = bookId.split('-').filter(Boolean);
+  for (let end = parts.length - 1; end >= 2; end--) {
+    const candidate = parts.slice(0, end).join('-');
+    book = await query(`slug=eq.${encodeURIComponent(candidate)}`);
+    if (book) return book;
+    book = await query(`slug=ilike.${encodeURIComponent(candidate)}*`);
+    if (book) return book;
+  }
+
+  return null;
+
 }
 
 function encodePathSegment(value: string) {
@@ -203,9 +214,39 @@ export const onRequest = async (context: any) => {
     if (!bookId) return next();
 
     const book = await fetchBookData(bookId);
-    if (!book) return next();
+
+    // Unknown book: return a real 404 to crawlers instead of a 200 soft-404,
+    // so Google drops the URL instead of reporting a duplicate/blocked page.
+    if (!book) {
+      if (isSearchEngine) {
+        const missing = await next();
+        const missingHtml = await missing.text();
+        return new Response(missingHtml, {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+            'X-Robots-Tag': 'noindex, follow',
+            'Cache-Control': 'no-store',
+          },
+        });
+      }
+      return next();
+    }
+
+    // Legacy / mistyped slug -> permanent redirect to the canonical book URL.
+    const canonicalSlug = String(book.slug || book.id);
+    if (bookId !== canonicalSlug && !isViewSource) {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          Location: `/book/${encodePathSegment(canonicalSlug)}`,
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    }
 
     const meta = buildBookMeta(book);
+
 
     if (isSearchEngine) {
       const response = await next();
