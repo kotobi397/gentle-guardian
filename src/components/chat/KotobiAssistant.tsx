@@ -140,13 +140,13 @@ export const KotobiAssistant = () => {
       >
         {/* حلقة متحركة خارجية */}
         <div className="absolute inset-0 rounded-full animate-ping opacity-20" 
-             style={{ backgroundColor: '#FFD600' }} />
+             style={{ backgroundColor: '#3E8FD0' }} />
         
         <button
           onClick={() => setIsOpen(true)}
           className="relative rounded-full w-[70px] h-[70px] flex items-center justify-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,214,0,0.6)] transition-all duration-300 hover:scale-110 active:scale-95 group"
           style={{ 
-            background: 'linear-gradient(135deg, #FFD600 0%, #FFA000 100%)',
+            background: 'linear-gradient(135deg, #3E8FD0 0%, #2C6FA8 100%)',
             boxShadow: '0 8px 20px rgba(255, 214, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2)'
           }}
           aria-label="فتح مساعد كتبي"
@@ -271,7 +271,7 @@ export const KotobiAssistant = () => {
               <div className="flex justify-start">
                 <div className="p-2 rounded-lg bg-chat-incoming text-chat-incoming-foreground">
                   <div className="flex items-center gap-2">
-                    <div className="animate-spin w-4 h-4 border-2 rounded-full" style={{ borderColor: '#FFD600', borderTopColor: 'transparent' }}></div>
+                    <div className="animate-spin w-4 h-4 border-2 rounded-full" style={{ borderColor: '#3E8FD0', borderTopColor: 'transparent' }}></div>
                     يكتب...
                   </div>
                 </div>
@@ -341,7 +341,7 @@ export const KotobiAssistant = () => {
                 disabled={!inputValue.trim() || isLoading || voiceRecorder.state !== 'idle'}
                 className="px-3 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="إرسال الرسالة"
-                style={{ background: '#FFD600' }}
+                style={{ background: '#3E8FD0' }}
               >
                 <Send size={16} />
               </button>
