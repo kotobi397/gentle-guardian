@@ -6,7 +6,7 @@ import type { CSSProperties } from 'react';
 export const getAvatarFrameClass = (value?: string | null): string => {
   switch (value) {
     case 'gold':
-      return 'ring-4 ring-yellow-400 ring-offset-2 ring-offset-background shadow-[0_0_18px_rgba(250,204,21,0.55)]';
+      return 'ring-4 ring-sky-400 ring-offset-2 ring-offset-background shadow-[0_0_18px_rgba(250,204,21,0.55)]';
     case 'neon':
       return 'ring-4 ring-cyan-400 ring-offset-2 ring-offset-background shadow-[0_0_20px_rgba(34,211,238,0.7)]';
     case 'fire':

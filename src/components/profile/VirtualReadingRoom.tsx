@@ -209,9 +209,9 @@ export function VirtualReadingRoom({ userId, username }: Props) {
     <div dir="rtl">
       <div className="relative rounded-2xl overflow-hidden border border-border/30 shadow-2xl vr-room">
         {/* Ambient lighting */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-48 rounded-full blur-[80px] opacity-20 bg-amber-400 pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-48 rounded-full blur-[80px] opacity-20 bg-sky-400 pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-40 h-40 rounded-full blur-[60px] opacity-10 bg-orange-300 pointer-events-none" />
-        <div className="absolute top-0 right-1/4 w-40 h-40 rounded-full blur-[60px] opacity-10 bg-yellow-300 pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-40 h-40 rounded-full blur-[60px] opacity-10 bg-sky-300 pointer-events-none" />
 
         {/* Header */}
         <div className="relative z-10 text-center pt-8 pb-4">
@@ -511,10 +511,10 @@ function PremiumBook3D({ book }: { book: ShelfBook }) {
               }}
             >
               {/* Spine decorations */}
-              <div className="absolute top-3 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
-              <div className="absolute top-5 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-amber-300/25 to-transparent" />
-              <div className="absolute bottom-3 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
-              <div className="absolute bottom-5 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-amber-300/25 to-transparent" />
+              <div className="absolute top-3 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-sky-300/40 to-transparent" />
+              <div className="absolute top-5 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-sky-300/25 to-transparent" />
+              <div className="absolute bottom-3 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-sky-300/40 to-transparent" />
+              <div className="absolute bottom-5 left-2 right-2 h-[1px] bg-gradient-to-r from-transparent via-sky-300/25 to-transparent" />
               {/* Spine title */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <span
@@ -543,7 +543,7 @@ function PremiumBook3D({ book }: { book: ShelfBook }) {
               }}
             >
               {/* Page indentation effect */}
-              <div className="absolute inset-y-[3px] right-0 w-[3px] bg-gradient-to-l from-amber-900/10 to-transparent" />
+              <div className="absolute inset-y-[3px] right-0 w-[3px] bg-gradient-to-l from-sky-900/10 to-transparent" />
             </div>
 
             {/* === TOP EDGE (pages) === */}

@@ -19,9 +19,9 @@ const BookPopularityRank: React.FC<BookPopularityRankProps> = ({ rank, category 
   const categoryPercentage = Math.round((1 - (rank.category_rank - 1) / rank.category_total) * 100);
 
   const getRankIcon = (position: number) => {
-    if (position === 1) return <Crown className="h-5 w-5 text-yellow-500" />;
+    if (position === 1) return <Crown className="h-5 w-5 text-sky-500" />;
     if (position === 2) return <Medal className="h-5 w-5 text-gray-400" />;
-    if (position === 3) return <Award className="h-5 w-5 text-amber-600" />;
+    if (position === 3) return <Award className="h-5 w-5 text-sky-600" />;
     if (position <= 10) return <Trophy className="h-5 w-5 text-primary" />;
     return <TrendingUp className="h-5 w-5 text-muted-foreground" />;
   };
@@ -44,7 +44,7 @@ const BookPopularityRank: React.FC<BookPopularityRankProps> = ({ rank, category 
   const getFlameColor = (pct: number) => {
     if (pct >= 90) return 'text-red-500';
     if (pct >= 75) return 'text-orange-500';
-    if (pct >= 50) return 'text-yellow-500';
+    if (pct >= 50) return 'text-sky-500';
     return 'text-muted-foreground';
   };
 

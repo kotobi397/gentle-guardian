@@ -79,9 +79,9 @@ export const EmailInput: React.FC<EmailInputProps> = ({
 
     if (checkError) {
       return (
-        <div className="flex items-center space-x-1 bg-yellow-50 px-2 py-1 rounded-full">
-          <AlertTriangle className="h-4 w-4 text-yellow-500" />
-          <span className="text-xs text-yellow-600 font-bold">خطأ</span>
+        <div className="flex items-center space-x-1 bg-sky-50 px-2 py-1 rounded-full">
+          <AlertTriangle className="h-4 w-4 text-sky-500" />
+          <span className="text-xs text-sky-600 font-bold">خطأ</span>
         </div>
       );
     }
@@ -119,7 +119,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
         onChange={handleChange}
         className={cn(
           "rtl pr-12 bg-muted/30 border-0 focus:border-book-primary transition-all rounded-xl py-6 font-cairo",
-          checkError && "border-yellow-300 focus:border-yellow-500",
+          checkError && "border-sky-300 focus:border-sky-500",
           className
         )}
       />
@@ -129,7 +129,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       </div>
 
       {checkError && (
-        <p className="text-xs text-yellow-600 mt-1 mr-2">
+        <p className="text-xs text-sky-600 mt-1 mr-2">
           {checkError} - جرب مرة أخرى
         </p>
       )}

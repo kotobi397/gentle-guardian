@@ -52,7 +52,7 @@ export const FallbackImage: React.FC<FallbackImageProps> = ({
   if (imageState === 'error' && showMissingIndicator) {
     return (
       <div className={`bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center ${className}`}>
-        <AlertTriangle className="h-8 w-8 text-amber-500 mb-2" />
+        <AlertTriangle className="h-8 w-8 text-sky-500 mb-2" />
         <span className="text-sm text-gray-500 text-center px-2">
           {imageType === 'cover' ? 'صورة الغلاف مفقودة' : 'صورة المؤلف مفقودة'}
         </span>

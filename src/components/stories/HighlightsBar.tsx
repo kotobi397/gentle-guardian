@@ -43,7 +43,7 @@ const HighlightsBar: React.FC<Props> = ({ userId }) => {
                   onClick={() => setSelected({ id: h.id, title: h.title })}
                   className="relative"
                 >
-                  <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-primary">
+                  <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-sky-400 via-pink-500 to-primary">
                     <div className="w-full h-full rounded-full bg-background p-[2px]">
                       {h.cover_url ? (
                         <img src={h.cover_url} alt={h.title} className="w-full h-full rounded-full object-cover" />

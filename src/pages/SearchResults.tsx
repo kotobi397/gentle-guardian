@@ -183,7 +183,7 @@ export default function SearchResults() {
 
                   {book.rating > 0 && (
                     <div className="flex items-center gap-2 mb-3">
-                      <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                      <Star className="h-4 w-4 text-sky-500 fill-current" />
                       <span className="text-foreground text-sm font-medium">
                         {book.rating}
                       </span>

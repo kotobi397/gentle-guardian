@@ -80,7 +80,7 @@ const ReadingStats = ({
     if (progress >= 90) return { level: 'خبير', color: 'bg-purple-500', icon: <Award className="h-4 w-4" /> };
     if (progress >= 70) return { level: 'متقدم', color: 'bg-blue-500', icon: <TrendingUp className="h-4 w-4" /> };
     if (progress >= 50) return { level: 'متوسط', color: 'bg-green-500', icon: <Target className="h-4 w-4" /> };
-    if (progress >= 25) return { level: 'مبتدئ', color: 'bg-yellow-500', icon: <BookOpen className="h-4 w-4" /> };
+    if (progress >= 25) return { level: 'مبتدئ', color: 'bg-sky-500', icon: <BookOpen className="h-4 w-4" /> };
     return { level: 'جديد', color: 'bg-gray-500', icon: <BookOpen className="h-4 w-4" /> };
   };
 

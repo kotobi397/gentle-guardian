@@ -24,7 +24,7 @@ const GrowingSeedIndicator: React.FC<GrowingSeedIndicatorProps> = ({
   const getStageDisplay = () => {
     switch (stage) {
       case 'seed':
-        return { emoji: '🌰', color: 'text-amber-600', message: '' };
+        return { emoji: '🌰', color: 'text-sky-600', message: '' };
       case 'sprout':
         return { emoji: '🌱', color: 'text-green-500', message: 'ينمو التقييم!' };
       case 'plant':
@@ -32,7 +32,7 @@ const GrowingSeedIndicator: React.FC<GrowingSeedIndicatorProps> = ({
       case 'tree':
         return { emoji: '🌳', color: 'text-green-700', message: 'هذا التقييم أثمر أفكاراً!' };
       default:
-        return { emoji: '🌰', color: 'text-amber-600', message: '' };
+        return { emoji: '🌰', color: 'text-sky-600', message: '' };
     }
   };
 

@@ -51,7 +51,7 @@ const AddToHighlightDialog: React.FC<Props> = ({ open, onOpenChange, story }) =>
       <DialogContent className="max-w-md" dir="rtl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Star className="w-5 h-5 text-yellow-500" /> حفظ في Highlights
+            <Star className="w-5 h-5 text-sky-500" /> حفظ في Highlights
           </DialogTitle>
         </DialogHeader>
 

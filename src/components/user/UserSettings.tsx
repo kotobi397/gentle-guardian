@@ -757,7 +757,7 @@ const UserSettings = () => {
                           className="relative cursor-pointer"
                           type="button"
                         >
-                          <div className="w-[104px] h-[104px] sm:w-[120px] sm:h-[120px] rounded-full p-[3px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600">
+                          <div className="w-[104px] h-[104px] sm:w-[120px] sm:h-[120px] rounded-full p-[3px] bg-gradient-to-tr from-sky-400 via-pink-500 to-purple-600">
                             <div className="w-full h-full rounded-full bg-background p-[2px]">
                               <Avatar className="w-full h-full shadow-xl">
                                 <AvatarImage src={avatarPreview || undefined} alt={username} />
@@ -1145,8 +1145,8 @@ const UserSettings = () => {
               className="bg-card border border-border/50 rounded-xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20">
-                  <Lock className="w-6 h-6 text-amber-500" />
+                <div className="p-3 rounded-full bg-gradient-to-br from-sky-500/20 to-orange-500/20">
+                  <Lock className="w-6 h-6 text-sky-500" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-foreground">
@@ -1212,7 +1212,7 @@ const UserSettings = () => {
                 <Button
                   onClick={handleChangePassword}
                   disabled={isChangingPassword || !newPassword || !confirmPassword}
-                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-sky-500 to-orange-500 hover:from-sky-600 hover:to-orange-600 text-white transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isChangingPassword ? (
                     <>

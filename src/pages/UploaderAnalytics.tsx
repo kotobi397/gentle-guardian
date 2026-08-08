@@ -139,7 +139,7 @@ const BookRow = React.memo<{
                   <BookOpen className="h-3 w-3 text-sky-500" /> {book.reads_online} قراءة
                 </span>
                 <span className="flex items-center gap-1 text-muted-foreground">
-                  <TrendingUp className="h-3 w-3 text-amber-500" /> {book.card_clicks} ضغطة
+                  <TrendingUp className="h-3 w-3 text-sky-500" /> {book.card_clicks} ضغطة
                 </span>
                 <span className="flex items-center gap-1 text-muted-foreground">
                   <Eye className="h-3 w-3 text-violet-500" /> {book.views} مشاهدة
@@ -326,10 +326,10 @@ const UploaderAnalytics: React.FC = () => {
               accent="bg-sky-500/10"
             />
             <StatTile
-              icon={<TrendingUp className="h-5 w-5 text-amber-500" />}
+              icon={<TrendingUp className="h-5 w-5 text-sky-500" />}
               label="ضغطات البطاقة"
               value={totals.clicks}
-              accent="bg-amber-500/10"
+              accent="bg-sky-500/10"
             />
             <StatTile
               icon={<Eye className="h-5 w-5 text-violet-500" />}
@@ -338,10 +338,10 @@ const UploaderAnalytics: React.FC = () => {
               accent="bg-violet-500/10"
             />
             <StatTile
-              icon={<Star className="h-5 w-5 text-yellow-500" />}
+              icon={<Star className="h-5 w-5 text-sky-500" />}
               label="التقييمات"
               value={totals.reviews}
-              accent="bg-yellow-500/10"
+              accent="bg-sky-500/10"
             />
             <StatTile
               icon={<Heart className="h-5 w-5 text-rose-500" />}

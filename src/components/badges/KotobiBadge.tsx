@@ -30,7 +30,7 @@ export const RARITY_STYLE: Record<BadgeRarity, string> = {
   common: 'border-emerald-500/40 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400',
   rare: 'border-sky-500/40 bg-sky-500/5 text-sky-600 dark:text-sky-400',
   epic: 'border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-400',
-  legendary: 'border-amber-500/50 bg-amber-500/10 text-amber-600 dark:text-amber-400',
+  legendary: 'border-sky-500/50 bg-sky-500/10 text-sky-600 dark:text-sky-400',
 };
 
 export const BADGE_REGISTRY: Record<string, BadgeMeta> = {

@@ -52,7 +52,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           info:
             "!bg-blue-50 dark:!bg-blue-950 !border-blue-300 dark:!border-blue-700 !text-blue-800 dark:!text-blue-200",
           warning:
-            "!bg-amber-50 dark:!bg-amber-950 !border-amber-300 dark:!border-amber-700 !text-amber-800 dark:!text-amber-200",
+            "!bg-sky-50 dark:!bg-sky-950 !border-sky-300 dark:!border-sky-700 !text-sky-800 dark:!text-sky-200",
           actionButton:
             "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton:

@@ -211,7 +211,7 @@ const ModerationDashboard: React.FC = () => {
     switch (severity) {
       case 'critical': return 'bg-destructive text-destructive-foreground';
       case 'high': return 'bg-orange-500 text-white';
-      case 'medium': return 'bg-yellow-500 text-black';
+      case 'medium': return 'bg-sky-500 text-black';
       case 'low': return 'bg-blue-500 text-white';
       default: return 'bg-gray-500 text-white';
     }
@@ -250,7 +250,7 @@ const ModerationDashboard: React.FC = () => {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <Ban className="h-8 w-8 text-yellow-500" />
+              <Ban className="h-8 w-8 text-sky-500" />
               <div>
                 <p className="text-2xl font-bold">{bannedWords.filter(w => w.is_active).length}</p>
                 <p className="text-sm text-muted-foreground font-cairo">الكلمات المحظورة النشطة</p>

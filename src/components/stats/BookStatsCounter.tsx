@@ -117,7 +117,7 @@ export const BookStatsCounter: React.FC<BookStatsCounterProps> = React.memo(({ c
         <div className="text-center">
           <div
             className={`text-3xl md:text-4xl font-bold tabular-nums transition-all duration-500 ease-out ${
-              isAnimating ? 'text-yellow-400' : 'text-white'
+              isAnimating ? 'text-sky-400' : 'text-white'
             }`}
             style={{
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.4)',
@@ -142,7 +142,7 @@ export const BookStatsCounter: React.FC<BookStatsCounterProps> = React.memo(({ c
         {/* إجمالي المشاهدات */}
         <div className="text-center">
           <div
-            className="text-3xl md:text-4xl font-bold tabular-nums text-amber-300"
+            className="text-3xl md:text-4xl font-bold tabular-nums text-sky-300"
             style={{
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.4)',
               letterSpacing: '0.02em',

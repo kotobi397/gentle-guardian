@@ -252,7 +252,7 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
     switch (type) {
       case 'success': return <CheckCircle className="h-4 w-4 text-green-500" />;
       case 'error': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'warning': return <Clock className="h-4 w-4 text-yellow-500" />;
+      case 'warning': return <Clock className="h-4 w-4 text-sky-500" />;
       case 'new_book': return <BookOpen className="h-4 w-4 text-purple-500" />;
       case 'review_like': return <Heart className="h-4 w-4 text-red-500" />;
       case 'ai_suggestion': return <Bell className="h-4 w-4 text-emerald-500" />;
@@ -315,7 +315,7 @@ const NotificationsDropdown: React.FC<NotificationsDropdownProps> = ({ children 
       case 'error':
         return <Badge variant="destructive" className="bg-red-500 hover:bg-red-600 text-white border-red-600 text-xs">رفض</Badge>;
       case 'warning':
-        return <Badge variant="outline" className="border-yellow-500 text-yellow-700 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 text-xs">تحذير</Badge>;
+        return <Badge variant="outline" className="border-sky-500 text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20 text-xs">تحذير</Badge>;
       default:
         return <Badge variant="outline" className="text-xs">كتبي</Badge>;
     }

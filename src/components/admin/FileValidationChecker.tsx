@@ -324,7 +324,7 @@ const FileValidationChecker: React.FC<FileValidationCheckerProps> = ({
       case 'invalid':
         return <XCircle className="h-4 w-4 text-red-500" />;
       case 'missing':
-        return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+        return <AlertTriangle className="h-4 w-4 text-sky-500" />;
       case 'pending':
         return <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />;
       default:

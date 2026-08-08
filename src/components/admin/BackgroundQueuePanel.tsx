@@ -285,7 +285,7 @@ const BackgroundQueuePanel: React.FC<BackgroundQueuePanelProps> = ({ books, disa
             <div className="text-muted-foreground">نجح</div>
           </div>
           <div className="rounded-lg border p-2">
-            <div className="text-2xl font-bold tabular-nums text-amber-600">{totals.duplicate}</div>
+            <div className="text-2xl font-bold tabular-nums text-sky-600">{totals.duplicate}</div>
             <div className="text-muted-foreground">مكرر</div>
           </div>
           <div className="rounded-lg border p-2">
@@ -367,7 +367,7 @@ const BackgroundQueuePanel: React.FC<BackgroundQueuePanelProps> = ({ books, disa
                       <div className="text-muted-foreground">نجح</div>
                     </div>
                     <div>
-                      <div className="font-bold tabular-nums text-amber-600">{batch.duplicate}</div>
+                      <div className="font-bold tabular-nums text-sky-600">{batch.duplicate}</div>
                       <div className="text-muted-foreground">مكرر</div>
                     </div>
                     <div>

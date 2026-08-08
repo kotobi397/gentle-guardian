@@ -67,9 +67,9 @@ const BookSubmissionStats: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">في الانتظار</p>
-              <p className="text-2xl font-bold text-yellow-600">{stats.pending_books}</p>
+              <p className="text-2xl font-bold text-sky-600">{stats.pending_books}</p>
             </div>
-            <Clock className="h-8 w-8 text-yellow-500" />
+            <Clock className="h-8 w-8 text-sky-500" />
           </div>
         </CardContent>
       </Card>

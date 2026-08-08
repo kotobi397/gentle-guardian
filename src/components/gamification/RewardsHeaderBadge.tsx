@@ -15,14 +15,14 @@ const RewardsHeaderBadge: React.FC = () => {
   return (
     <Link
       to="/rewards"
-      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-900 dark:text-amber-100 text-sm font-bold hover:bg-amber-200 dark:hover:bg-amber-900/60 transition relative"
+      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-100 dark:bg-sky-950/40 text-sky-900 dark:text-sky-100 text-sm font-bold hover:bg-sky-200 dark:hover:bg-sky-900/60 transition relative"
       title="مكافآتي"
     >
-      <Coins className="w-4 h-4 text-yellow-600" />
+      <Coins className="w-4 h-4 text-sky-600" />
       <span>{data.coins.toLocaleString('ar')}</span>
       {data.current_streak > 0 && (
         <>
-          <span className="text-amber-300">•</span>
+          <span className="text-sky-300">•</span>
           <Flame className="w-4 h-4 text-orange-500" />
           <span>{data.current_streak}</span>
         </>

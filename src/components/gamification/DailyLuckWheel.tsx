@@ -101,7 +101,7 @@ const DailyLuckWheel: React.FC = () => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 z-10 w-0 h-0 border-l-[12px] border-r-[12px] border-t-[20px] border-l-transparent border-r-transparent border-t-red-600 drop-shadow-md" />
           {/* العجلة */}
           <div
-            className="w-64 h-64 rounded-full border-4 border-amber-500 shadow-2xl overflow-hidden relative"
+            className="w-64 h-64 rounded-full border-4 border-sky-500 shadow-2xl overflow-hidden relative"
             style={{
               transform: `rotate(${rotation}deg)`,
               transition: spinning ? 'transform 4s cubic-bezier(0.17, 0.67, 0.21, 1)' : 'none',
@@ -127,7 +127,7 @@ const DailyLuckWheel: React.FC = () => {
             })}
           </div>
           {/* مركز */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-amber-500 border-4 border-white shadow-lg" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-sky-500 border-4 border-white shadow-lg" />
         </div>
 
         <Button

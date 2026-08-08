@@ -125,9 +125,9 @@ export const EmailVerificationMessage: React.FC<EmailVerificationMessageProps> =
 
             {/* Gmail Specific Help */}
             {isGmail && (
-              <div className="bg-yellow-50 rounded-lg p-4 mb-6 text-right">
-                <h4 className="text-sm font-bold text-yellow-800 mb-2">نصائح خاصة بـ Gmail:</h4>
-                <ul className="text-xs text-yellow-700 space-y-1">
+              <div className="bg-sky-50 rounded-lg p-4 mb-6 text-right">
+                <h4 className="text-sm font-bold text-sky-800 mb-2">نصائح خاصة بـ Gmail:</h4>
+                <ul className="text-xs text-sky-700 space-y-1">
                   <li>• افتح Gmail وتحقق من تبويبات: Primary, Promotions, Social</li>
                   <li>• ابحث عن "كتبي" أو "kotobati" في مربع البحث</li>
                   <li>• تحقق من إعدادات التصفية في Gmail</li>
@@ -165,7 +165,7 @@ export const EmailVerificationMessage: React.FC<EmailVerificationMessageProps> =
             {/* Footer Help */}
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="flex items-start gap-3 text-right">
-                <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-5 w-5 text-sky-500 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-gray-500 space-y-2">
                   <p><strong>ما زلت لا تستلم الرسالة؟</strong></p>
                   <div className="space-y-1">

@@ -33,7 +33,7 @@ const DailyLoginModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" dir="rtl">
-      <div className="relative bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950 dark:to-orange-950 rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-amber-200 dark:border-amber-800">
+      <div className="relative bg-gradient-to-br from-sky-50 to-orange-50 dark:from-sky-950 dark:to-orange-950 rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-sky-200 dark:border-sky-800">
         <button
           onClick={close}
           className="absolute top-3 left-3 text-muted-foreground hover:text-foreground"
@@ -45,11 +45,11 @@ const DailyLoginModal: React.FC = () => {
           <div className="text-6xl mb-3 animate-bounce">🎁</div>
           <h2 className="text-2xl font-bold mb-2">مكافأة اليوم في انتظارك!</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            استلم <span className="font-bold text-amber-600">+{xpPreview} XP</span> واحفظ سلسلتك ({nextStreak} يوم)
+            استلم <span className="font-bold text-sky-600">+{xpPreview} XP</span> واحفظ سلسلتك ({nextStreak} يوم)
           </p>
           <Button
             size="lg"
-            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold"
+            className="w-full bg-gradient-to-r from-sky-500 to-orange-500 hover:from-sky-600 hover:to-orange-600 text-white font-bold"
             onClick={async () => {
               await claim.mutateAsync();
               close();
