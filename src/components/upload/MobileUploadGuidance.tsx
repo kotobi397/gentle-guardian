@@ -156,7 +156,7 @@ const MobileUploadGuidance: React.FC<MobileUploadGuidanceProps> = ({
         )}
 
         {/* تحذير البطارية */}
-        <div className="flex items-center gap-2 p-2 bg-yellow-100 dark:bg-yellow-950/20 rounded text-yellow-800 dark:text-yellow-200 text-sm">
+        <div className="flex items-center gap-2 p-2 bg-sky-100 dark:bg-sky-950/20 rounded text-sky-800 dark:text-sky-200 text-sm">
           <Battery className="h-4 w-4" />
           <span>تأكد من شحن البطارية فوق 30% أو توصيل الشاحن</span>
         </div>

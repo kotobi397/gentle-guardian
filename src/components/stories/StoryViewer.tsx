@@ -429,7 +429,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-yellow-300 bg-white/15 hover:bg-yellow-500/30 backdrop-blur-sm rounded-full px-6 h-12"
+                className="text-sky-300 bg-white/15 hover:bg-sky-500/30 backdrop-blur-sm rounded-full px-6 h-12"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsPaused(true);

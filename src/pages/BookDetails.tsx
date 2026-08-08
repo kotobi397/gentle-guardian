@@ -1210,7 +1210,7 @@ const BookDetailsContent = () => {
                                         title="شارك بالستوري"
                                       >
                                         <div
-                                          className={`w-8 h-8 bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${generatingStory || storyUploading ? "animate-pulse" : ""}`}
+                                          className={`w-8 h-8 bg-gradient-to-br from-sky-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${generatingStory || storyUploading ? "animate-pulse" : ""}`}
                                         >
                                           {generatingStory || storyUploading ? (
                                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -1325,7 +1325,7 @@ const BookDetailsContent = () => {
                                         title="شارك بالستوري"
                                       >
                                         <div
-                                          className={`w-8 h-8 bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${generatingStory || storyUploading ? "animate-pulse" : ""}`}
+                                          className={`w-8 h-8 bg-gradient-to-br from-sky-400 via-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${generatingStory || storyUploading ? "animate-pulse" : ""}`}
                                         >
                                           {generatingStory || storyUploading ? (
                                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

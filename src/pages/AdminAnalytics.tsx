@@ -253,7 +253,7 @@ const AdminAnalytics: React.FC = () => {
     { label: 'إجمالي الكتب', value: overview.totalBooks, icon: BookOpen, color: 'text-blue-500' },
     { label: 'المستخدمون', value: overview.totalUsers, icon: Users, color: 'text-emerald-500' },
     { label: 'المشاهدات', value: overview.totalViews, icon: Eye, color: 'text-purple-500' },
-    { label: 'المراجعات', value: overview.totalReviews, icon: Star, color: 'text-yellow-500' },
+    { label: 'المراجعات', value: overview.totalReviews, icon: Star, color: 'text-sky-500' },
     { label: 'الإعجابات', value: overview.totalLikes, icon: Heart, color: 'text-red-500' },
     { label: 'المؤلفون', value: overview.totalAuthors, icon: Globe, color: 'text-cyan-500' },
     { label: 'قيد الانتظار', value: overview.pendingSubmissions, icon: Clock, color: 'text-orange-500' },
@@ -431,8 +431,8 @@ const AdminAnalytics: React.FC = () => {
                           <span>{book.views.toLocaleString('ar-SA')}</span>
                         </div>
                         {book.rating > 0 && (
-                          <div className="flex items-center gap-1 text-yellow-500">
-                            <Star className="h-3.5 w-3.5 fill-yellow-500" />
+                          <div className="flex items-center gap-1 text-sky-500">
+                            <Star className="h-3.5 w-3.5 fill-sky-500" />
                             <span>{book.rating.toFixed(1)}</span>
                           </div>
                         )}

@@ -96,7 +96,7 @@ export const EnhancedBookCard: React.FC<EnhancedBookCardProps> = ({
                 size="sm"
                 showRating={false}
                 showReviewCount={false}
-                className="text-yellow-400"
+                className="text-sky-400"
               />
             )}
           </div>

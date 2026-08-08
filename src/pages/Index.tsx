@@ -262,13 +262,13 @@ const Index = () => {
           <div className="relative z-10 text-center py-12 md:py-16 px-4">
             <div className="inline-block">
               <h1 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight text-white">
-                مرحباً بكم في <span className="text-amber-300">كتبي</span>
+                مرحباً بكم في <span className="text-sky-300">كتبي</span>
               </h1>
 
               {/* خط زخرفي بسيط */}
               <div className="flex items-center justify-center gap-3 mb-5">
                 <div className="h-[1px] w-16 md:w-24 bg-white/20"></div>
-                <span className="text-amber-200/60">✦</span>
+                <span className="text-sky-200/60">✦</span>
                 <div className="h-[1px] w-16 md:w-24 bg-white/20"></div>
               </div>
 
@@ -289,7 +289,7 @@ const Index = () => {
                   { icon: '⭐', text: 'قراءة ممتعة' },
                 ].map((item, i) => (
                   <span key={i}
-                    className="px-4 py-2 text-sm rounded-full bg-white/10 text-amber-200/80 border border-white/10"
+                    className="px-4 py-2 text-sm rounded-full bg-white/10 text-sky-200/80 border border-white/10"
                   >
                     {item.icon} {item.text}
                   </span>

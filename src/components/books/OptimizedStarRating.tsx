@@ -41,7 +41,7 @@ export const OptimizedStarRating: React.FC<OptimizedStarRatingProps> = ({
                 className="absolute inset-0 overflow-hidden pointer-events-none"
                 style={{ width: `${fillPercent}%`, right: 0, left: 'auto' }}
               >
-                <Star className={`${sizeClasses[size]} fill-yellow-400 text-yellow-400 absolute top-0 right-0`} />
+                <Star className={`${sizeClasses[size]} fill-sky-400 text-sky-400 absolute top-0 right-0`} />
               </span>
             </span>
           );

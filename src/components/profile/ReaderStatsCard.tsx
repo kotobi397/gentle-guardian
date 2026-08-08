@@ -108,7 +108,7 @@ const ReaderStatsCard: React.FC = () => {
   const readerLevel = useMemo(() => {
     if (!stats) return { label: 'قارئ جديد', icon: BookOpen, color: 'text-muted-foreground' };
     const p = stats.totalPagesRead;
-    if (p >= 5000) return { label: 'قارئ أسطوري', icon: Award, color: 'text-yellow-500' };
+    if (p >= 5000) return { label: 'قارئ أسطوري', icon: Award, color: 'text-sky-500' };
     if (p >= 2000) return { label: 'قارئ خبير', icon: Star, color: 'text-purple-500' };
     if (p >= 500) return { label: 'قارئ متقدم', icon: TrendingUp, color: 'text-blue-500' };
     if (p >= 100) return { label: 'قارئ نشط', icon: BookOpen, color: 'text-green-500' };
@@ -209,7 +209,7 @@ const ReaderStatsCard: React.FC = () => {
       {stats.favoriteCategories.length > 0 && (
         <div className="bg-card border border-border/50 rounded-2xl p-4 shadow-sm">
           <h4 className="text-sm font-bold font-cairo text-foreground mb-4 flex items-center gap-2">
-            <Star className="h-4 w-4 text-yellow-500" />
+            <Star className="h-4 w-4 text-sky-500" />
             الأنواع المفضلة
           </h4>
           <div className="space-y-3">

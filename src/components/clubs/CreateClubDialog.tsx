@@ -209,7 +209,7 @@ const CreateClubDialog: React.FC<CreateClubDialogProps> = ({ open, onOpenChange 
               {formData.is_public ? (
                 <Globe className="h-4 w-4 text-green-500" />
               ) : (
-                <Lock className="h-4 w-4 text-yellow-500" />
+                <Lock className="h-4 w-4 text-sky-500" />
               )}
               <div>
                 <p className="font-medium text-sm">

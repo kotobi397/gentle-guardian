@@ -164,8 +164,8 @@ const EnhancedPDFErrorHandler: React.FC<EnhancedPDFErrorHandlerProps> = ({
             </Button>
           </div>
 
-          <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-            <p className="text-sm text-yellow-800 dark:text-yellow-200 font-cairo">
+          <div className="mt-6 p-4 bg-sky-50 dark:bg-sky-900/20 rounded-lg">
+            <p className="text-sm text-sky-800 dark:text-sky-200 font-cairo">
               💡 نصيحة: إذا استمرت المشكلة، جرب تحديث الصفحة أو العودة لاحقاً
             </p>
           </div>

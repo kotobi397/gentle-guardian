@@ -44,14 +44,14 @@ const Rewards: React.FC = () => {
       </Helmet>
 
       <h1 className="text-3xl font-bold mb-6 flex items-center gap-2">
-        <Sparkles className="text-amber-500" /> مكافآتي
+        <Sparkles className="text-sky-500" /> مكافآتي
       </h1>
 
       {/* بطاقة الحالة */}
-      <Card className="p-6 mb-6 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/40 border-amber-200/50">
+      <Card className="p-6 mb-6 bg-gradient-to-br from-sky-50 to-orange-50 dark:from-sky-950/40 dark:to-orange-950/40 border-sky-200/50">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          <Stat icon={<Trophy className="text-amber-500" />} label="XP" value={data.xp.toLocaleString('ar')} />
-          <Stat icon={<Coins className="text-yellow-500" />} label="Kotobi Coins" value={data.coins.toLocaleString('ar')} />
+          <Stat icon={<Trophy className="text-sky-500" />} label="XP" value={data.xp.toLocaleString('ar')} />
+          <Stat icon={<Coins className="text-sky-500" />} label="Kotobi Coins" value={data.coins.toLocaleString('ar')} />
           <Stat icon={<Flame className="text-orange-500" />} label="السلسلة الحالية" value={`${data.current_streak} يوم`} />
           <Stat icon={<Sparkles className="text-purple-500" />} label="أطول سلسلة" value={`${data.longest_streak} يوم`} />
         </div>
@@ -69,7 +69,7 @@ const Rewards: React.FC = () => {
         {data.can_claim_daily && (
           <Button
             size="lg"
-            className="w-full mt-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold"
+            className="w-full mt-6 bg-gradient-to-r from-sky-500 to-orange-500 hover:from-sky-600 hover:to-orange-600 text-white font-bold"
             onClick={() => claim.mutate()}
             disabled={claim.isPending}
           >
@@ -175,7 +175,7 @@ const Stat: React.FC<{ icon: React.ReactNode; label: string; value: string }> = 
 );
 
 const Row: React.FC<{ label: string; value: string; highlight?: boolean }> = ({ label, value, highlight }) => (
-  <div className={`flex justify-between items-center p-2 rounded ${highlight ? 'bg-amber-100/50 dark:bg-amber-950/30 font-bold' : ''}`}>
+  <div className={`flex justify-between items-center p-2 rounded ${highlight ? 'bg-sky-100/50 dark:bg-sky-950/30 font-bold' : ''}`}>
     <span>{label}</span>
     <bdi dir="ltr" style={{ unicodeBidi: 'isolate' }}>{value}</bdi>
   </div>

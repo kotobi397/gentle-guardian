@@ -160,7 +160,7 @@ const BookQuizDialog: React.FC<Props> = ({ open, onOpenChange, bookId, bookTitle
             <p className="text-muted-foreground text-sm">
               🧩 اختبر فهمك للكتاب بأسئلة مولّدة آلياً بالذكاء الاصطناعي.
             </p>
-            <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-lg p-3 text-xs text-amber-900 dark:text-amber-200">
+            <div className="bg-sky-50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-900/40 rounded-lg p-3 text-xs text-sky-900 dark:text-sky-200">
               💰 توليد اختبار جديد يكلّف <strong>30 عملة</strong>. الاختبارات المخزّنة سابقاً لنفس الإعدادات مجانية.
             </div>
 

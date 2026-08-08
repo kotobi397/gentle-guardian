@@ -89,7 +89,7 @@ const ReadingClubs: React.FC = () => {
                 </AvatarFallback>
               </Avatar>
               <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <Crown className="h-3 w-3 text-yellow-500" />
+                <Crown className="h-3 w-3 text-sky-500" />
                 {club.creator_username}
               </span>
               <span className="text-xs text-muted-foreground mr-auto">
@@ -113,7 +113,7 @@ const ReadingClubs: React.FC = () => {
             )}
 
             {club.is_member && club.created_by === user?.id && (
-              <Badge className="mt-3 bg-yellow-500/20 text-yellow-600 border-yellow-500/30">
+              <Badge className="mt-3 bg-sky-500/20 text-sky-600 border-sky-500/30">
                 👑 أنت منشئ النادي
               </Badge>
             )}

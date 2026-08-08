@@ -266,7 +266,7 @@ const UserNotifications: React.FC = () => {
       case 'error':
         return <XCircle className="h-5 w-5 text-red-500" />;
       case 'warning':
-        return <Clock className="h-5 w-5 text-yellow-500" />;
+        return <Clock className="h-5 w-5 text-sky-500" />;
       case 'new_book':
         return <BookOpen className="h-5 w-5 text-purple-500" />;
       case 'ai_suggestion':
@@ -338,7 +338,7 @@ const UserNotifications: React.FC = () => {
         return (
           <Badge 
             variant="outline" 
-            className="border-yellow-500 text-yellow-700 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 font-black"
+            className="border-sky-500 text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20 font-black"
           >
             <Clock className="w-3 h-3 ml-1" />
             تحذير
@@ -470,9 +470,9 @@ const UserNotifications: React.FC = () => {
               <div className="text-2xl font-black text-blue-600 dark:text-blue-400">{actualTotalCount}</div>
               <div className="text-sm text-blue-600 dark:text-blue-400 font-black">إجمالي الإشعارات</div>
             </div>
-            <div className="text-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-              <div className="text-2xl font-black text-yellow-600 dark:text-yellow-400">{stats.pending_books}</div>
-              <div className="text-sm text-yellow-600 dark:text-yellow-400 font-black">كتب في الانتظار</div>
+            <div className="text-center p-3 bg-sky-50 dark:bg-sky-900/20 rounded-lg border border-sky-200 dark:border-sky-800">
+              <div className="text-2xl font-black text-sky-600 dark:text-sky-400">{stats.pending_books}</div>
+              <div className="text-sm text-sky-600 dark:text-sky-400 font-black">كتب في الانتظار</div>
             </div>
             <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
               <div className="text-2xl font-black text-green-600 dark:text-green-400">{stats.approved_books}</div>

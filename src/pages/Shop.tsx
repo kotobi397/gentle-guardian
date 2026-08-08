@@ -257,7 +257,7 @@ const PreviewBlock: React.FC<{ item: { category: ShopCategory; preview_value: st
   }
   if (item.category === 'avatar_frame') {
     const frameClass: Record<string, string> = {
-      gold: 'ring-4 ring-yellow-400 ring-offset-2 ring-offset-background',
+      gold: 'ring-4 ring-sky-400 ring-offset-2 ring-offset-background',
       neon: 'ring-4 ring-cyan-400 ring-offset-2 ring-offset-background shadow-[0_0_20px_rgba(34,211,238,0.7)]',
       fire: 'ring-4 ring-orange-500 ring-offset-2 ring-offset-background shadow-[0_0_20px_rgba(249,115,22,0.8)]',
     };

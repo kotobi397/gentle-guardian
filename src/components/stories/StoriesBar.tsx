@@ -162,7 +162,7 @@ const StoriesBar: React.FC = () => {
                     <div className={cn(
                       "w-[72px] h-[72px] rounded-full p-[3px]",
                       hasMyStory
-                        ? "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600"
+                        ? "bg-gradient-to-tr from-sky-400 via-pink-500 to-purple-600"
                         : "bg-muted-foreground/30",
                       uploading && "opacity-50"
                     )}>
@@ -218,7 +218,7 @@ const StoriesBar: React.FC = () => {
                 <div className={cn(
                   "w-[72px] h-[72px] rounded-full p-[3px]",
                   group.has_unviewed
-                    ? "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600"
+                    ? "bg-gradient-to-tr from-sky-400 via-pink-500 to-purple-600"
                     : "bg-muted-foreground/30"
                 )}>
                   <div className="w-full h-full rounded-full bg-background p-[2px]">

@@ -2047,7 +2047,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
                       <p className={`p-3 rounded-lg font-bold ${
                         existingBookDetails.source_type === 'approved' 
                           ? 'bg-green-100 dark:bg-green-800/20 text-green-800 dark:text-green-200' 
-                          : 'bg-yellow-100 dark:bg-yellow-800/20 text-yellow-800 dark:text-yellow-200'
+                          : 'bg-sky-100 dark:bg-sky-800/20 text-sky-800 dark:text-sky-200'
                       }`}>
                         {existingBookDetails.source_type === 'approved' ? '✅ كتاب معتمد ومنشور' : '⏳ كتاب في انتظار المراجعة'}
                       </p>
@@ -2183,7 +2183,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
               )}
 
               {formData.author.trim() && suggestions.length > 0 && !authorExplicitlySelected && (
-                <div className="p-1.5 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded text-[10px] text-amber-700 dark:text-amber-300 flex items-center gap-1">
+                <div className="p-1.5 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-700 rounded text-[10px] text-sky-700 dark:text-sky-300 flex items-center gap-1">
                   <AlertCircle className="h-2.5 w-2.5" />
                   اختر المؤلف من القائمة
                 </div>
@@ -2217,7 +2217,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
           </div>
 
           {/* رسالة توضيحية عن صورة المؤلف */}
-          <div className="p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded text-xs text-amber-700 dark:text-amber-300">
+          <div className="p-2 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded text-xs text-sky-700 dark:text-sky-300">
             💡 صورتك ونبذتك تُضاف من قسم <strong>"حسابي"</strong>
           </div>
 
@@ -2285,9 +2285,9 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
               </Button>
             </div>
             {!bookFile && (
-              <div className="flex items-start gap-1.5 p-2 rounded-md bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40">
-                <AlertCircle className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
+              <div className="flex items-start gap-1.5 p-2 rounded-md bg-sky-50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-800/40">
+                <AlertCircle className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-sky-700 dark:text-sky-300 leading-relaxed">
                   💡 لاستخدام ميزة <strong>توليد الوصف بالذكاء الاصطناعي</strong>، قم أولاً باختيار ملف الكتاب من الأسفل، ثم اضغط على زر "توليد الوصف من الكتاب".
                 </p>
               </div>
@@ -2512,7 +2512,7 @@ const BookSubmissionForm: React.FC<BookSubmissionFormProps> = ({ onSuccess }) =>
             </div>
           </div>
 
-          <div className="space-y-4 p-6 bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-200 dark:border-amber-700 rounded-xl shadow-sm">
+          <div className="space-y-4 p-6 bg-sky-50 dark:bg-sky-900/20 border-2 border-sky-200 dark:border-sky-700 rounded-xl shadow-sm">
             <div className="flex items-start space-x-3 space-x-reverse">
               <Checkbox 
                 id="rights"

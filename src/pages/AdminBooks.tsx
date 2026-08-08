@@ -1059,9 +1059,9 @@ const AdminBooks: React.FC = () => {
 
                                                {/* تغيير سنة النشر */}
                                                {submission.changes_summary.publication_year_changed && (
-                                                 <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3">
+                                                 <div className="bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg p-3">
                                                    <div className="flex items-center gap-2 mb-2">
-                                                     <Badge variant="outline" className="text-xs bg-yellow-100 border-yellow-300 text-yellow-700">
+                                                     <Badge variant="outline" className="text-xs bg-sky-100 border-sky-300 text-sky-700">
                                                        تغيير سنة النشر
                                                      </Badge>
                                                    </div>
@@ -1071,8 +1071,8 @@ const AdminBooks: React.FC = () => {
                                                        <span className="text-gray-800 dark:text-gray-200 mr-2">{submission.original_publication_year || 'غير محدد'}</span>
                                                      </div>
                                                      <div>
-                                                       <span className="font-semibold text-yellow-600 dark:text-yellow-400">الجديدة:</span>
-                                                       <span className="text-yellow-800 dark:text-yellow-200 mr-2">{submission.publication_year || 'غير محدد'}</span>
+                                                       <span className="font-semibold text-sky-600 dark:text-sky-400">الجديدة:</span>
+                                                       <span className="text-sky-800 dark:text-sky-200 mr-2">{submission.publication_year || 'غير محدد'}</span>
                                                      </div>
                                                    </div>
                                                  </div>
@@ -1241,7 +1241,7 @@ const AdminBooks: React.FC = () => {
                               {submission.reviewer_notes && (
                                 <div className="mb-4">
                                   <span className="font-semibold text-sm block mb-2">ملاحظات المراجع:</span>
-                                  <div className="text-sm bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                                  <div className="text-sm bg-sky-50 dark:bg-sky-900/20 p-3 rounded-lg border border-sky-200 dark:border-sky-800">
                                     {submission.reviewer_notes}
                                   </div>
                                 </div>

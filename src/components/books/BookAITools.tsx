@@ -104,7 +104,7 @@ const BookAITools: React.FC<Props> = ({ bookId, bookTitle }) => {
           </div>
           {user && (
             <div className="flex items-center gap-1.5 text-sm bg-card border rounded-full px-3 py-1">
-              <Coins className="w-4 h-4 text-amber-500" />
+              <Coins className="w-4 h-4 text-sky-500" />
               <span className="font-bold" dir="ltr">{coins.toLocaleString('en')}</span>
               <span className="text-muted-foreground text-xs">عملة</span>
             </div>
@@ -121,7 +121,7 @@ const BookAITools: React.FC<Props> = ({ bookId, bookTitle }) => {
               <div className="text-primary">{f.icon}</div>
               <span className="text-xs font-semibold leading-tight">{f.title}</span>
               <span className="flex items-center gap-1 text-[11px] text-muted-foreground" dir="ltr">
-                <Coins className="w-3 h-3 text-amber-500" />
+                <Coins className="w-3 h-3 text-sky-500" />
                 {f.price}
               </span>
             </button>
@@ -140,7 +140,7 @@ const BookAITools: React.FC<Props> = ({ bookId, bookTitle }) => {
             <div className="text-primary"><Puzzle className="w-5 h-5" /></div>
             <span className="text-xs font-semibold leading-tight">🧩 اختبار بعد القراءة</span>
             <span className="flex items-center gap-1 text-[11px] text-muted-foreground" dir="ltr">
-              <Coins className="w-3 h-3 text-amber-500" />
+              <Coins className="w-3 h-3 text-sky-500" />
               30
             </span>
 

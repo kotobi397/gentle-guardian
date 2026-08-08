@@ -268,7 +268,7 @@ const BannedUsersManager: React.FC = () => {
                               {getBanTypeLabel(user.ban_type)}
                             </Badge>
                             {isExpired(user.expires_at) && (
-                              <Badge variant="outline" className="text-yellow-600 border-yellow-600">
+                              <Badge variant="outline" className="text-sky-600 border-sky-600">
                                 منتهي الصلاحية
                               </Badge>
                             )}

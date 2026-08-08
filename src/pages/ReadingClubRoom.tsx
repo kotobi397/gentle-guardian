@@ -326,7 +326,7 @@ const ReadingClubRoom: React.FC = () => {
                         <p className="text-sm font-medium line-clamp-1 flex items-center gap-1">
                           {member.username}
                           {member.role === 'admin' && (
-                            <Crown className="h-3 w-3 text-yellow-500" />
+                            <Crown className="h-3 w-3 text-sky-500" />
                           )}
                         </p>
                         <p className="text-xs text-muted-foreground">

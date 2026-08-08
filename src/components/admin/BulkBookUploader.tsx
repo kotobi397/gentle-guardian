@@ -436,7 +436,7 @@ const BulkBookUploader: React.FC<BulkBookUploaderProps> = ({ onUploadComplete })
               {results.failed === 0 ? (
                 <CheckCircle className="h-5 w-5 text-green-500" />
               ) : (
-                <AlertTriangle className="h-5 w-5 text-yellow-500" />
+                <AlertTriangle className="h-5 w-5 text-sky-500" />
               )}
               نتائج الرفع
             </CardTitle>

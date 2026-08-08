@@ -914,11 +914,11 @@ const Auth: React.FC<AuthProps> = () => {
               </button>
 
               {/* Help Tips */}
-              <div className="mt-4 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+              <div className="mt-4 p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
                 <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-5 w-5 text-sky-500 flex-shrink-0 mt-0.5" />
                   <div className="text-xs space-y-1 text-right">
-                    <p className="font-semibold text-amber-600 dark:text-amber-400">نصائح:</p>
+                    <p className="font-semibold text-sky-600 dark:text-sky-400">نصائح:</p>
                     <p className="text-muted-foreground">• تحقق من مجلد الرسائل المزعجة</p>
                     <p className="text-muted-foreground">• تأكد من صحة البريد الإلكتروني</p>
                   </div>
@@ -1118,11 +1118,11 @@ const Auth: React.FC<AuthProps> = () => {
               </button>
 
               {/* Help Tips */}
-              <div className="mt-4 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+              <div className="mt-4 p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
                 <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-5 w-5 text-sky-500 flex-shrink-0 mt-0.5" />
                   <div className="text-xs space-y-1 text-right">
-                    <p className="font-semibold text-amber-600 dark:text-amber-400">نصائح:</p>
+                    <p className="font-semibold text-sky-600 dark:text-sky-400">نصائح:</p>
                     <p className="text-muted-foreground">• تحقق من مجلد الرسائل المزعجة</p>
                     <p className="text-muted-foreground">• تأكد من صحة البريد الإلكتروني</p>
                   </div>

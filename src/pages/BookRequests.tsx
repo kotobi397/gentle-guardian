@@ -40,7 +40,7 @@ const TABS: { key: BookRequestsSort; label: string; icon: typeof Flame }[] = [
 ];
 
 const RANK_STYLES = [
-  'from-amber-400/90 to-amber-600 text-amber-950',
+  'from-sky-400/90 to-sky-600 text-sky-950',
   'from-slate-300/90 to-slate-500 text-slate-900',
   'from-orange-400/90 to-orange-700 text-orange-950',
 ];

@@ -35,7 +35,7 @@ const Leaderboard: React.FC = () => {
       <Helmet><title>لوحة المتصدرين — كتبي</title></Helmet>
 
       <h1 className="text-3xl font-bold mb-6 flex items-center gap-2">
-        <Trophy className="text-amber-500" /> لوحة المتصدرين
+        <Trophy className="text-sky-500" /> لوحة المتصدرين
       </h1>
 
       <div className="flex gap-2 mb-6">
@@ -95,15 +95,15 @@ const Leaderboard: React.FC = () => {
 };
 
 const RankBadge: React.FC<{ rank: number }> = ({ rank }) => {
-  if (rank === 1) return <Crown className="w-7 h-7 text-amber-500" />;
+  if (rank === 1) return <Crown className="w-7 h-7 text-sky-500" />;
   if (rank === 2) return <Medal className="w-7 h-7 text-gray-400" />;
-  if (rank === 3) return <Medal className="w-7 h-7 text-amber-700" />;
+  if (rank === 3) return <Medal className="w-7 h-7 text-sky-700" />;
   return <span className="w-7 text-center font-bold text-muted-foreground">{rank}</span>;
 };
 
 const Avatar: React.FC<{ entry: { avatar_url: string | null; username: string | null; selected_avatar_frame: string | null } }> = ({ entry }) => {
   const frameClass: Record<string, string> = {
-    gold: 'ring-2 ring-yellow-400',
+    gold: 'ring-2 ring-sky-400',
     neon: 'ring-2 ring-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]',
     fire: 'ring-2 ring-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.7)]',
   };

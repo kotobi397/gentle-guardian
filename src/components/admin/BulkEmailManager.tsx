@@ -333,7 +333,7 @@ const BulkEmailManager: React.FC = () => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5 text-yellow-500" />
+            <AlertTriangle className="h-5 w-5 text-sky-500" />
             دليل إعداد قالب EmailJS
           </CardTitle>
         </CardHeader>

@@ -145,7 +145,7 @@ const StoryArchive: React.FC = () => {
       {/* Highlights Section */}
       <section>
         <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
-          <Star className="w-5 h-5 text-yellow-500" /> الـ Highlights المحفوظة
+          <Star className="w-5 h-5 text-sky-500" /> الـ Highlights المحفوظة
         </h3>
         {hlLoading ? (
           <div className="flex justify-center py-6"><Loader2 className="w-6 h-6 animate-spin" /></div>

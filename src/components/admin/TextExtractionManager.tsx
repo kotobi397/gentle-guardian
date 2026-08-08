@@ -316,7 +316,7 @@ const TextExtractionManager: React.FC = () => {
       case 'completed':
         return <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"><CheckCircle className="h-3 w-3 ml-1" />مكتمل</Badge>;
       case 'processing':
-        return <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"><Loader2 className="h-3 w-3 ml-1 animate-spin" />قيد المعالجة</Badge>;
+        return <Badge className="bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300"><Loader2 className="h-3 w-3 ml-1 animate-spin" />قيد المعالجة</Badge>;
       case 'failed':
         return <Badge className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"><XCircle className="h-3 w-3 ml-1" />فشل</Badge>;
       default:
@@ -416,7 +416,7 @@ const TextExtractionManager: React.FC = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                 <div className="rounded border bg-background p-2">
                   <div className="text-muted-foreground">في الانتظار</div>
-                  <div className="text-lg font-bold text-yellow-600">{queueStats.pending.toLocaleString()}</div>
+                  <div className="text-lg font-bold text-sky-600">{queueStats.pending.toLocaleString()}</div>
                 </div>
                 <div className="rounded border bg-background p-2">
                   <div className="text-muted-foreground">قيد المعالجة</div>

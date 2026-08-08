@@ -336,7 +336,7 @@ const ContactUs = () => {
                   <ExternalLink className="w-4 h-4 mr-2" />
                 </Button>
               ) : (
-                <div className="text-center p-4 bg-yellow-500/20 border border-yellow-500/30 rounded-lg w-full">
+                <div className="text-center p-4 bg-sky-500/20 border border-sky-500/30 rounded-lg w-full">
                   <p className="text-foreground font-black">
                     ⚠️ يجب تسجيل الدخول أولاً لمراسلة فريق الدعم
                   </p>
@@ -350,7 +350,7 @@ const ContactUs = () => {
           {!user && (
             <Card className="mb-6 bg-card border-border">
               <CardContent className="pt-6">
-                <div className="text-center p-4 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
+                <div className="text-center p-4 bg-sky-500/20 border border-sky-500/30 rounded-lg">
                   <p className="text-foreground font-black text-lg">
                     ⚠️ يجب تسجيل الدخول أولاً لإرسال رسالة إلى فريق الدعم
                   </p>
